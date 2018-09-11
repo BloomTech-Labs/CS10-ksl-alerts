@@ -1,20 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-//This is where we are going to put the routes for our components
+import LandingPage from "./components/LandingPage/LandingPage.js";
+import TopNav from "./components/TopNav/TopNav.js";
+import SideNav from "./components/SideNav/SideNav.js";
+import CreateAlert from "./components/CreateAlert/CreateAlert.js";
+import Settings from "./components/Settings/Settings.js";
+import Billing from "./components/Billing/Billing.js";
 
 class App extends Component {
+  // state = {
+  //   signedIn = false,
+  // };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <TopNav />
+        <LandingPage />
       </div>
     );
   }
