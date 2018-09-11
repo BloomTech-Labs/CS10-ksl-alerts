@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+//This is where we are going to put the routes for our components
+
 class App extends Component {
   render() {
     return (
