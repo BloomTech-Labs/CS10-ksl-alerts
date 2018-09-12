@@ -5,6 +5,7 @@ const User = require("./userModel.js");
 
 const secret = "Something here";
 
+
 //generate token for the login
 const generateToken = user => {
   const options = {
@@ -14,6 +15,7 @@ const generateToken = user => {
   return jwt.sign(payload, secret, options);
 };
 
+//this route is the "home" route which makes a get call to our database
 router.route("/").get((req, res) => {
   User.find()
     .then(users => {
@@ -24,6 +26,7 @@ router.route("/").get((req, res) => {
     });
 });
 
+//This route gives the user the ability to sign up for the site.
 router.route("/signUp").post((req, res) => {
   const { email, password } = req.body;
   const newUser = new User({ email, password });
@@ -37,6 +40,7 @@ router.route("/signUp").post((req, res) => {
     });
 });
 
+// This block of code creates the route for users to be able to sign in
 router.route("/signIn").post((req, res) => {
   const { email, password } = req.body;
   User
@@ -61,6 +65,14 @@ router.route("/signIn").post((req, res) => {
       res.status(404).json({ errorMessage: "User not found"});
     });
 });
+
+/* user information update --WIP--
+router.route("/update").put((req, res) => {
+  const { id } = req.params;
+  const { email, oldPassword, newPassword } = req.body;
+  if (email && oldPassword && !newPassword)
+})
+*/
 
 module.exports = router;
 

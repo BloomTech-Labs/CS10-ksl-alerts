@@ -12,12 +12,6 @@ middleware(server);
 
 server.use('/api/users', userController);
 
-// server.listen(`${PORT}`, () =>
-//       console.log(`\n=== API running on port ${PORT} ===\n`)
-// )
-
-/* WIP until we have our controller and schema built */
-
 database
   .connectTo("ksl_users")
   .then(() => {
@@ -29,4 +23,3 @@ database
   .catch(err => {
     console.log(`\n*** ERROR Connecting to MongoDB, is it running? ***\n`, err);
   });
-
