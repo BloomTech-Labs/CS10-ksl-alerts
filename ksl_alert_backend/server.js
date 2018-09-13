@@ -1,5 +1,7 @@
 //this is where we are setting up the node server that connects to our database
 const express = require('express');
+//for .env file to save sensitive info
+require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 const database = require('./utils/database.js');
 const middleware = require('./utils/middleware.js');
