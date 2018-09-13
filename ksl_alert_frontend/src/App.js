@@ -10,14 +10,16 @@ import Settings from "./components/Settings/Settings.js";
 import Billing from "./components/Billing/Billing.js";
 
 class App extends Component {
-  // state = {
-  //   signedIn = false,
-  // };
+  //declaring our app states
+  state = {
+    signedIn: true,
+  };
+  
 
   render() {
     return (
       <div className="App">
-        <TopNav />
+        <TopNav signedIn={this.state.signedIn} /> 
         <LandingPage />
       </div>
     );
