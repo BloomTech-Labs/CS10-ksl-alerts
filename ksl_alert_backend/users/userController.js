@@ -3,8 +3,10 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const User = require("./userModel.js");
 
-const secret = "Something here";
+//for .env file to save sensitive info
+require('dotenv').config();
 
+const secret = process.env.secret;
 
 //generate token for the login
 const generateToken = user => {
