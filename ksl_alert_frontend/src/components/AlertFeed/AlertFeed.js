@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { PromiseProvider } from "mongoose";
 import alerts from "../../dummyData.js";
+import AlertCard from "../AlertCard/AlertCard.js";
 
 /**
  * AlertFeed States:
@@ -9,12 +10,12 @@ import alerts from "../../dummyData.js";
  * The alert feed will have its own local state (state.alerts) --we need to determine how to render--
  **/
 export default class AlertFeed extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          alerts: [],
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      alerts: []
     };
+  }
 
   componentDidMount() {
     //make call to db to get user object
@@ -29,13 +30,9 @@ export default class AlertFeed extends Component {
 
   render() {
     const alertFeed = this.state.alerts.map(alert => {
-        return <li>Name: {alert.name}, Price: {alert.price}, Category: {alert.category}</li>
+      return <AlertCard name={alert.title} price={alert.price} category={alert.category}/>; 
     });
 
-    return (
-      <ul>
-        {alertFeed}
-      </ul>
-    );
+    return <ul>{alertFeed}</ul>;
   }
 }
