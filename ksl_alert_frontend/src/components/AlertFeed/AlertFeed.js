@@ -9,9 +9,12 @@ import alerts from "../../dummyData.js";
  * The alert feed will have its own local state (state.alerts) --we need to determine how to render--
  **/
 export default class AlertFeed extends Component {
-  state = {
-    alerts: []
-  };
+    constructor(props) {
+        super(props);
+        this.state = {
+          alerts: [],
+        }
+    };
 
   componentDidMount() {
     //make call to db to get user object
@@ -25,11 +28,13 @@ export default class AlertFeed extends Component {
   }
 
   render() {
+    const alertFeed = this.state.alerts.map(alert => {
+        return <li>Name: {alert.name}, Price: {alert.price}, Category: {alert.category}</li>
+    });
+
     return (
       <ul>
-        {this.state.alerts.map(alert => {
-          <li>{alert}</li>
-        })}
+        {alertFeed}
       </ul>
     );
   }

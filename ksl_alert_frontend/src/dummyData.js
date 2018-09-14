@@ -15,3 +15,5 @@ const alerts = [
     category: "table",
   },
 ];
+
+export default alerts;
