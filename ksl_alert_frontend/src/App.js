@@ -12,13 +12,13 @@ import AlertFeed from './components/AlertFeed/AlertFeed';
 class App extends Component {
   //declaring our app states
   state = {
-    signedIn: true,
+    signedIn: false,
   };
 
   render() {
     return (
       <div className="App">
-        <TopNav signedIn={this.state.signedIn} />
+        <TopNav isSignedIn={this.state.signedIn} />
         <LandingPage />
         <AlertFeed />
       </div>
