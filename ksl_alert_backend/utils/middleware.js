@@ -8,3 +8,4 @@ module.exports = function(server) {
     server.use(helmet());
     //don't forget to add the cors option here
 };
+

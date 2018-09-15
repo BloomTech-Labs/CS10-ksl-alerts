@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 //allows us to connect to the database
 module.exports = {
-    connectTo: function(database = "test", host = "localhost") {
+    connectTo: function(database = "my_ksl_alert", host = "localhost") {
       return mongoose.connect(`mongodb://${host}/${database}`);
     }
 };

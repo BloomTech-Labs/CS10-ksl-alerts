@@ -1,28 +1,40 @@
-//this is where we are setting up the node server that connects to our database
 const express = require('express');
-const PORT = process.env.PORT || 5000;
-const database = require('./utils/database.js');
-const middleware = require('./utils/middleware.js');
-
-//don't forget to destructure and require our routes.js file here
+require('dotenv').config();
+const cors = require('cors');
+const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 const server = express();
-middleware(server);
+const corsOptions = {
+  origin: '*',
+  credential: true
+};
 
+const port = process.env.PORT || 8000;
 
-server.listen(`${PORT}`, () =>
-     console.log(`\n=== API running on port ${PORT} ===\n`)
+server.use(express.json());
+server.use(helmet());
+server.use(cors({ corsOptions }));
+
+// users and url routes 
+const usersRoute = require('./users/userController');
+//const savedUrlRoute = require('./savedUrls/urlController');
+
+server.use('/api/users', usersRoute);
+//server.use('./api/savedUrl', savedUrlRoute);
+
+server.get('/', (req,res) => {
+  res.status(200).json({ api: 'server running'});
+});
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect(`mongodb://${process.env.dbuser}:${process.env.dbpassword}@ds157742.mlab.com:57742/my_ksl_alert`, { useNewUrlParser: true }, () => {
+  console.log(`\n===== Connected to mLab database =====\n`);
+});
+// fix DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+mongoose.set('useCreateIndex', true);
+
+server.listen(`${port}`, () =>
+  console.log(`\n=== API running on port ${port} ===\n`)
 )
-/* WIP until we have our controller and schema built
-database
- .connectTo("test")
- .then(() => {
-   console.log(“\n... API Connected to lambda-Notes Database ...\n”);
-   server.listen(`${port}`, () =>
-     console.log(`\n=== API running on port ${port} ===\n`)
-   );
- })
- .catch(err => {
-   console.log(“\n*** ERROR Connecting to MongoDB, is it running? ***\n”, err);
- });
-*/
