@@ -1,24 +1,28 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import { Route, Switch } from 'react-router-dom';
 import "./App.css";
 
 import LandingPage from "./components/LandingPage/LandingPage.js";
-import TopNav from "./components/TopNav/TopNav.js";
-import SideNav from "./components/SideNav/SideNav.js";
-import CreateAlert from "./components/CreateAlert/CreateAlert.js";
-import Settings from "./components/Settings/Settings.js";
-import Billing from "./components/Billing/Billing.js";
+import SignIn from "./components/SignIn/SignIn";
+import SignUp from "./components/SignUp/SignUp";
+import AlertFeed from "./components/AlertFeed/AlertFeed";
+import CreateAlert from "./components/CreateAlert/CreateAlert";
+import Billing from "./components/Billing/Billing";
+import Settings from "./components/Settings/Settings";
 
 class App extends Component {
-  // state = {
-  //   signedIn = false,
-  // };
-
   render() {
     return (
       <div className="App">
-        <TopNav />
-        <LandingPage />
+      <Switch>
+        <Route exact path='/' component={LandingPage} />
+        <Route path='/signIn' component={SignIn} />
+        <Route path='/signUp' component={SignUp} />
+        <Route path='/feed' component={AlertFeed} />
+        <Route path='/createAlert' component={CreateAlert} />
+        <Route path='/billing' component={Billing} />
+        <Route path='/settings' component={Settings} />
+      </Switch>
       </div>
     );
   }
