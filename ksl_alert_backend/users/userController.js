@@ -120,7 +120,9 @@ const update = (req, res) => {
 router.route('/').get(restrictedRoute, getAllUsers);
 router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
-router.route('/setting').put(update);
+
+// route that require ID 
+router.route
 
 
 module.exports = router;

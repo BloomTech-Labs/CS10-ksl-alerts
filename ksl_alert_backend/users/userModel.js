@@ -1,19 +1,30 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const ObjectId = mongoose.
 
 // user model
 const UserSchema = new mongoose.Schema ({
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: 6
-    }
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 6
+  },
+	// one to many relationship - one user can save many urls.
+  saved_url: {
+		type: ObjectId,
+		ref: 'Urls'
+	}
+	// can work for Stretch - upgrade to premium accout
+	// accout_type: {
+	// 	free: Boolean,
+	// 	premium: Boolean
+	// }
 });
 
 // hashing middleware 
