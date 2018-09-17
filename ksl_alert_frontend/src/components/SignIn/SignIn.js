@@ -17,7 +17,7 @@ class SignIn extends Component {
 
 				// console.log('signin props:', this.props);
 				this.setState({ email: '', password: ''});
-				this.props.history.push('/billing');
+				this.props.history.push('/feed');
 			})
 			.catch(err => {
 				console.log(err);
