@@ -1,0 +1,7 @@
+{
+  "env": {
+    "dbuser": "ksl7alert",
+    "dbpassword": "kslalert123",
+    "secret": "Something else here"
+  }
+}
