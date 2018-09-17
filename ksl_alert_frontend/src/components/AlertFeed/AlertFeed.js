@@ -22,6 +22,7 @@ export default class AlertFeed extends Component {
 		axios
 			.get('http://localhost:8000/api/users', requestOptions)
 			.then(res => {
+				console.log(res.data);
 				this.setState({ users: res.data });
 			})
 			.catch(err => {
@@ -41,6 +42,7 @@ export default class AlertFeed extends Component {
     return (
       <div>
         <p>Alert Feed</p>
+				<div>{this.state.users.map(user => <ol key={user.id}>{user.email}</ol>)}</div>
 				<button onClick={this.signOut}>Sign out</button>
       </div>
     );
