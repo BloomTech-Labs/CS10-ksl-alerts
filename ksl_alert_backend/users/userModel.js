@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const ObjectId = mongoose.
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // user model
 const UserSchema = new mongoose.Schema ({
@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema ({
 	// one to many relationship - one user can save many urls.
   saved_url: {
 		type: ObjectId,
-		ref: 'Urls'
+		ref: 'SavedUrl'
 	}
 	// can work for Stretch - upgrade to premium accout
 	// accout_type: {
