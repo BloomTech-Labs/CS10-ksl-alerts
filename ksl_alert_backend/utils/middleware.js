@@ -6,5 +6,19 @@ const cors = require('cors');
 module.exports = function(server) {
     server.use(express.json());
     server.use(helmet());
+    server.post("/api/billing", async (req, res) => {
+        try {
+          let { status } = await stripe.charges.create({
+            amount: 2000,
+            currency: "usd",
+            description: "An example charge",
+            source: req.body
+          });
+      
+          res.json({ status });
+        } catch (err) {
+          res.status(500).end();
+        }
+      });
     //don't forget to add the cors option here
 };

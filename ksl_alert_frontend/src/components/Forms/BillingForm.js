@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
-
 import React, { Component } from 'react'
 
 class BillingForm extends Component {
@@ -21,3 +20,5 @@ class BillingForm extends Component {
     )
   }
 }
+
+export default injectStripe(BillingForm);

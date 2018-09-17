@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Elements, StripeProvider} from 'react-stripe-elements';
 import "./App.css";
 
 import LandingPage from "./components/LandingPage/LandingPage.js";
