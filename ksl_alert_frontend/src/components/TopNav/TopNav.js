@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import SignUpButton from '../ButtonComponents/Buttons.js';
+import axios from "axios";
+import SignInButton from "../ButtonComponents/SignInButton/SignInButton.js";
+import SignUpButton from "../ButtonComponents/SignUpButton/SignUpButton.js";
 
 /**
  * 2-3 components (Top-Left: route text, Top-Right: signin/signup/signout)
@@ -7,22 +9,13 @@ import SignUpButton from '../ButtonComponents/Buttons.js';
  * Signed Out: Top-Left: display not rendered, Top-right: SignUp/SignIn button)
  */
 
-const TopNav = (props) => {
-        let signUpButton = '';
-        let signInButton = '';
-        let routeText = null;
-        if (props.signedIn) {
-            signInButton = "Sign Out";
-            routeText = "Page Route";
-        } else {
-            signUpButton = "Sign Up";
-        }
-        return (
-            <div>
-                <a>{routeText}</a>
-                <SignUpButton signedIn={props.signedIn} />
-            </div>
-        );
-    }
+const TopNav = props => {
+  return (
+    <div>
+      <SignUpButton isSignedIn={props.isSignedIn} />
+      <SignInButton isSignedIn={props.isSignedIn} />
+    </div>
+  );
+};
 
 export default TopNav;
