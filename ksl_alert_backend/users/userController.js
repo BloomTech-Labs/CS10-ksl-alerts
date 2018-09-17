@@ -122,7 +122,8 @@ router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
 
 // route that require ID 
-router.route
+router.route('/:id/update').put(restrictedRoute, update);
+
 
 
 module.exports = router;
