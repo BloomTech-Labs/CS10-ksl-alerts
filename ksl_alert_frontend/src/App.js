@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 import LandingPage from "./components/LandingPage/LandingPage.js";
@@ -8,19 +7,20 @@ import SideNav from "./components/SideNav/SideNav.js";
 import CreateAlert from "./components/CreateAlert/CreateAlert.js";
 import Settings from "./components/Settings/Settings.js";
 import Billing from "./components/Billing/Billing.js";
+import AlertFeed from './components/AlertFeed/AlertFeed';
 
 class App extends Component {
   //declaring our app states
   state = {
-    signedIn: true,
+    signedIn: false,
   };
-  
 
   render() {
     return (
       <div className="App">
-        <TopNav signedIn={this.state.signedIn} /> 
+        <TopNav isSignedIn={this.state.signedIn} />
         <LandingPage />
+        <AlertFeed />
       </div>
     );
   }
