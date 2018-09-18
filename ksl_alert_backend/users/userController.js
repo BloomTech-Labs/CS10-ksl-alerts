@@ -70,29 +70,32 @@ const signUp = (req, res) => {
 
 
 const signIn = (req, res) => {
-  const { email, password } = req.body;
-  User
-    .findOne({ email })
-    .then(user => {
-      if(user) {
-        user.validatePassword(password)
-        .then(match => {
-          if(match) {
-            const token = generateToken({ email });
-            res.status(200).json({ message: `Welcome back ${ email }`, token });
-          } else {
-            res.status(404).json({ errorMessage: "Invalid email or password" });
-          }
-        })
-        .catch(err => {
-          res.status(500).json({ errorMessage: "Error", err});
-        });
-      }
-    })
-    .catch(err => {
-      res.status(404).json({ errorMessage: "User not found"});
-    });
-};
+	const { email, password } = req.body;
+	User
+		.findOne({ email })
+		.then(user => {
+			if (!user) {
+				return res.status(403).json({ errorMessage: "User not found "})
+			} else {
+				user.validatePassword(password)
+				.then(match => {
+					if(match) {
+					  const token = generateToken({ email });
+					  res.status(200).json({ message: `Welcome back ${ email }`, token });
+					} else {
+					  res.status(404).json({ errorMessage: "Invalid email or password" });
+					}
+				})
+				.catch(err => {
+					res.status(500).json(err);
+				})
+			}
+		})
+		.catch(err => {
+			res.status(500).json(err);
+		});
+}
+
 
 const update = (req, res) => {
 	const { id } = req.params;
