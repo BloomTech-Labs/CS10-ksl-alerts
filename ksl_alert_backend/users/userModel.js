@@ -4,7 +4,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // user model
 const UserSchema = new mongoose.Schema ({
-  email: {
+	email: {
     type: String,
     required: true,
     unique: true,
@@ -16,10 +16,17 @@ const UserSchema = new mongoose.Schema ({
     minlength: 6
   },
 	// one to many relationship - one user can save many urls.
-  saved_url: {
-		type: ObjectId,
-		ref: 'SavedUrl'
-	}
+  queries: [{
+    type: String,
+    title: {
+        type: String,
+        required: true,
+    },
+    url: {
+				type: String,
+				required: true
+    }
+  }]
 	// can work for Stretch - upgrade to premium accout
 	// accout_type: {
 	// 	free: Boolean,
