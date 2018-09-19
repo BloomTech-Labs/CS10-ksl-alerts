@@ -1,28 +1,35 @@
 import React, { Component } from "react";
-import {Elements, StripeProvider} from 'react-stripe-elements';
-import BillingForm from "../Forms/BillingForm";
+import { Elements, StripeProvider } from "react-stripe-elements";
+import BillingForm from "./Stripe/stripe.js";
 
 export default class Billing extends Component {
   render() {
     return (
       <div>
-        <p>Payment Info</p>
-        <input type="text" name="cc" placeholder="CC#" />
-        <input type="text" name="exp" placeholder="EXP" />
-        <input type="text" name="cvv" placeholder="CVV" />
-        <input type="checkbox" name="oneMonthSub">
-          1 Month Subs - $20
-        </input>
-        <input type="checkbox" name="newPassword">
-          1 Client - $1.99
-        </input>
-        <StripeProvider apiKey="pk_test_8PEVRGD76L9FgpaQaNZiCgRG">
-          <div className="billing-form">
-            <Elements>
-              <BillingForm />
-            </Elements>
+        <div className="checkout">
+          <div>
+            <p>1 month - $9.99</p>
+            <p>3 months - $19.99</p>
+            <p>6 months - $29.99</p>
           </div>
-        </StripeProvider>
+          <div className="buttons">
+            <Checkout
+              name={"Subscription Fee"}
+              description={"1 month"}
+              amount={9.99}
+            />
+            <Checkout
+              name={"Subscription Fee"}
+              description={"3 months"}
+              amount={19.99}
+            />
+            <Checkout
+              name={"Subscription Fee"}
+              description={"6 months"}
+              amount={29.99}
+            />
+          </div>
+        </div>
       </div>
     );
   }
