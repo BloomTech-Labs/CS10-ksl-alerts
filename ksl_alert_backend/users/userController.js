@@ -52,6 +52,24 @@ const getAllUsers = (req, res) => {
   });
 };
 
+// get user by ID
+const getUserById = (req, res) => {
+	const userId = req.body.id;
+	console.log(userId)
+	User
+		.findById(userId)
+		.then(user => {
+			if (!user) {
+				res.status(403).json({ errorMessage: "User not found "});
+			} else {
+				res.status(200).json(user);
+			}			
+		})
+		.catch(err => {
+			res.status(500).json({ errorMessage: "Error fetching user" });
+		})
+}
+
 const signUp = (req, res) => {
   const { email, password } = req.body;
 	const newUser = new User({ email, password });
@@ -110,6 +128,38 @@ const update = (req, res) => {
 		})
 }
 
+/** Save a new query
+ * Find User
+ * Get User's current queries
+ * Add new query
+ * Return array of updated queries
+ */
+const saveQuery = (req, res) => {
+	const { title, url, userId } = req.body;
+	User
+		.findById(userId)
+		.then(user => {
+			let queries = user.queries;
+			let newQuery = {title, url};
+			let updatedQueries = [...queries, newQuery];
+			console.log(updatedQueries);
+			return updatedQueries;
+		})
+		.then(updatedQueries => {
+			User
+			.findByIdAndUpdate(userId, {queries: updatedQueries}, {new: true})
+			.then(updatedUser => {
+				res.status(201).json(updatedUser);
+			})
+			.catch(error => {
+				res.status(500).json({ err: "User could not be updated", error })
+			})
+		})
+		.catch(error => {
+			rest.status(500).json({ error: "User could not be found :(" })
+		})
+}
+
 /*
 //user login information update:
 const forgotPassword = (req, res) => {
@@ -136,7 +186,11 @@ router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
 
 // route that require ID 
+router.route('/getUser').post(getUserById);
 router.route('/:id/update').put(restrictedRoute, update);
+router.route('/saveQuery').put(saveQuery);
+
+
 
 
 
