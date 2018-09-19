@@ -6,7 +6,7 @@ const User = require("./userModel.js");
 //for .env file to save sensitive info
 require('dotenv').config();
 
-const secret = process.env.secret;
+const secret = process.env.SECRET;
 
 // middlewares
 // generate token for the login

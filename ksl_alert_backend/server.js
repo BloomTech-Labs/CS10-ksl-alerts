@@ -29,7 +29,7 @@ server.get('/', (req,res) => {
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(`mongodb://${process.env.dbuser}:${process.env.dbpassword}@ds157742.mlab.com:57742/my_ksl_alert`, { useNewUrlParser: true }, () => {
+mongoose.connect(`mongodb://${process.env.DBUSER}:${process.env.DBPASSWORD}@ds255262.mlab.com:55262/ksl7alert`, { useNewUrlParser: true }, () => {
   console.log(`\n===== Connected to mLab database =====\n`);
 });
 // fix DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
