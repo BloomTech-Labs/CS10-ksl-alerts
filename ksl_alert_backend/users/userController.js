@@ -109,13 +109,24 @@ const update = (req, res) => {
 			res.status(500).json(err);
 		})
 }
+
+/*
+//user login information update:
+const forgotPassword = (req, res) => {
+	const {email, password} = req.body;
+	if (!email || !password) {
+		return (
+			res.status(400).json({"error message": "no email or password provided"})
+			)
+	}
+}
 // /* user information update --WIP--
 // router.route("/update").put((req, res) => {
 //   const { id } = req.params;
 //   const { email, oldPassword, newPassword } = req.body;
 //   if (email && oldPassword && !newPassword)
 // })
-// */
+*/
 
 
 

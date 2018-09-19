@@ -9,8 +9,18 @@ const ModalToggle = props => {
   return (
     <div className={ toggle ? 'modal-wrapper': 'hidden' }>
 			<h4 className='modal-header'>Hello :)</h4>
-			<button><Link to='/signIn'>Sign In</Link></button>
-			<button><Link to='/signUp'>Sign Up</Link></button>
+      <div>
+        <input type="text" name="username" placeholder="Enter Username/Email" />
+        <input type="text" name="password" placeholder="Enter Password" />
+        <button><Link to='/signIn'>Sign In</Link></button>
+      </div>
+      <div>
+        <input type="text" name="username" placeholder="Choose a Username" />
+        <input type="text" name="email" placeholder="Enter email address" />
+        <input type="text" name="password" placeholder="Enter a Password" />
+        <button><Link to='/signUp'>Sign Up</Link></button>
+      </div>
+			
     </div>
   );
 }
