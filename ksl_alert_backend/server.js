@@ -8,11 +8,13 @@ const middleware = require('./utils/middleware.js');
 
 //routes imports
 const userController = require('./users/userController.js');
+const webScraperController = require('./web_scraper/webScraperController.js');
 
 const server = express();
 middleware(server);
 
 server.use('/api/users', userController);
+server.use('/api/webscraper', webScraperController);
 
 database
   .connectTo("ksl_users")
