@@ -3,6 +3,7 @@ require('dotenv').config();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const PORT = process.env.PORT || 8000;
 
 const server = express();
 const corsOptions = {
@@ -10,16 +11,14 @@ const corsOptions = {
   credential: true
 };
 
-const port = process.env.PORT || 8000;
-
 server.use(express.json());
 server.use(helmet());
 server.use(cors({ corsOptions }));
 
 // users and url routes 
-const usersRoute = require('./users/userController');
+const userRoute = require('./user/userController');
 
-server.use('/api/users', usersRoute);
+server.use('/api/user', userRoute);
 
 server.get('/', (req,res) => {
   res.status(200).json({ api: 'server running'});
@@ -33,6 +32,6 @@ mongoose.connect(`mongodb://${process.env.DBUSER}:${process.env.DBPASSWORD}@ds25
 // fix DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
 mongoose.set('useCreateIndex', true);
 
-server.listen(`${port}`, () =>
-  console.log(`\n=== API running on port ${port} ===\n`)
+server.listen(`${PORT}`, () =>
+  console.log(`\n=== API running on port ${PORT} ===\n`)
 )
