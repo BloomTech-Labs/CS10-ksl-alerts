@@ -1,38 +1,50 @@
 import React, { Component } from "react";
-// import { PromiseProvider } from "mongoose";
-import alerts from "../../dummyData.js";
-import AlertCard from "../AlertCard/AlertCard.js";
+import axios from 'axios';
 
-/**
- * AlertFeed States:
- * Signed In: Managed through app.js, the alert feed is only rendered if props.login is true,
- * and they've routed to that page (after signing up/signing in, or clicking the alert feed button).
- * The alert feed will have its own local state (state.alerts) --we need to determine how to render--
- **/
+
+
+// use users for now. It needs to change to be saved urls
+// then scrape the saved url to show alert feed
 export default class AlertFeed extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      alerts: []
-    };
-  }
+	state = {
+		users: []
+	}
 
-  componentDidMount() {
-    //make call to db to get user object
-    //save user's query links to a 'queries' variable
-    //pass 'queries' into webScraper function
-    //save webScraper's return value into an 'alerts' variable
-    //pass 'alerts' variable into AlertFeed's state via setState()
+	componentDidMount() {
+		const token = localStorage.getItem('jwt');
+		const requestOptions = {
+			headers: {
+				Authorization: token
+			}
+		};
 
-    //for testing: get alerts from dummyData and pass into AlertFeed's state via setState()
-    this.setState({ alerts: alerts });
-  }
+		// call axios.get to check if can fetch all users. JUST FOR TESTING
+		axios
+			.get('http://localhost:8000/api/users', requestOptions)
+			.then(res => {
+				console.log(res.data);
+				this.setState({ users: res.data });
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
+
+	// remove token from local storage
+	signOut = () => {
+		if(localStorage.getItem('jwt')) {
+			localStorage.removeItem('jwt');
+			this.props.history.push('/');
+		}
+	}
 
   render() {
-    const alertFeed = this.state.alerts.map(alert => {
-      return <AlertCard name={alert.title} price={alert.price} category={alert.category}/>; 
-    });
-
-    return <ul>{alertFeed}</ul>;
+    return (
+      <div>
+        <p>Alert Feed</p>
+				<div>{this.state.users.map(user => <ol key={user.id}>{user.email}</ol>)}</div>
+				<button onClick={this.signOut}>Sign out</button>
+      </div>
+    );
   }
 }

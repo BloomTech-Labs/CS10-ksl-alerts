@@ -1,18 +1,31 @@
 import React, { Component } from "react";
+import { Route, Switch } from 'react-router-dom';
+import ModalToggle from "./ModalToggle";
 
+class LandingPage extends Component {
+    constructor() {
+        super();
+        this.state = {
+            displayModal: false
+        }
+    }
 
-/**
- * 3 Components: TopNav, Main Body Text, Button
- * The rendering for all three states is going to be same because the landing page 
- * is the starting point for any interaction with the site. 
- */
-export default class LandingPage extends Component {
+    showModal = () => {
+        this.setState({ displayModal: !this.state.displayModal});
+    }
+
     render() {
         return (
             <div>
-                <p>Welcome to KSL alerts!!!</p>
-                <button>Get Started</button>
+                <h3>Welcome to KSL alerts!!!</h3>
+                <button onClick={this.showModal}>Get Started</button>
+                <ModalToggle
+									toggle={this.state.displayModal}
+									showModal={this.showModal}
+								/>
             </div>
         );
     }
 }
+
+export default LandingPage;

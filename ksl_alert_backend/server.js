@@ -1,27 +1,40 @@
-//this is where we are setting up the node server that connects to our database
 const express = require('express');
-//for .env file to save sensitive info
 require('dotenv').config();
-const PORT = process.env.PORT || 5000;
-const database = require('./utils/database.js');
-const middleware = require('./utils/middleware.js');
-
-//routes imports
-const userController = require('./users/userController.js');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 const server = express();
-middleware(server);
+const corsOptions = {
+  origin: '*',
+  credential: true
+};
 
-server.use('/api/users', userController);
+const port = process.env.PORT || 8000;
 
-database
-  .connectTo("ksl_users")
-  .then(() => {
-    console.log(`\n... API Connected to ksl_users ...\n`);
-    server.listen(`${PORT}`, () =>
-      console.log(`\n=== API running on port ${PORT} ===\n`)
-    );
-  })
-  .catch(err => {
-    console.log(`\n*** ERROR Connecting to MongoDB, is it running? ***\n`, err);
-  });
+server.use(express.json());
+server.use(helmet());
+server.use(cors({ corsOptions }));
+
+// users and url routes 
+const usersRoute = require('./users/userController');
+//const savedUrlRoute = require('./savedUrls/urlController');
+
+server.use('/api/users', usersRoute);
+//server.use('./api/savedUrl', savedUrlRoute);
+
+server.get('/', (req,res) => {
+  res.status(200).json({ api: 'server running'});
+});
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect(`mongodb://${process.env.DBUSER}:${process.env.DBPASSWORD}@ds255262.mlab.com:55262/ksl7alert`, { useNewUrlParser: true }, () => {
+  console.log(`\n===== Connected to mLab database =====\n`);
+});
+// fix DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+mongoose.set('useCreateIndex', true);
+
+server.listen(`${port}`, () =>
+  console.log(`\n=== API running on port ${port} ===\n`)
+)
