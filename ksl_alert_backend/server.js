@@ -18,10 +18,8 @@ server.use(cors({ corsOptions }));
 
 // users and url routes 
 const usersRoute = require('./users/userController');
-//const savedUrlRoute = require('./savedUrls/urlController');
 
 server.use('/api/users', usersRoute);
-//server.use('./api/savedUrl', savedUrlRoute);
 
 server.get('/', (req,res) => {
   res.status(200).json({ api: 'server running'});

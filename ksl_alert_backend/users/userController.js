@@ -52,6 +52,24 @@ const getAllUsers = (req, res) => {
   });
 };
 
+// get user by ID
+const getUserById = (req, res) => {
+	const userId = req.body.id;
+	console.log(userId)
+	User
+		.findById(userId)
+		.then(user => {
+			if (!user) {
+				res.status(403).json({ errorMessage: "User not found "});
+			} else {
+				res.status(200).json(user);
+			}			
+		})
+		.catch(err => {
+			res.status(500).json({ errorMessage: "Error fetching user" });
+		})
+}
+
 const signUp = (req, res) => {
   const { email, password } = req.body;
 	const newUser = new User({ email, password });
@@ -136,7 +154,10 @@ router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
 
 // route that require ID 
+router.route('/user').post(getUserById);
 router.route('/:id/update').put(restrictedRoute, update);
+
+
 
 
 
