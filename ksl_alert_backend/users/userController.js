@@ -128,6 +128,38 @@ const update = (req, res) => {
 		})
 }
 
+/** Save a new query
+ * Find User
+ * Get User's current queries
+ * Add new query
+ * Return array of updated queries
+ */
+const saveQuery = (req, res) => {
+	const { title, url, userId } = req.body;
+	User
+		.findById(userId)
+		.then(user => {
+			let queries = user.queries;
+			let newQuery = {title, url};
+			let updatedQueries = [...queries, newQuery];
+			console.log(updatedQueries);
+			return updatedQueries;
+		})
+		.then(updatedQueries => {
+			User
+			.findByIdAndUpdate(userId, {queries: updatedQueries}, {new: true})
+			.then(updatedUser => {
+				res.status(201).json(updatedUser);
+			})
+			.catch(error => {
+				res.status(500).json({ err: "User could not be updated", error })
+			})
+		})
+		.catch(error => {
+			rest.status(500).json({ error: "User could not be found :(" })
+		})
+}
+
 /*
 //user login information update:
 const forgotPassword = (req, res) => {
@@ -154,8 +186,9 @@ router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
 
 // route that require ID 
-router.route('/user').post(getUserById);
+router.route('/getUser').post(getUserById);
 router.route('/:id/update').put(restrictedRoute, update);
+router.route('/saveQuery').put(saveQuery);
 
 
 

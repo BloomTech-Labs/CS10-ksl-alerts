@@ -17,14 +17,13 @@ const UserSchema = new mongoose.Schema ({
   },
 	// one to many relationship - one user can save many urls.
   queries: [{
-    type: String,
     title: {
         type: String,
         required: true,
     },
     url: {
-				type: String,
-				required: true
+        type: String,
+        required: true
     }
   }]
 	// can work for Stretch - upgrade to premium accout
