@@ -3,18 +3,17 @@ import cheerio from "cheerio";
 import request from "request";
 
 class AlertDetail extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      url:
-        "https://classifieds.ksl.com/search/?keyword=guitar&zip=84101&miles=25&priceFrom=%240&priceTo=%24100&hasPhotos%5B%5D=Has+Photos&marketType%5B%5D=Sale&postedTimeFQ%5B%5D=1DAY&city=&state=&sort=0",
-      title: "Guitar",
+      title: props.title,
       listings: [],
     };
   }
 
   componentDidMount() {
-    request(this.state.url, (error, response, body) => {
+    console.log("AlertDetail this.props", this.props);
+    request(this.props.url, (error, response, body) => {
       console.log("error:", error);
       console.log("statusCode:", response && response.statusCode);
 
