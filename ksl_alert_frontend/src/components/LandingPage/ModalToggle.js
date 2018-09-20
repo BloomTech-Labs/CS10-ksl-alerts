@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
 import './ModalToggle.css';
 
 const ModalToggle = props => {
-
-	let toggle = props.toggle;
+  let toggle = props.toggle;
 
   return (
-    <div className={ toggle ? 'modal-wrapper': 'hidden' }>
-			<h4 className='modal-header'>Hello :)</h4>
-      <div>
-        <input type="text" name="username" placeholder="Enter Username/Email" />
-        <input type="text" name="password" placeholder="Enter Password" />
-        <button><Link to='/signIn'>Sign In</Link></button>
-      </div>
-      <div>
-        <input type="text" name="username" placeholder="Choose a Username" />
-        <input type="text" name="email" placeholder="Enter email address" />
-        <input type="text" name="password" placeholder="Enter a Password" />
-        <button><Link to='/signUp'>Sign Up</Link></button>
-      </div>
-			
+    <div className={toggle ? 'modal-wrapper' : 'hidden'}>
+      <h4 className="modal-header">Hello :)</h4>
+      <Button primary onClick={() => props.history.push('/signIn')} >
+      Sign In
+      </Button>
+      <Button secondary onClick={() => props.history.push('/signUp')}>
+        Sign Up
+      </Button>
     </div>
   );
-}
+};
 
 export default ModalToggle;
