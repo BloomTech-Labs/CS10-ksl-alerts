@@ -46,7 +46,7 @@ class App extends Component {
           <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
           <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
           <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} history={props.history} />} />
-          <Route path="/createAlert" component={CreateAlert} />
+          <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} history={props.history}/>} />
           <Route path="/billing" component={Billing} />
           <Route path="/settings" component={Settings} />
         </Switch>
