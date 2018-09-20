@@ -10,14 +10,19 @@ class SignIn extends Component {
 	submitForm = e => {
 		e.preventDefault();
 		axios
-			.post('http://localhost:8000/api/users/signIn', this.state)
+			.post('http://localhost:8000/api/user/signIn', this.state)
 			.then(res => {
 				// console.log('res:', res.data);
 				localStorage.setItem('jwt', res.data.token);
 
 				// console.log('signin props:', this.props);
-				this.setState({ email: '', password: ''});
-				this.props.history.push('/feed');
+				this.setState({ email: '', password: ''});				
+				console.log(res.data.id);
+				this.props.handleSignIn(res.data.id);
+				// this.props.history.push('/feed');
+
+				console.log(this.props);
+
 			})
 			.catch(err => {
 				console.log(err);
@@ -33,7 +38,7 @@ class SignIn extends Component {
     return (
       <div onSubmit={this.submitForm} className='container'>
 				<div className='form-wrapper'>
-					<h1 className='header'>Welcome</h1>
+					<h3 className='header'>Please sign in</h3>
 					<label htmlFor='username' />
 					<input className='input-box'
 						type = 'text'

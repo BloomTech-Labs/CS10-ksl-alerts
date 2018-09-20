@@ -7,7 +7,7 @@ import axios from 'axios';
 // then scrape the saved url to show alert feed
 export default class AlertFeed extends Component {
 	state = {
-		users: []
+		queries: []
 	}
 
 	componentDidMount() {
@@ -18,12 +18,12 @@ export default class AlertFeed extends Component {
 			}
 		};
 
-		// call axios.get to check if can fetch all users. JUST FOR TESTING
+		// 
 		axios
-			.get('http://localhost:8000/api/users', requestOptions)
+			.post('http://localhost:8000/api/user/getUser', { id: this.props.id }, requestOptions)
 			.then(res => {
 				console.log(res.data);
-				this.setState({ users: res.data });
+				this.setState({ queries: res.data.queries });
 			})
 			.catch(err => {
 				console.log(err);
@@ -42,8 +42,8 @@ export default class AlertFeed extends Component {
     return (
       <div>
         <p>Alert Feed</p>
-				<div>{this.state.users.map(user => <ol key={user.id}>{user.email}</ol>)}</div>
-				<button onClick={this.signOut}>Sign out</button>
+				<div>{this.state.queries.map(query => <ol key={query._id}>{query.url}</ol>)}</div>
+				{/* <button onClick={this.signOut}>Sign out</button> */}
       </div>
     );
   }

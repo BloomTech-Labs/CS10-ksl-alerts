@@ -84,7 +84,8 @@ const signUp = (req, res) => {
     });
 };
 
-
+// after signing in, if the password matched, it should return message, token and user id.
+// user id will be used for signing in. 
 const signIn = (req, res) => {
 	const { email, password } = req.body;
 	User
@@ -97,7 +98,7 @@ const signIn = (req, res) => {
 				.then(match => {
 					if(match) {
 					  const token = generateToken({ email });
-					  res.status(200).json({ message: `Welcome back ${ email }`, token });
+					  res.status(200).json({ message: `Welcome back ${ email }`, token, id: user._id });
 					} else {
 					  res.status(404).json({ errorMessage: "Invalid email or password" });
 					}
