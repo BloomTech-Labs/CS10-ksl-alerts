@@ -15,11 +15,11 @@ class SignIn extends Component {
         // console.log('res:', res.data);
         localStorage.setItem('jwt', res.data.token);
 
-        // console.log('signin props:', this.props);
+        console.log('signin props:', this.props);
         this.setState({ email: '', password: '' });
         console.log(res.data.id);
         this.props.handleSignIn(res.data.id);
-        // this.props.history.push('/feed');
+        this.props.history.push('/feed');
       })
       .catch(err => {
         console.log(err);

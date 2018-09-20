@@ -24,6 +24,7 @@ class SignUp extends Component {
 
             this.setState({ email: '', password: '' });
             this.props.handleSignIn(res.data.id);
+            this.props.history.push('/feed');
           })
           .catch(err => {
             console.log(err);

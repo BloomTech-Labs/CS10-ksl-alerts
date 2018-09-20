@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 
-import TopNav from './components/TopNav/TopNav.js';
 import LandingPage from './components/LandingPage/LandingPage.js';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
@@ -25,43 +24,33 @@ class App extends Component {
     console.log(this.state);
   };
 
-  signOut = () => {
-    if (localStorage.getItem('jwt')) {
-      localStorage.removeItem('jwt');
-    }
-    this.setState({ isLoggedIn: false })
-  };
+  handleSignOut = () => {
+    this.setState({ userId: null, isLoggedIn: false });
+  }
+
 
   render() {
     return (
       <div className="App">
         <h1>KSL Alerts</h1>
-        <Switch>
-          {/*<Route exact path='/' component={LandingPage} />*/}
-          {/* <Route path='/signIn' component={() => <SignIn handleSignIn={this.handleSignIn}/> } />
-        <Route path='/signUp' component={SignUp} /> */}
-          {/* <Route path='/feed' component={AlertFeed} /> */}
-          <Route path="/createAlert" component={CreateAlert} />
-          <Route path="/billing" component={Billing} />
-          <Route path="/settings" component={Settings} />
-        </Switch>
-
         {this.state.isLoggedIn ? (
-          <div>
+          <div className="Nav">
+            <Link to="/feed">Alerts</Link>
             <Link to="/createAlert">Create Alert</Link>
             <Link to="/billing">Billing</Link>
             <Link to="/settings">Settings</Link>
           </div>
         ) : null}
-        {this.state.isLoggedIn ? <AlertFeed id={this.state.userId} /> : null}
-        {this.state.isLoggedIn ? (
-          <button onClick={this.signOut}>Sign Out</button>
-        ) : (
-          <div>
-            <SignUp handleSignIn={this.handleSignIn} />
-            <SignIn handleSignIn={this.handleSignIn} />
-          </div>
-        )}
+        <Switch>
+          <Route exact path='/' component={LandingPage} />
+          <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
+          <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
+          <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} history={props.history} />} />
+          <Route path="/createAlert" component={CreateAlert} />
+          <Route path="/billing" component={Billing} />
+          <Route path="/settings" component={Settings} />
+        </Switch>
+
       </div>
     );
   }
