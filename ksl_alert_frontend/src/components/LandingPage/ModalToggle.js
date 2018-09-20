@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
 import './ModalToggle.css';
 
 const ModalToggle = props => {
@@ -8,16 +9,12 @@ const ModalToggle = props => {
   return (
     <div className={toggle ? 'modal-wrapper' : 'hidden'}>
       <h4 className="modal-header">Hello :)</h4>
-      <div>
-        <button>
-          <Link to="/signIn">Sign In</Link>
-        </button>
-      </div>
-      <div>
-        <button>
-          <Link to="/signUp">Sign Up</Link>
-        </button>
-      </div>
+      <Button primary onClick={() => props.history.push('/signIn')} >
+      Sign In
+      </Button>
+      <Button secondary onClick={() => props.history.push('/signUp')}>
+        Sign Up
+      </Button>
     </div>
   );
 };

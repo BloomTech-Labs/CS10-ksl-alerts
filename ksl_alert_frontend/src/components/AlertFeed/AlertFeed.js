@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Button } from 'semantic-ui-react';
+import './AlertFeed.css'
 
 // use users for now. It needs to change to be saved urls
 // then scrape the saved url to show alert feed
@@ -43,7 +45,7 @@ export default class AlertFeed extends Component {
 
   render() {
     return (
-      <div>
+      <div className="feed-wrapper">
         <h4>Alert Feed</h4>
         <ul>
           {this.state.queries.map(query => (
@@ -53,7 +55,7 @@ export default class AlertFeed extends Component {
             </li>
           ))}
         </ul>
-        <button onClick={this.signOut}>Sign out</button>
+        <Button onClick={this.signOut}>Sign out</Button>
       </div>
     );
   }

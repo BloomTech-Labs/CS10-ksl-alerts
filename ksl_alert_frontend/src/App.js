@@ -42,7 +42,7 @@ class App extends Component {
           </div>
         ) : null}
         <Switch>
-          <Route exact path='/' component={LandingPage} />
+          <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
           <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
           <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
           <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} history={props.history} />} />

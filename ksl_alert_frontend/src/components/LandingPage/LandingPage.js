@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ModalToggle from './ModalToggle';
+import { Button } from 'semantic-ui-react'
+import './LandingPage.css'
 
 class LandingPage extends Component {
   constructor() {
@@ -15,12 +17,13 @@ class LandingPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className='LandingPage'>
         <h3>Welcome.</h3>
-        <button onClick={this.showModal}>Get Started</button>
+        <Button onClick={this.showModal}>Get Started</Button>
         <ModalToggle
           toggle={this.state.displayModal}
           showModal={this.showModal}
+          history={this.props.history}
         />
       </div>
     );

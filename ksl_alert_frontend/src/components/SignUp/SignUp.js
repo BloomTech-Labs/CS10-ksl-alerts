@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Button, Input } from 'semantic-ui-react';
+import './SignUp.css'
 
 class SignUp extends Component {
   state = {
@@ -43,30 +45,30 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form-wrapper">
         <h3>Sign Up</h3>
-        <input
+        <Input
           type="text"
           name="email"
           placeholder="Email"
           value={this.state.email}
           onChange={this.handleInput}
         />
-        <input
+        <Input
           type="password"
           name="password"
           placeholder="Password"
           value={this.state.password}
           onChange={this.handleInput}
         />
-        <input
+        <Input
           type="password"
           name="confirmPassword"
           placeholder="Confirm Password"
           value={this.state.confirmPassword}
           onChange={this.handleInput}
         />
-        <button onClick={this.handleSubmit}>Submit</button>
+        <Button onClick={this.handleSubmit}>Submit</Button>
       </div>
     );
   }
