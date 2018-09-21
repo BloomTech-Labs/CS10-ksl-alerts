@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AlertDetail from '../AlertDetail/AlertDetail';
 
+// receiving query props from AlertFeed
 const AlertCard = props => {
   return (
     <div>
