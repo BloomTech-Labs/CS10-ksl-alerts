@@ -1,0 +1,24 @@
+.PageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.SettingsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.UpdateEmailForm {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.UpdatePasswordForm {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}

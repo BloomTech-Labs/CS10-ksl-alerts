@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button } from 'semantic-ui-react';
+import { Button, Segment } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css'
 
@@ -47,9 +47,11 @@ export default class AlertFeed extends Component {
   render() {
     return (
       <div className="feed-wrapper">
-        <h4>Alert Feed</h4>
+        <h2>Alert Feed</h2>
           {this.state.queries.map(query => (
-            <AlertCard query={query}/>
+            <Segment>
+              <AlertCard query={query}/>
+            </Segment>
           ))}
         <Button onClick={this.signOut}>Sign out</Button>
       </div>

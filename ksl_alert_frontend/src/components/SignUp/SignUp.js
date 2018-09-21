@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Input } from 'semantic-ui-react';
-import './SignUp.css'
+import { Button, Input, Form } from 'semantic-ui-react';
+import './SignUp.css';
 
 class SignUp extends Component {
   state = {
@@ -33,7 +33,7 @@ class SignUp extends Component {
           });
       })
       .catch(err => {
-        console.log("Error signing up a new user")
+        console.log('Error signing up a new user');
         console.log(err);
       });
   };
@@ -47,28 +47,36 @@ class SignUp extends Component {
     return (
       <div className="form-wrapper">
         <h3>Sign Up</h3>
-        <Input
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={this.handleInput}
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={this.state.password}
-          onChange={this.handleInput}
-        />
-        <Input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={this.state.confirmPassword}
-          onChange={this.handleInput}
-        />
-        <Button onClick={this.handleSubmit}>Submit</Button>
+        <Form>
+          <Form.Field>
+            <Input
+              type="text"
+              name="email"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.handleInput}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.handleInput}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={this.state.confirmPassword}
+              onChange={this.handleInput}
+            />
+          </Form.Field>
+          <Button onClick={this.handleSubmit}>Submit</Button>
+        </Form>
       </div>
     );
   }

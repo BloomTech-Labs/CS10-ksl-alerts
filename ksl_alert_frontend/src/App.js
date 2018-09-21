@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
 
 import LandingPage from './components/LandingPage/LandingPage.js';
 import SignIn from './components/SignIn/SignIn';
