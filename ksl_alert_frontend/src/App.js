@@ -4,13 +4,13 @@ import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 
 import LandingPage from './components/LandingPage/LandingPage.js';
-import SignIn from './components/SignIn/SignIn';
-import SignUp from './components/SignUp/SignUp';
-import AlertFeed from './components/AlertFeed/AlertFeed';
-import CreateAlert from './components/CreateAlert/CreateAlert';
-import Billing from './components/Billing/Billing';
-import Settings from './components/Settings/Settings';
-import AlertDetail from './components/AlertDetail/AlertDetail';
+import SignIn from './components/SignIn/SignIn.js';
+import SignUp from './components/SignUp/SignUp.js';
+import AlertFeed from './components/AlertFeed/AlertFeed.js';
+import CreateAlert from './components/CreateAlert/CreateAlert.js';
+import Billing from './components/Billing/Billing.js';
+import Settings from './components/Settings/Settings.js';
+import AlertListings from './components/AlertListings/AlertListings';
 
 class App extends Component {
   constructor() {
@@ -52,7 +52,7 @@ class App extends Component {
           <Route path="/billing" component={Billing} />
           <Route path="/settings" component={Settings} />
           {/* for testing */}
-          <Route path='/alertDetail' component={AlertDetail} />
+          <Route path='/alertListings' component={AlertListings} />
         </Switch>
 
       </div>
