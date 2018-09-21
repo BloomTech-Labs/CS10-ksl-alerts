@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import AlertDetail from '../AlertDetail/AlertDetail';
 
 const AlertCard = props => {
   return (
     <div>
-      <p>Title: {props.name}</p>
-      <p>Price: {props.price}</p>
-      <p>Category: {props.category}</p>
+      <p>Title: {props.query.title}</p>
+      <AlertDetail
+        title={props.query.title}
+        url={props.query.url}
+      />
     </div>
   );
 };

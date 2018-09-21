@@ -9,6 +9,7 @@ import AlertFeed from './components/AlertFeed/AlertFeed';
 import CreateAlert from './components/CreateAlert/CreateAlert';
 import Billing from './components/Billing/Billing';
 import Settings from './components/Settings/Settings';
+import AlertDetail from './components/AlertDetail/AlertDetail';
 
 class App extends Component {
   constructor() {
@@ -49,6 +50,8 @@ class App extends Component {
           <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} history={props.history}/>} />
           <Route path="/billing" component={Billing} />
           <Route path="/settings" component={Settings} />
+          {/* for testing */}
+          <Route path='/alertDetail' component={AlertDetail} />
         </Switch>
 
       </div>
