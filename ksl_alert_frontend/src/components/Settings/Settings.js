@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input, Form } from 'semantic-ui-react';
+import { Button, Input, Form, Label } from 'semantic-ui-react';
 import './Settings.css';
 
 export default class Settings extends Component {
@@ -9,7 +9,7 @@ export default class Settings extends Component {
         <h2>Settings</h2>
         <div className="SettingsContainer">
           <Form className="UpdateEmailForm">
-            <label>Update User Info</label>
+            <Label>Update User Info</Label>
             <Form.Field>
               <Input name="email" placeholder="Updated Email Address" />
             </Form.Field>
@@ -17,7 +17,7 @@ export default class Settings extends Component {
           </Form>
 
           <Form className="UpdatePasswordForm">
-            <label>Update Password</label>
+            <Label>Update Password</Label>
             <Form.Field>
               <Input name="currentPassword" placeholder="Current Password" />
             </Form.Field>
