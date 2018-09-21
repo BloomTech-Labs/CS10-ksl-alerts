@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Input } from 'semantic-ui-react';
-import './CreateAlert.css'
+import { Button, Input, Form } from 'semantic-ui-react';
+import './CreateAlert.css';
 
 export default class CreateAlert extends Component {
   constructor(props) {
@@ -31,21 +31,27 @@ export default class CreateAlert extends Component {
     return (
       <div className="form-wrapper">
         <h4>Create a new alert</h4>
-          <Input
-            type="text"
-            name="title"
-            placeholder="Alert Title"
-            value={this.state.title}
-            onChange={this.handleInput}
-          />
-          <Input
-            type="text"
-            name="url"
-            placeholder="Query String Link"
-            value={this.state.url}
-            onChange={this.handleInput}
-          />
+        <Form>
+          <Form.Field>
+            <Input
+              type="text"
+              name="title"
+              placeholder="Alert Title"
+              value={this.state.title}
+              onChange={this.handleInput}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Input
+              type="text"
+              name="url"
+              placeholder="Query String Link"
+              value={this.state.url}
+              onChange={this.handleInput}
+            />
+          </Form.Field>
           <Button onClick={this.handleSubmit}>Create Alert</Button>
+        </Form>
       </div>
     );
   }
