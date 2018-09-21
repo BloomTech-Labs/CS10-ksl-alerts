@@ -12,7 +12,6 @@ class AlertDetail extends Component {
   }
 
   componentDidMount() {
-    console.log("AlertDetail this.props", this.props);
     request(this.props.url, (error, response, body) => {
       console.log("error:", error);
       console.log("statusCode:", response && response.statusCode);
@@ -44,14 +43,12 @@ class AlertDetail extends Component {
   render() {
     return (
       <div>
-        <h3>Alert Detail!</h3>
         {this.state.listings.map(listing => {
           return (
             <div>
-              <p>Item name: {listing.title}</p>
-              <p>{listing.price}</p>
-              <p>{listing.city}</p>
-              <p>{listing.createTime}</p>
+              <p>Price: {listing.price}</p>
+              <p>City: {listing.city}</p>
+              <p>Created On: {listing.createTime}</p>
               <img src={`https://${listing.photo.slice(2)}`} />
             </div>
           );

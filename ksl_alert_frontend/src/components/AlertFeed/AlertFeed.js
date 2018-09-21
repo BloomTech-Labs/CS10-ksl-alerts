@@ -47,7 +47,7 @@ export default class AlertFeed extends Component {
   render() {
     return (
       <div className="feed-wrapper">
-        <h4>Alert Feed</h4>
+        <h2>Alert Feed</h2>
           {this.state.queries.map(query => (
             <AlertCard query={query}/>
           ))}
