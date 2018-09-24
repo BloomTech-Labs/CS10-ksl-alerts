@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import cheerio from "cheerio";
 import request from "request";
 
-class AlertDetail extends Component {
+// receiving query props from AlertCard which has query title and url
+class AlertListings extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,13 +13,16 @@ class AlertDetail extends Component {
   }
 
   componentDidMount() {
+    // using request library to get url(s) from our user database with specific user id
     request(this.props.url, (error, response, body) => {
       console.log("error:", error);
       console.log("statusCode:", response && response.statusCode);
 
+      // passing the body to cheerio
       const $ = cheerio.load(body);
 
-      // from view-source page, the data we need consist in script tag inside 'window.renderSearchSection'
+      // from view-source page, the data we need consists inside the script tag 'window.renderSearchSection'
+      // Cheerio returns the result as an object, so we convert it to an array because we can use array methods
       const scripts = $("script").toArray();
 
       scripts.find(script => {
@@ -58,4 +62,4 @@ class AlertDetail extends Component {
   }
 }
 
-export default AlertDetail;
+export default AlertListings;

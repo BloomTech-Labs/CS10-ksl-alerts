@@ -22,11 +22,14 @@ export default class AlertFeed extends Component {
     //
     axios
       .post(
+        // get the user's data
         'http://localhost:8000/api/user/getUser',
         { id: this.props.id },
         requestOptions
       )
       .then(res => {
+        // set the state with queries from userModel 
+        // in the queries contain the urls
         console.log(res.data);
         this.setState({ queries: res.data.queries });
       })
