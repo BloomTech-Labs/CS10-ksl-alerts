@@ -12,6 +12,7 @@ import SignUpButton from "../ButtonComponents/SignUpButton/SignUpButton.js";
 const TopNav = props => {
   return (
     <div>
+      <h1>KSL Alerts</h1>
       <SignUpButton isSignedIn={props.isSignedIn} />
       <SignInButton isSignedIn={props.isSignedIn} />
     </div>
