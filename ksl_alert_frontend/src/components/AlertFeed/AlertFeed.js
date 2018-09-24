@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Segment, Container, Header } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
-import './AlertFeed.css'
+import './AlertFeed.css';
 
 // use users for now. It needs to change to be saved urls
 // then scrape the saved url to show alert feed
@@ -28,7 +28,7 @@ export default class AlertFeed extends Component {
         requestOptions
       )
       .then(res => {
-        // set the state with queries from userModel 
+        // set the state with queries from userModel
         // in the queries contain the urls
         console.log(res.data);
         this.setState({ queries: res.data.queries });
@@ -49,15 +49,15 @@ export default class AlertFeed extends Component {
 
   render() {
     return (
-      <div className="feed-wrapper">
-        <h2>Alert Feed</h2>
-          {this.state.queries.map(query => (
-            <Segment>
-              <AlertCard query={query}/>
-            </Segment>
-          ))}
+      <Container>
+        <Header>Alert Feed</Header>
+        {this.state.queries.map(query => (
+          <Segment>
+            <AlertCard query={query} />
+          </Segment>
+        ))}
         <Button onClick={this.signOut}>Sign out</Button>
-      </div>
+      </Container>
     );
   }
 }
