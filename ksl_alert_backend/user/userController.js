@@ -148,16 +148,52 @@ const saveQuery = (req, res) => {
         });
     })
     .catch(error => {
-      rest
+      res
         .status(500)
         .json({ errorMessage: 'User could not be found :(', error });
     });
 };
 
+// update password. Check the old password first if matched, set new password == password
+// 422 The request was well-formed but was unable to be followed due to semantic errors.
+// WIP - return 404. New token might need to be generated.
+
+// const updatePassword = (req, res) => {
+//   const { email, password, newPassword, confirmNewPassword } = req.body;
+//   User.findOne({ email })
+//     .then(user => {
+//       user
+//       .validatePassword(password)
+//       .then(matched => {
+//         if(!matched) {
+//           res.status(422).res.json({ errorMessage: 'Current Password is incorrect' });
+//         } else {
+//           if(newPassword === confirmNewPassword) {
+//             user.password = newPassword;
+//             user
+//               .save()
+//               .then(savedNewPassword => {
+//                 res.status(200).json(savedNewPassword);
+//               })
+//               .catch(error => {
+//                 res.status(500).json(error);
+//               });
+//           } else {
+//             res.status(422).json({ errorMessage: 'The password not matched' })
+//           }      
+//         }
+//       })
+//       .catch(error => {
+//         res.status(500).json(error);
+//       })
+//     });
+// }
+
 // refactor routes endpoints
 router.route('/').get(restrictedRoute, getAllUsers);
 router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
+// router.route('/settting').post(updatePassword);
 
 // route that require ID
 router.route('/getUser').post(getUserById);
