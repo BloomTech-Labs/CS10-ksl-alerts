@@ -3,12 +3,8 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 
 const CURRENCY = "USD";
-const PAYMENT_SERVER_URL =
-  process.env.NODE_ENV === "production" ? "http://" : "http://localhost:3000";
-const STRIPE_PUBLISHABLE =
-  process.env.NODE_ENV === "production"
-    ? "pk_test_8PEVRGD76L9FgpaQaNZiCgRG"
-    : "pk_test_8PEVRGD76L9FgpaQaNZiCgRG";
+const PAYMENT_SERVER_URL = process.env.NODE_ENV === "production" ? "http://" : "http://localhost:3000";
+const STRIPE_PUBLISHABLE = process.env.NODE_ENV === "production" ? "pk_test_8PEVRGD76L9FgpaQaNZiCgRG" : "pk_test_8PEVRGD76L9FgpaQaNZiCgRG";
 
 const fromDollarToCent = amount => amount * 100;
 
