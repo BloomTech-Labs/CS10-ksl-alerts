@@ -11,6 +11,7 @@ import CreateAlert from './components/CreateAlert/CreateAlert.js';
 import Billing from './components/Billing/Billing.js';
 import Settings from './components/Settings/Settings.js';
 import AlertListings from './components/AlertListings/AlertListings';
+import TopNav from './components/TopNav/TopNav';
 
 class App extends Component {
   constructor() {
@@ -34,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>KSL Alerts</h1>
+        <TopNav />
         {this.state.isLoggedIn ? (
           <div className="Nav">
             <Link to="/feed">Alerts</Link>

@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import axios from "axios";
-import SignInButton from "../ButtonComponents/SignInButton/SignInButton.js";
-import SignUpButton from "../ButtonComponents/SignUpButton/SignUpButton.js";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Header, Container } from 'semantic-ui-react';
+import SignInButton from '../ButtonComponents/SignInButton/SignInButton.js';
+import SignUpButton from '../ButtonComponents/SignUpButton/SignUpButton.js';
+import "./TopNav.css"
 
 /**
  * 2-3 components (Top-Left: route text, Top-Right: signin/signup/signout)
@@ -11,10 +13,13 @@ import SignUpButton from "../ButtonComponents/SignUpButton/SignUpButton.js";
 
 const TopNav = props => {
   return (
-    <div>
-      <SignUpButton isSignedIn={props.isSignedIn} />
-      <SignInButton isSignedIn={props.isSignedIn} />
-    </div>
+    <Container className="TopNav" fluid>
+      <div>
+        <Header className="Header">KSL Alerts</Header>
+        <SignUpButton className="Signedup" isSignedIn={props.isSignedIn} />
+        <SignInButton className="SignedIn" isSignedIn={props.isSignedIn} />
+      </div>
+    </Container>
   );
 };
 

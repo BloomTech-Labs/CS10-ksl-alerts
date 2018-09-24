@@ -4,10 +4,10 @@ export default class SideNav extends Component {
     render() {
         return (
             <div>
-                <p>Feed</p>
-                <p>Create Alert</p>
-                <p>Settings</p>
-                <p>Billing</p>
+                <Link to="/feed">Alerts</Link>
+                <Link to="/createAlert">Create Alert</Link>
+                <Link to="/billing">Billing</Link>
+                <Link to="/settings">Settings</Link>
             </div>
         )
     }
