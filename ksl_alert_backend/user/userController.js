@@ -25,7 +25,6 @@ const restrictedRoute = (req, res, next) => {
   if (token) {
     jwt.verify(token, secret, (err, decodedToken) => {
       req.jwtPayload = decodedToken;
-      console.log('Decoded Token:', decodedToken);
 
       if (err) {
         res.status(403).json({ errorMessage: 'Please log in.', err });
@@ -96,7 +95,6 @@ const signIn = (req, res) => {
         user
           .validatePassword(password)
           .then(match => {
-            console.log('match:', match);
             if (match) {
               const token = generateToken({ email });
               res
