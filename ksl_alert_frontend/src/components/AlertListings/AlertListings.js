@@ -8,7 +8,6 @@ class AlertListings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: props.title,
       listings: [],
     };
   }
@@ -49,7 +48,7 @@ class AlertListings extends Component {
     return (
       <div>
         {this.state.listings.map(listing => {
-          <ListingCard 
+          return <ListingCard 
             price={listing.price}
             city={listing.city}
             createdOn={listing.createTime}
