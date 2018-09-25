@@ -5,11 +5,11 @@ require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 const database = require("./utils/database.js");
 const middleware = require("./utils/middleware.js");
-const stripe = require("stripe")("sk_test_ecM4zgXGjcGtiNNietW2yjZs");
+//const stripe = require("stripe")("sk_test_ecM4zgXGjcGtiNNietW2yjZs");
 
 //routes imports
 const userController = require("./users/userController.js");
-const billController = require()
+
 
 const server = express();
 
@@ -17,7 +17,6 @@ const server = express();
 middleware(server);
 
 server.use("/api/users", userController);
-server.use("/api/charge", billController);
 
 database
   .connectTo("ksl_users")
