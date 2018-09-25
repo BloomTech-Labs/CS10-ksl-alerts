@@ -17,17 +17,17 @@ class Billing extends Component {
           <Checkout
             name={"Subscription Fee"}
             description={"1 month"}
-            amount={Money}
+            amount={1.00}
           />
           <Checkout
             name={"Subscription Fee"}
             description={"6 months"}
-            amount={Money}
+            amount={20.00}
           />
           <Checkout
             name={"Subscription Fee"}
             description={"12 months"}
-            amount={Money}
+            amount={100.00}
           />
         </div>
       </div>
