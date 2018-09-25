@@ -2,6 +2,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 400px;
-    margin: 40px auto;
+    height: 100vh;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.LandingPageWrapper{
+    /* display: flex; */
+    /* flex-direction: column;
+    align-items: center; */
+    width: 100%;
+    height: 100%;
+    /* margin: 40px auto; */
+    background: url("../../images/SunriseWide.jpg");
+    background-size: cover;
+    min-height: 1000px;
+
+}
+
+.LandingPage .HeaderText{
+    display: flex;
+    align-self: center;
+    color: purple;
 }
