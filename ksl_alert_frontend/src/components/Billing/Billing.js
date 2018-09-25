@@ -6,26 +6,31 @@ class Billing extends Component {
   render() {
     return (
       <div>
-        <Form className="BillingForm">
-          <Label>Billing Info</Label>
-          <Form.Field>
-            <input type="text" name="cc" placeholder="CC#" />
-          </Form.Field>
-          <Form.Field>
-            <input type="text" name="exp" placeholder="EXP" />
-          </Form.Field>
-          <Form.Field>
-            <input type="text" name="cvv" placeholder="CVV" />
-          </Form.Field>
-          <Form.Field>
-            <input type="checkbox" name="oneMonthSub" /> 1 Month Subs - $20
-          </Form.Field>
-          <Form.Field>
-            <input type="checkbox" name="newPassword" /> 1 Client - $1.99
-          </Form.Field>
-          <Button>Submit</Button>
-        </Form>
+      <div className="checkout">
+        <div>
+          <p>1 month - $Money</p>
+          <p>6 months - $Money</p>
+          <p>12 months - $Money</p>
+        </div>
+        <div className="buttons">
+          <Checkout
+            name={"Subscription Fee"}
+            description={"1 month"}
+            amount={Money}
+          />
+          <Checkout
+            name={"Subscription Fee"}
+            description={"6 months"}
+            amount={Money}
+          />
+          <Checkout
+            name={"Subscription Fee"}
+            description={"12 months"}
+            amount={Money}
+          />
+        </div>
       </div>
+    </div>
     );
   }
 }
