@@ -23,7 +23,7 @@ export default class AlertFeed extends Component {
     axios
       .post(
         // get the user's data
-        'http://localhost:8000/api/user/getUser',
+        `${process.env.REACT_APP_BACKEND_URL}/user/getUser`,
         { id: this.props.id },
         requestOptions
       )

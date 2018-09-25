@@ -15,7 +15,7 @@ export default class CreateAlert extends Component {
   handleSubmit = e => {
     e.preventDefault();
     axios
-      .put('http://localhost:8000/api/user/saveQuery', {
+      .put(`${process.env.REACT_APP_BACKEND_URL}/user/saveQuery`, {
         ...this.state,
         id: this.props.id
       })
