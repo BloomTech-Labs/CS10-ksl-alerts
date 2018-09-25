@@ -96,6 +96,7 @@ const signIn = (req, res) => {
         user
           .validatePassword(password)
           .then(match => {
+            console.log('match:', match);
             if (match) {
               const token = generateToken({ email });
               res
@@ -186,11 +187,51 @@ const updatePassword = (req, res) => {
     });
 }
 
+// update user's email
+// check if the right user by validating the password.
+// if the password matched, set new email and the password 
+// and save in userModel
+const updateEmail = (req, res) => {
+  const { password, newEmail, id } = req.body;
+  User.findById(id)
+  .then(user => {
+    if(!user) {
+      res.status(404).json({ errorMessage: 'User not found'});
+    } else {
+      user
+        .validatePassword(password)
+        .then(matched => {
+          if(!matched) {
+            res.status(404).json({ errorMessage: 'Invalid password'});
+          } else {
+              user.email = newEmail;
+              user.password = password;
+              user
+                .save()
+                .then(savedNewEmail => {
+                  res.status(200).json(savedNewEmail);
+                })
+                .catch(error => {
+                  res.status(500).json(error);
+                })             
+          }
+        })
+        .catch(error => {
+          res.status(500).json(error);
+        });
+    }
+  })
+  .catch(error => {
+    res.status(500).json(error);
+  });
+}
+
 // refactor routes endpoints
 router.route('/').get(restrictedRoute, getAllUsers);
 router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
-router.route('/setting').put(restrictedRoute, updatePassword);
+router.route('/updatePassword').put(restrictedRoute, updatePassword);
+router.route('/updateEmail').put(restrictedRoute, updateEmail);
 
 // route that require ID
 router.route('/getUser').post(restrictedRoute, getUserById);
