@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Form, Input, Label } from 'semantic-ui-react';
+import { Elements, StripeProvider } from "react-stripe-elements";
+import Checkout from "./Stripe/stripe.js";
 import './Billing.css';
 
 class Billing extends Component {
