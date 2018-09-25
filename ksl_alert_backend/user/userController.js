@@ -132,6 +132,12 @@ const saveQuery = (req, res) => {
     .then(user => {
       const queries = user.queries;
       const newQuery = { title, url };
+
+      // if a new query would be a duplicate return original queries
+      if (queries.find(query => query.url === newQuery.url)) {
+        return queries;
+      }
+
       const updatedQueries = [...queries, newQuery];
       return updatedQueries;
     })
