@@ -22,7 +22,6 @@ class App extends Component {
         <TopNav isSignedIn={this.state.signedIn} />
         <LandingPage />
         <AlertFeed />
-        <Billing />
       </div>
     );
   }
