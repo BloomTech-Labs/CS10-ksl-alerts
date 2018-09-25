@@ -12,7 +12,7 @@ class SignIn extends Component {
   handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('http://localhost:8000/api/user/signIn', this.state)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/user/signIn`, this.state)
       .then(res => {
         // console.log('res:', res.data);
         localStorage.setItem('jwt', res.data.token);
