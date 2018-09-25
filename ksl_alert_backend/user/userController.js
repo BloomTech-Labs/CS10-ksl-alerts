@@ -194,6 +194,6 @@ router.route('/setting').put(restrictedRoute, updatePassword);
 
 // route that require ID
 router.route('/getUser').post(restrictedRoute, getUserById);
-router.route('/saveQuery').put(restrictedRoute, saveQuery);
+router.route('/saveQuery').put(saveQuery);
 
 module.exports = router;

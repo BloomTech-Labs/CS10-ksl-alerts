@@ -13,14 +13,14 @@ class SignUp extends Component {
   handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('http://localhost:8000/api/user/signUp', this.state)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/user/signUp`, this.state)
       .then(res => {
         console.log('Sign up successful');
         return res.data;
       })
       .then(user => {
         axios
-          .post('http://localhost:8000/api/user/signIn', this.state)
+          .post(`${process.env.REACT_APP_BACKEND_URL}/user/signIn`, this.state)
           .then(res => {
             localStorage.setItem('jwt', res.data.token);
 
