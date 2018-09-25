@@ -15,15 +15,12 @@ class AlertListings extends Component {
   componentDidMount() {
     // using request library to get url(s) from our user database with specific user id
     request(this.props.url, (error, response, body) => {
-      console.log('error:', error);
-      console.log('statusCode:', response && response.statusCode);
+      // Check if the request was successful
+      if (body && response.code === 200) {
+        const $ = cheerio.load(body); // Pass the request body to cheerio for web scraping
 
-      if (body) {
-        // passing the body to cheerio
-        const $ = cheerio.load(body);
-
-        // from view-source page, the data we need consists inside the script tag 'window.renderSearchSection'
-        // Cheerio returns the result as an object, so we convert it to an array because we can use array methods
+        // The data we need exists within 'window.renderSearchSection()' inside a <script> tag (discovered by inspecting page source)
+        // Cheerio returns the result as an object; we convert it to an array so we can use array methods
         const scripts = $('script').toArray();
 
         scripts.find(script => {
@@ -37,13 +34,16 @@ class AlertListings extends Component {
                 const startIndex = searchResults.indexOf('(');
                 let results = eval(searchResults.substring(startIndex));
                 this.setState({ listings: results.listings });
-                // console.log(results);
               }
             }
           }
         });
-      } else {
-        console.error('Invalid URL!');
+      }
+      // If the query link is invalid, add an error message to `state` to be used as a conditional inside render()
+      else {
+        this.setState({
+          err: 'The query URL you entered seems to be invalid!'
+        });
       }
     });
   }
@@ -51,16 +51,22 @@ class AlertListings extends Component {
   render() {
     return (
       <div>
-        {this.state.listings.map(listing => {
-          return (
-            <ListingCard
-              price={listing.price}
-              city={listing.city}
-              createdOn={listing.createTime}
-              photo={listing.photo}
-            />
-          );
-        })}
+        {// If there is an err, render the error message
+        // Else, iterate of this.state.listings
+          this.state.err ? (
+            <p>{this.state.err}</p>
+          ) : (
+            this.state.listings.map(listing => {
+              return (
+                <ListingCard
+                  price={listing.price}
+                  city={listing.city}
+                  createdOn={listing.createTime}
+                  photo={listing.photo}
+                />
+              );
+            })
+          )}
       </div>
     );
   }
