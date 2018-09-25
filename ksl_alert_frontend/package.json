@@ -15,7 +15,8 @@
     "request": "^2.88.0",
     "router-redux": "^0.10.0",
     "semantic-ui-css": "^2.4.0",
-    "semantic-ui-react": "^0.82.5"
+    "semantic-ui-react": "^0.82.5",
+    "styled-components": "^3.4.9"
   },
   "scripts": {
     "start": "react-scripts start",
