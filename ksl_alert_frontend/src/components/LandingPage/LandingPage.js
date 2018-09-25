@@ -3,6 +3,7 @@ import ModalToggle from './ModalToggle';
 import { Button, Container, Header } from 'semantic-ui-react';
 import './LandingPage.css';
 
+
 class LandingPage extends Component {
   constructor() {
     super();
