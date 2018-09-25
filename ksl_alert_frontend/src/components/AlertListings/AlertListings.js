@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import cheerio from "cheerio";
 import request from "request";
+import ListingCard from '../ListingCard/ListingCard.js';
 
 // receiving query props from AlertCard which has query title and url
 class AlertListings extends Component {
@@ -48,14 +49,12 @@ class AlertListings extends Component {
     return (
       <div>
         {this.state.listings.map(listing => {
-          return (
-            <div>
-              <p>Price: {listing.price}</p>
-              <p>City: {listing.city}</p>
-              <p>Created On: {listing.createTime}</p>
-              <img src={`https://${listing.photo.slice(2)}`} />
-            </div>
-          );
+          <ListingCard 
+            price={listing.price}
+            city={listing.city}
+            createdOn={listing.createTime}
+            photo={listing.photo}
+          />
         })}
       </div>
     );
