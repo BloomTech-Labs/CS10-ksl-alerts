@@ -6,7 +6,7 @@ const AlertCard = props => {
   return (
     <div>
       <h4>Query: {props.query.title}</h4>
-      <AlertListings title={props.query.title} url={props.query.url} />
+      <AlertListings url={props.query.url} />
     </div>
   );
 };
