@@ -3,4 +3,7 @@
   flex-direction: column;
   margin: 20px auto;
   align-items: center;
+  background: linear-gradient(to right,
+  rgb(60, 165, 92),
+  rgb(181, 172, 73));
 }
