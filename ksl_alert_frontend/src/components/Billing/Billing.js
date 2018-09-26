@@ -23,7 +23,7 @@ class Billing extends Component {
           <Form.Field>
             <input type="checkbox" name="newPassword" /> 1 Client - $1.99
           </Form.Field>
-          <Button>Submit</Button>
+          <Button color="olive" size="medium">Submit</Button>
         </Form>
       </div>
     );

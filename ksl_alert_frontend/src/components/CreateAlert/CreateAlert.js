@@ -50,7 +50,7 @@ export default class CreateAlert extends Component {
               onChange={this.handleInput}
             />
           </Form.Field>
-          <Button onClick={this.handleSubmit}>Create Alert</Button>
+          <Button color="olive" size="medium" onClick={this.handleSubmit}>Create Alert</Button>
         </Form>
       </div>
     );

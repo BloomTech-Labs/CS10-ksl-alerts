@@ -56,7 +56,7 @@ export default class AlertFeed extends Component {
               <AlertCard query={query}/>
             </Segment>
           ))}
-        <Button onClick={this.signOut}>Sign out</Button>
+        <Button color="olive" size="medium" onClick={this.signOut}>Sign out</Button>
       </div>
     );
   }

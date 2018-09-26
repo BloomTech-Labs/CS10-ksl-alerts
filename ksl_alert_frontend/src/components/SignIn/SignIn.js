@@ -59,7 +59,7 @@ class SignIn extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Button onClick={this.handleSubmit}>Submit</Button>
+            <Button color="olive" size="medium" onClick={this.handleSubmit}>Submit</Button>
           </Form>
         </div>
       </div>
