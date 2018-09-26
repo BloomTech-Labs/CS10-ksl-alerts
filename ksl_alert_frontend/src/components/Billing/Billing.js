@@ -9,19 +9,19 @@ class Billing extends Component {
         <Form className="BillingForm">
           <Label>Billing Info</Label>
           <Form.Field>
-            <input type="text" name="cc" placeholder="CC#" />
+            <Input type="text" name="cc" placeholder="CC#" />
           </Form.Field>
           <Form.Field>
-            <input type="text" name="exp" placeholder="EXP" />
+            <Input type="text" name="exp" placeholder="EXP" />
           </Form.Field>
           <Form.Field>
-            <input type="text" name="cvv" placeholder="CVV" />
+            <Input type="text" name="cvv" placeholder="CVV" />
           </Form.Field>
           <Form.Field>
-            <input type="checkbox" name="oneMonthSub" /> 1 Month Subs - $20
+            <Input type="checkbox" name="oneMonthSub" /> 1 Month Subs - $20
           </Form.Field>
           <Form.Field>
-            <input type="checkbox" name="newPassword" /> 1 Client - $1.99
+            <Input type="checkbox" name="newPassword" /> 1 Client - $1.99
           </Form.Field>
           <Button color="olive" size="medium">Submit</Button>
         </Form>
