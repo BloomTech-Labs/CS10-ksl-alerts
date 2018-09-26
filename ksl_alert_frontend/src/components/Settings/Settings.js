@@ -46,7 +46,7 @@ export default class Settings extends Component {
   handleSubmitPassword = e => {
     e.preventDefault();
     const id = this.props.id;
-    const { newPassword, confirmNewPassword } = this.state;
+    const { currentPassword, newPassword, confirmNewPassword } = this.state;
 
     if (newPassword !== confirmNewPassword) {
       console.log('newPassword and confirmNewPassword do not match!');
@@ -62,7 +62,7 @@ export default class Settings extends Component {
     axios
       .put(
         `${process.env.REACT_APP_BACKEND_URL}/user/updatePassword`,
-        { id, newPassword },
+        { id, newPassword, currentPassword },
         requestOptions
       )
       .then(res => {

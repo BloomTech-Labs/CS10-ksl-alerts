@@ -160,12 +160,21 @@ const saveQuery = (req, res) => {
 
 // update User's password
 const updatePassword = (req, res) => {
-  const { id, password, newPassword } = req.body;
+  const { id, currentPassword, newPassword } = req.body;
 
-  User.findByIdAndUpdate(id, { password: newPassword }, { new: true })
-    .validatePassword(password)
-    .then(user => res.status(200).json(user))
-    .catch(err => res.status(500).json(err));
+  User.findById(id).then(user => {
+    console.log(user)
+    user.validatePassword(currentPassword).then(match => {
+      if (match) {
+        User.findByIdAndUpdate(id, { password: newPassword }, { new: true })
+          .then(user => res.status(200).json(user))
+          .catch(err => res.status(500).json(err));
+      } else {
+        console.log('Incorrect password!');
+        res.status(403).json({ err: 'Incorrect password!' });
+      }
+    });
+  });
 };
 
 // update User's email
