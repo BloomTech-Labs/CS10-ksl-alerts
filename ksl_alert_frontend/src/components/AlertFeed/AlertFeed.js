@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Button, Container, Segment } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css';
@@ -7,10 +6,6 @@ import './AlertFeed.css';
 // use users for now. It needs to change to be saved urls
 // then scrape the saved url to show alert feed
 export default class AlertFeed extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     queries: this.props.queries
   };
