@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Input, Form } from 'semantic-ui-react';
+import { Button, Container, Input, Form, Header } from 'semantic-ui-react';
 import './CreateAlert.css';
 
 export default class CreateAlert extends Component {
@@ -29,30 +29,32 @@ export default class CreateAlert extends Component {
 
   render() {
     return (
-      <div className="form-wrapper">
-        <h4>Create a new alert</h4>
-        <Form>
-          <Form.Field>
-            <Input
-              type="text"
-              name="title"
-              placeholder="Alert Title"
-              value={this.state.title}
-              onChange={this.handleInput}
-            />
-          </Form.Field>
-          <Form.Field>
-            <Input
-              type="text"
-              name="url"
-              placeholder="Query String Link"
-              value={this.state.url}
-              onChange={this.handleInput}
-            />
-          </Form.Field>
-          <Button color="olive" size="medium" onClick={this.handleSubmit}>Create Alert</Button>
-        </Form>
-      </div>
+      <Container className="create-Wrapper" fluid>
+        <div className="form-wrapper">
+          <Header as="h4">Create a new alert</Header>
+          <Form>
+            <Form.Field>
+              <Input
+                type="text"
+                name="title"
+                placeholder="Alert Title"
+                value={this.state.title}
+                onChange={this.handleInput}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Input
+                type="text"
+                name="url"
+                placeholder="Query String Link"
+                value={this.state.url}
+                onChange={this.handleInput}
+              />
+            </Form.Field>
+            <Button color="olive" size="medium" onClick={this.handleSubmit}>Create Alert</Button>
+          </Form>
+        </div>
+      </Container>
     );
   }
 }
