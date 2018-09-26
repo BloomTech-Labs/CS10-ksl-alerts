@@ -102,7 +102,8 @@ const signIn = (req, res) => {
                 .json({
                   message: `Welcome back ${email}`,
                   token,
-                  id: user._id
+                  id: user._id,
+                  queries: user.queries
                 });
             } else {
               res
@@ -132,6 +133,12 @@ const saveQuery = (req, res) => {
     .then(user => {
       const queries = user.queries;
       const newQuery = { title, url };
+
+      // if a new query would be a duplicate return original queries
+      if (queries.find(query => query.url === newQuery.url)) {
+        return queries;
+      }
+
       const updatedQueries = [...queries, newQuery];
       return updatedQueries;
     })

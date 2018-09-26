@@ -67,7 +67,7 @@ export default class Settings extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Button onClick={this.handleSubmitEmail}>Submit</Button>
+            <Button color="olive" size="medium" onClick={this.handleSubmitEmail}>Submit</Button>
           </Form>
 
           <Form className="UpdatePasswordForm">
@@ -96,7 +96,7 @@ export default class Settings extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Button onClick={this.handleSubmitPassword}>Submit</Button>
+            <Button color="olive" size="medium" onClick={this.handleSubmitPassword}>Submit</Button>
           </Form>
         </div>
       </div>

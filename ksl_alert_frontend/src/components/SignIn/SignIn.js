@@ -14,16 +14,14 @@ class SignIn extends Component {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/user/signIn`, this.state)
       .then(res => {
-        localStorage.setItem('jwt', res.data.token);
+        const { id, queries, token } = res.data;
 
-        console.log('signin props:', this.props);
-        this.setState({ email: '', password: '' });
-        console.log(res.data.id);
-        this.props.handleSignIn(res.data.id);
+        localStorage.setItem('jwt', token);
+        this.props.handleSignIn(id, queries);
         this.props.history.push('/feed');
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
   };
 
@@ -58,7 +56,7 @@ class SignIn extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Button onClick={this.handleSubmit}>Submit</Button>
+            <Button color="olive" size="medium" onClick={this.handleSubmit}>Submit</Button>
           </Form>
         </div>
       </div>
