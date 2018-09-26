@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Button, Input, Form, Label } from 'semantic-ui-react';
 import './Settings.css';
+import axios from 'axios';
 
 export default class Settings extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      // id: this.props.userId,
       email: '',
       currentPassword: '',
       newPassword: '',
@@ -15,10 +17,34 @@ export default class Settings extends Component {
 
   handleSubmitEmail = e => {
     console.log(this.state);
+    // e.preventDefault();
+    // axios
+    //   .put(`${process.env.REACT_APP_BACKEND_URL}/user/updateEmail`, this.state)
+    //   .then(res => {
+
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   };
 
   handleSubmitPassword = e => {
-    console.log(this.state);
+    const token = localStorage.getItem('jwt');
+    const requestOptions = {
+      headers: {
+        Authorization: token
+      }
+    };
+
+    e.preventDefault();
+    axios
+      .put(`${process.env.REACT_APP_BACKEND_URL}/user/updatePassword`, this.props.state)
+      .then(res => {
+        console.log('res:', this.props.state);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   handleInput = e => {

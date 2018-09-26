@@ -50,7 +50,7 @@ class App extends Component {
           <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} history={props.history} />} />
           <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} history={props.history}/>} />
           <Route path="/billing" component={Billing} />
-          <Route path="/settings" component={Settings} />
+          <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
           {/* for testing */}
           <Route path='/alertListings' component={AlertListings} />
         </Switch>

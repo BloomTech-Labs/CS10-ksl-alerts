@@ -155,8 +155,8 @@ const saveQuery = (req, res) => {
 
 // update password. Check the old password first if matched, set new password === user.password
 const updatePassword = (req, res) => {
-  const { email, password, newPassword, confirmNewPassword } = req.body;
-  User.findOne({ email })
+  const { id, email, password, newPassword, confirmNewPassword } = req.body;
+  User.findById(id)
     .then(user => {
       user
       .validatePassword(password)

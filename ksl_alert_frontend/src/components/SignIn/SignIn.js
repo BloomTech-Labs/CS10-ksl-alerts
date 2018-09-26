@@ -14,7 +14,6 @@ class SignIn extends Component {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/user/signIn`, this.state)
       .then(res => {
-        // console.log('res:', res.data);
         localStorage.setItem('jwt', res.data.token);
 
         console.log('signin props:', this.props);
