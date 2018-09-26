@@ -59,6 +59,7 @@ class AlertListings extends Component {
             this.state.listings.map(listing => {
               return (
                 <ListingCard
+                  key={listing.createTime}
                   price={listing.price}
                   city={listing.city}
                   createdOn={listing.createTime}
