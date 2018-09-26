@@ -15,6 +15,8 @@ export default class Settings extends Component {
       passwordMatchError: false,
       passwordUpdateSuccess: false,
       passwordUpdateError: false,
+      emailUpdateSuccess: false,
+      emailUpdateError: false
     };
   }
 
@@ -36,9 +38,11 @@ export default class Settings extends Component {
         requestOptions
       )
       .then(res => {
+        this.setState({ emailUpdateSuccess: true, emailUpdateError: false })
         console.log(res);
       })
       .catch(err => {
+        this.setState({ emailUpdateSuccess: false, emailUpdateError: true })
         console.log(err);
       });
   };
@@ -50,7 +54,11 @@ export default class Settings extends Component {
 
     if (newPassword !== confirmNewPassword) {
       console.log('newPassword and confirmNewPassword do not match!');
-      this.setState({ passwordMatchError: true });
+      this.setState({
+        passwordMatchError: true,
+        passwordUpdateError: false,
+        passwordUpdateSuccess: false
+      });
       return;
     }
 
@@ -66,11 +74,17 @@ export default class Settings extends Component {
         requestOptions
       )
       .then(res => {
-        this.setState({ passwordUpdateSuccess: true });
+        this.setState({
+          passwordUpdateSuccess: true,
+          passwordUpdateError: false
+        });
         console.log(res);
       })
       .catch(err => {
-        this.setState({ passwordUpdateError: true });
+        this.setState({
+          passwordUpdateError: true,
+          passwordUpdateSuccess: false
+        });
         console.log(err);
       });
   };
@@ -102,6 +116,8 @@ export default class Settings extends Component {
             >
               Submit
             </Button>
+            { this.state.emailUpdateSuccess && <p>Email was updated successfully!</p> }
+            { this.state.emailUpdateError && <p>Error updating your email!</p> }
           </Form>
 
           <Form className="UpdatePasswordForm">
@@ -137,9 +153,13 @@ export default class Settings extends Component {
             >
               Submit
             </Button>
-            { this.state.passwordMatchError && <p>Passwords do not match!</p>}
-            { this.state.passwordUpdateSuccess && <p>Password was updated successfully!</p> }
-            { this.state.passwordUpdateError && <p>There was an error updating your password!</p> }
+            {this.state.passwordMatchError && <p>Passwords do not match!</p>}
+            {this.state.passwordUpdateSuccess && (
+              <p>Password was updated successfully!</p>
+            )}
+            {this.state.passwordUpdateError && (
+              <p>There was an error updating your password!</p>
+            )}
           </Form>
         </div>
       </div>
