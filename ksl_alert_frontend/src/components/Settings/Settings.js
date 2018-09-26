@@ -76,14 +76,16 @@ export default class Settings extends Component {
       .then(res => {
         this.setState({
           passwordUpdateSuccess: true,
-          passwordUpdateError: false
+          passwordUpdateError: false,
+          passwordMatchError: false
         });
         console.log(res);
       })
       .catch(err => {
         this.setState({
           passwordUpdateError: true,
-          passwordUpdateSuccess: false
+          passwordUpdateSuccess: false,
+          passwordMatchError: false
         });
         console.log(err);
       });
@@ -124,6 +126,7 @@ export default class Settings extends Component {
             <Label>Update Password</Label>
             <Form.Field>
               <Input
+                type="password"
                 name="currentPassword"
                 placeholder="Current Password"
                 value={this.state.currentPassword}
@@ -132,6 +135,7 @@ export default class Settings extends Component {
             </Form.Field>
             <Form.Field>
               <Input
+                type="password"
                 name="newPassword"
                 placeholder="New Password"
                 value={this.state.newPassword}
@@ -140,6 +144,7 @@ export default class Settings extends Component {
             </Form.Field>
             <Form.Field>
               <Input
+                type="password"
                 name="confirmNewPassword"
                 placeholder="Confirm New Password"
                 value={this.state.confirmNewPassword}
