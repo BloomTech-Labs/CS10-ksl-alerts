@@ -91,7 +91,7 @@ export default class Settings extends Component {
               <Input
                 name="newEmail"
                 placeholder="Updated Email Address"
-                value={this.state.email}
+                value={this.state.newEmail}
                 onChange={this.handleInput}
               />
             </Form.Field>

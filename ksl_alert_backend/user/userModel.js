@@ -46,7 +46,8 @@ UserSchema.pre('save', function(next) {
 
 // Hashes new password before updating User model
 UserSchema.pre('findOneAndUpdate', function(next) {
-  this._update.password = bcrypt.hashSync(this._update.password, 10)
+  if (this._update.password)
+    this._update.password = bcrypt.hashSync(this._update.password, 10)
   next();
 })
 

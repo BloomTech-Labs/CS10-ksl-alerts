@@ -172,7 +172,6 @@ const updatePassword = (req, res) => {
 const updateEmail = (req, res) => {
   const { newEmail, id } = req.body;
   User.findByIdAndUpdate(id, { email: newEmail }, { new: true })
-    .validatePassword(password)
     .then(user => res.status(200).json(user))
     .catch(error => res.status(500).json(error));
 };
