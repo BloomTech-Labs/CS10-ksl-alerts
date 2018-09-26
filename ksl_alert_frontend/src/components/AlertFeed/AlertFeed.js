@@ -31,7 +31,7 @@ export default class AlertFeed extends Component {
           <h2>Alert Feed</h2>
           {this.state.queries ? (
             this.state.queries.map(query => (
-              <Segment>
+              <Segment key={query._id}>
                 <AlertCard query={query} />
               </Segment>
             ))
