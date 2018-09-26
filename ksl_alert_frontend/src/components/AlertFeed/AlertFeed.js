@@ -7,36 +7,13 @@ import './AlertFeed.css'
 // use users for now. It needs to change to be saved urls
 // then scrape the saved url to show alert feed
 export default class AlertFeed extends Component {
-  state = {
-    queries: []
-  };
-
-  componentDidMount() {
-    const token = localStorage.getItem('jwt');
-    const requestOptions = {
-      headers: {
-        Authorization: token
-      }
-    };
-
-    //
-    axios
-      .post(
-        // get the user's data
-        `${process.env.REACT_APP_BACKEND_URL}/user/getUser`,
-        { id: this.props.id },
-        requestOptions
-      )
-      .then(res => {
-        // set the state with queries from userModel 
-        // in the queries contain the urls
-        console.log(res.data);
-        this.setState({ queries: res.data.queries });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  constructor(props) {
+    super(props);
   }
+
+  state = {
+    queries: this.props.queries,
+  };
 
   // remove token from local storage
   signOut = () => {

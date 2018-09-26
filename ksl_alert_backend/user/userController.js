@@ -102,7 +102,8 @@ const signIn = (req, res) => {
                 .json({
                   message: `Welcome back ${email}`,
                   token,
-                  id: user._id
+                  id: user._id,
+                  queries: user.queries
                 });
             } else {
               res
