@@ -44,6 +44,12 @@ UserSchema.pre('save', function(next) {
     });
 });
 
+// Hashes new password before updating User model
+UserSchema.pre('findOneAndUpdate', function(next) {
+  this._update.password = bcrypt.hashSync(this._update.password, 10)
+  next();
+})
+
 // compare the password when user login.
 UserSchema.methods.validatePassword = function(passwordGuess) {
     return bcrypt.compare(passwordGuess, this.password);

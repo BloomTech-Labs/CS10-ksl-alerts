@@ -25,9 +25,13 @@ export default class Settings extends Component {
 
     e.preventDefault();
     const newEmail = this.state.newEmail;
-    const id = this.props.id
+    const id = this.props.id;
     axios
-      .put(`${process.env.REACT_APP_BACKEND_URL}/user/updateEmail`, { id, newEmail }, requestOptions)
+      .put(
+        `${process.env.REACT_APP_BACKEND_URL}/user/updateEmail`,
+        { id, newEmail },
+        requestOptions
+      )
       .then(res => {
         console.log(res);
       })
@@ -37,18 +41,28 @@ export default class Settings extends Component {
   };
 
   handleSubmitPassword = e => {
+    e.preventDefault();
+    const id = this.props.id;
+    const { newPassword, confirmNewPassword } = this.state;
+
+    if (newPassword !== confirmNewPassword) {
+      console.log('newPassword and confirmNewPassword do not match!')
+      return;
+    }
+
     const token = localStorage.getItem('jwt');
     const requestOptions = {
-      headers: {
-        Authorization: token
-      }
+      headers: { Authorization: token }
     };
 
-    e.preventDefault();
     axios
-      .put(`${process.env.REACT_APP_BACKEND_URL}/user/updatePassword`, this.props.state)
+      .put(
+        `${process.env.REACT_APP_BACKEND_URL}/user/updatePassword`,
+        { id, newPassword },
+        requestOptions
+      )
       .then(res => {
-        console.log('res:', this.props.state);
+        console.log(res);
       })
       .catch(err => {
         console.log(err);
@@ -75,7 +89,13 @@ export default class Settings extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Button color="olive" size="medium" onClick={this.handleSubmitEmail}>Submit</Button>
+            <Button
+              color="olive"
+              size="medium"
+              onClick={this.handleSubmitEmail}
+            >
+              Submit
+            </Button>
           </Form>
 
           <Form className="UpdatePasswordForm">
@@ -104,7 +124,13 @@ export default class Settings extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Button color="olive" size="medium" onClick={this.handleSubmitPassword}>Submit</Button>
+            <Button
+              color="olive"
+              size="medium"
+              onClick={this.handleSubmitPassword}
+            >
+              Submit
+            </Button>
           </Form>
         </div>
       </div>
