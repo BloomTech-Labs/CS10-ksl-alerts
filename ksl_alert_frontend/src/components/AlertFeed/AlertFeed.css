@@ -2,11 +2,10 @@
     width: 100%;
     height: 100%;
     min-height: 1000px;
-    background: linear-gradient(to right,
-    rgb(60, 165, 92),
-    rgb(181, 172, 73));
+    background-image: repeating-linear-gradient(45deg, rgba(60,165,92,.3), rgba(255,255,0,.3) 1px, transparent 1px, transparent 2px, rgba(181,172,73) 1px);
     background-size: cover;
 }
+
 .feed-wrapper {
     display: flex;
     flex-direction: column;
