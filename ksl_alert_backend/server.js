@@ -3,7 +3,7 @@ require('dotenv').config();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 const stripeRouter = require('./stripe_backend/stripeRoute/stripeRouter')
 
 const server = express();

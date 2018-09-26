@@ -9,26 +9,25 @@ class Billing extends Component {
       <div>
       <div className="checkout">
         <div>
-          <p>1 month - $Money</p>
-          <p>6 months - $Money</p>
-          <p>12 months - $Money</p>
-        </div>
-        <div className="buttons">
-          <Checkout
+        <p>Enjoy unlimited alerts for just $9.99 a month!</p>
+        <p>1 month - $9.99</p>
+          <Checkout 
             name={"Subscription Fee"}
             description={"1 month"}
-            amount={1}
+            amount={9.99}
           />
+           {/* <p>6 months - $Money</p>
           <Checkout
             name={"Subscription Fee"}
             description={"6 months"}
             amount={20}
           />
+          <p>12 months - $Money</p>
           <Checkout
             name={"Subscription Fee"}
             description={"12 months"}
             amount={100}
-          />
+          /> */}
         </div>
       </div>
     </div>

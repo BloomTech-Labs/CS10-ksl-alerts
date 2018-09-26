@@ -4,7 +4,7 @@ import axios from "axios";
 
 const CURRENCY = "USD";
 const PAYMENT_SERVER_URL = 'http://localhost:8000/payments'
-const STRIPE_PUBLISHABLE = process.env.NODE_ENV === "pk_test_8PEVRGD76L9FgpaQaNZiCgRG";
+const STRIPE_PUBLISHABLE = "pk_test_8PEVRGD76L9FgpaQaNZiCgRG";
 
 const fromDollarToCent = amount => amount * 100;
 
