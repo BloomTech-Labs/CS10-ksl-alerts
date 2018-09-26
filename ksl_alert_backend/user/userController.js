@@ -158,22 +158,21 @@ const saveQuery = (req, res) => {
     });
 };
 
-// update password. Check the old password first if matched, set new password === user.password
+// update User's password
 const updatePassword = (req, res) => {
   const { id, password, newPassword } = req.body;
 
   User.findByIdAndUpdate(id, { password: newPassword }, { new: true })
+    .validatePassword(password)
     .then(user => res.status(200).json(user))
     .catch(err => res.status(500).json(err));
 };
 
-// update user's email
-// check if the right user by validating the password.
-// if the password matched, set new email and the password
-// and save in userModel
+// update User's email
 const updateEmail = (req, res) => {
   const { newEmail, id } = req.body;
   User.findByIdAndUpdate(id, { email: newEmail }, { new: true })
+    .validatePassword(password)
     .then(user => res.status(200).json(user))
     .catch(error => res.status(500).json(error));
 };

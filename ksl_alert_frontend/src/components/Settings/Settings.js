@@ -11,7 +11,10 @@ export default class Settings extends Component {
       newEmail: '',
       currentPassword: '',
       newPassword: '',
-      confirmNewPassword: ''
+      confirmNewPassword: '',
+      passwordMatchError: false,
+      passwordUpdateSuccess: false,
+      passwordUpdateError: false,
     };
   }
 
@@ -46,7 +49,8 @@ export default class Settings extends Component {
     const { newPassword, confirmNewPassword } = this.state;
 
     if (newPassword !== confirmNewPassword) {
-      console.log('newPassword and confirmNewPassword do not match!')
+      console.log('newPassword and confirmNewPassword do not match!');
+      this.setState({ passwordMatchError: true });
       return;
     }
 
@@ -62,9 +66,11 @@ export default class Settings extends Component {
         requestOptions
       )
       .then(res => {
+        this.setState({ passwordUpdateSuccess: true });
         console.log(res);
       })
       .catch(err => {
+        this.setState({ passwordUpdateError: true });
         console.log(err);
       });
   };
@@ -131,6 +137,9 @@ export default class Settings extends Component {
             >
               Submit
             </Button>
+            { this.state.passwordMatchError && <p>Passwords do not match!</p>}
+            { this.state.passwordUpdateSuccess && <p>Password was updated successfully!</p> }
+            { this.state.passwordUpdateError && <p>There was an error updating your password!</p> }
           </Form>
         </div>
       </div>
