@@ -7,8 +7,8 @@ export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // id: this.props.userId,
-      email: '',
+      id: this.props.userId,
+      newEmail: '',
       currentPassword: '',
       newPassword: '',
       confirmNewPassword: ''
@@ -16,16 +16,24 @@ export default class Settings extends Component {
   }
 
   handleSubmitEmail = e => {
-    console.log(this.state);
-    // e.preventDefault();
-    // axios
-    //   .put(`${process.env.REACT_APP_BACKEND_URL}/user/updateEmail`, this.state)
-    //   .then(res => {
+    const token = localStorage.getItem('jwt');
+    const requestOptions = {
+      headers: {
+        Authorization: token
+      }
+    };
 
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    e.preventDefault();
+    const newEmail = this.state.newEmail;
+    const id = this.props.id
+    axios
+      .put(`${process.env.REACT_APP_BACKEND_URL}/user/updateEmail`, { id, newEmail }, requestOptions)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   handleSubmitPassword = e => {
@@ -61,7 +69,7 @@ export default class Settings extends Component {
             <Label>Update User Info</Label>
             <Form.Field>
               <Input
-                name="email"
+                name="newEmail"
                 placeholder="Updated Email Address"
                 value={this.state.email}
                 onChange={this.handleInput}

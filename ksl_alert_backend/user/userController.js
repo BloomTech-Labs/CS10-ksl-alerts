@@ -197,34 +197,11 @@ const updatePassword = (req, res) => {
 // if the password matched, set new email and the password 
 // and save in userModel
 const updateEmail = (req, res) => {
-  const { password, newEmail, id } = req.body;
-  User.findById(id)
+  console.log('Update Email', req.body)
+  const { newEmail, id } = req.body;
+  User.findByIdAndUpdate(id, { email: newEmail }, { new: true })
   .then(user => {
-    if(!user) {
-      res.status(404).json({ errorMessage: 'User not found'});
-    } else {
-      user
-        .validatePassword(password)
-        .then(matched => {
-          if(!matched) {
-            res.status(404).json({ errorMessage: 'Invalid password'});
-          } else {
-              user.email = newEmail;
-              user.password = password;
-              user
-                .save()
-                .then(savedNewEmail => {
-                  res.status(200).json(savedNewEmail);
-                })
-                .catch(error => {
-                  res.status(500).json(error);
-                })             
-          }
-        })
-        .catch(error => {
-          res.status(500).json(error);
-        });
-    }
+    res.status(200).json(user)
   })
   .catch(error => {
     res.status(500).json(error);
