@@ -49,17 +49,15 @@ export default class AlertFeed extends Component {
 
   render() {
     return (
-      <Container className="AlertFeed" fluid>
-        <div className="feed-wrapper">
-          <h2>Alert Feed</h2>
-            {this.state.queries.map(query => (
-              <Segment>
-                <AlertCard query={query}/>
-              </Segment>
-            ))}
-          <Button onClick={this.signOut}>Sign out</Button>
-        </div>
-      </Container>
+      <div className="feed-wrapper">
+        <h2>Alert Feed</h2>
+          {this.state.queries.map(query => (
+            <Segment>
+              <AlertCard query={query}/>
+            </Segment>
+          ))}
+        <Button color="olive" size="medium" onClick={this.signOut}>Sign out</Button>
+      </div>
     );
   }
 }

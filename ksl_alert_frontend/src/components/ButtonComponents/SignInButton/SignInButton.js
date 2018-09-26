@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import { Button } from 'semantic-ui-react';
 
 const SignInButton = props => {
   if (props.isSignedIn) {
     return null;
   } else {
-    return <button>Sign In</button>;
+    return <Button color="olive" size="medium">Sign In</Button>;
   }
 };
 

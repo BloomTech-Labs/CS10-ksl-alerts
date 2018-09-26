@@ -20,7 +20,7 @@ class LandingPage extends Component {
       <Container className="LandingPageWrapper" fluid>
         <div className="LandingPage">
           <Header className="HeaderText" as="h1">Welcome KSL Alerts</Header>
-          <Button onClick={this.showModal}>Get Started</Button>
+          <Button  color="olive" size="massive" onClick={this.showModal}>Get Started</Button>
           <ModalToggle
             toggle={this.state.displayModal}
             showModal={this.showModal}
