@@ -16,7 +16,7 @@ class AlertListings extends Component {
     // using request library to get url(s) from our user database with specific user id
     request(this.props.url, (error, response, body) => {
       // Check if the request was successful
-      if (body && response.code === 200) {
+      if (body && response.statusCode === 200) {
         const $ = cheerio.load(body); // Pass the request body to cheerio for web scraping
 
         // The data we need exists within 'window.renderSearchSection()' inside a <script> tag (discovered by inspecting page source)
