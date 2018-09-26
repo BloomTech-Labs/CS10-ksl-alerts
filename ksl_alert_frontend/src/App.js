@@ -30,7 +30,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>KSL Alerts</h1>
         {this.state.isLoggedIn ? (
           <div className="Nav">
             <Link to="/feed">Alerts</Link>
