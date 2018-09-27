@@ -11,6 +11,8 @@
     "react-dom": "^16.5.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^2.0.1",
     "redux": "^4.0.0",
     "request": "^2.88.0",
     "router-redux": "^0.10.0",
