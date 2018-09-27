@@ -187,6 +187,19 @@ const updateEmail = (req, res) => {
     .catch(error => res.status(500).json(error));
 };
 
+// delete a User's query
+const deleteQuery = (req, res) => {
+  const { userId, queryId } = req.body;
+  User.findById(userId)
+    .then(user => {
+      updatedQueries = user.queries.filter(query => query._id != queryId)
+      User.findByIdAndUpdate(userId, { queries: updatedQueries }, { new: true })
+        .then(user => res.status(200).json(user))
+        .catch(err => res.status(500).json(err))
+    })
+    .catch(err => res.status(500).json(err))
+}
+
 // refactor routes endpoints
 router.route('/').get(restrictedRoute, getAllUsers);
 router.route('/signUp').post(signUp);
@@ -197,5 +210,6 @@ router.route('/updateEmail').put(restrictedRoute, updateEmail);
 // route that require ID
 router.route('/getUser').post(restrictedRoute, getUserById);
 router.route('/saveQuery').put(saveQuery);
+router.route('/deleteQuery').put(deleteQuery);
 
 module.exports = router;
