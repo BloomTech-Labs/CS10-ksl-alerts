@@ -49,28 +49,32 @@ class AlertListings extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {// If there is an err, render the error message
-        // Else, iterate of this.state.listings
-          this.state.err ? (
-            <p>{this.state.err}</p>
-          ) : (
-            this.state.listings.map(listing => {
-              return (
-                <ListingCard
-                  key={listing.createTime}
-                  price={listing.price}
-                  city={listing.city}
-                  createdOn={listing.createTime}
-                  photo={listing.photo}
-                />
-              );
-            })
-          )}
-      </div>
-    );
-  }
+    if (!this.props.displayListings) {
+      return null;
+    } else {
+      return (
+        <div>
+          {// If there is an err, render the error message
+          // Else, iterate of this.state.listings
+            this.state.err ? (
+              <p>{this.state.err}</p>
+            ) : (
+              this.state.listings.map(listing => {
+                return (
+                  <ListingCard
+                    key={listing.createTime}
+                    price={listing.price}
+                    city={listing.city}
+                    createdOn={listing.createTime}
+                    photo={listing.photo}
+                  />
+                );
+              })
+            )}
+        </div>
+      );
+    }
+  };
 }
 
 export default AlertListings;

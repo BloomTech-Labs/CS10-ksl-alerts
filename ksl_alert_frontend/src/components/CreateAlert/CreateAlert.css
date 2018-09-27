@@ -1,16 +1,18 @@
-/*.create-wrapper {
+.create-wrapper {
   width: 100%;
   height: 100%;
   min-height: 1000px;
-  
+  background-image: url(../../images/mountain-biking-at-sunset-mccoy-flats_800.jpg);
   background-size: cover;
-  border: red solid 3px;
-}*/
+}
 
 .form-wrapper {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  min-height: 100%;
+  justify-content: center;
+  margin-top: 20px;
+ 
 }
 

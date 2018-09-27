@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+// import { Card } from 'semantic-ui-react';
 
 import styled from 'styled-components';
 
