@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const PORT = process.env.PORT || 8000;
+const stripeRouter = require('./stripe_backend/stripeRoute/stripeRouter')
 
 const server = express();
 const corsOptions = {
@@ -20,6 +21,8 @@ const userRoute = require('./user/userController');
 
 server.use('/api/user', userRoute);
 
+server.use('/payments', stripeRouter);
+
 server.get('/', (req,res) => {
   res.status(200).json({ api: 'server running'});
 });
@@ -33,5 +36,5 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true }, () => {
 mongoose.set('useCreateIndex', true);
 
 server.listen(`${PORT}`, () =>
-  console.log(`\n=== API running on port ${PORT} ===\n`)
+  console.log(`\n===== API running on port ${PORT} =====\n`)
 )
