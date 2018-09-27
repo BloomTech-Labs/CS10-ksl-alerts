@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Header, Input, Form } from 'semantic-ui-react';
+import { Button, Container, Divider, Input, Form } from 'semantic-ui-react';
 import './CreateAlert.css';
 
 export default class CreateAlert extends Component {
@@ -29,30 +29,33 @@ export default class CreateAlert extends Component {
 
   render() {
     return (
-      <div className="form-wrapper">
-        <h1>Create a new alert</h1>
-        <Form>
-          <Form.Field>
-            <Input
-              type="text"
-              name="title"
-              placeholder="Alert Title"
-              value={this.state.title}
-              onChange={this.handleInput}
-            />
-          </Form.Field>
-          <Form.Field>
-            <Input
-              type="text"
-              name="url"
-              placeholder="Query String Link"
-              value={this.state.url}
-              onChange={this.handleInput}
-            />
-          </Form.Field>
-          <Button color="olive" size="medium" onClick={this.handleSubmit}>Create Alert</Button>
-        </Form>
-      </div>
+      <Container className="create-wrapper" fluid>
+        <div className="form-wrapper">
+          <h1>Create a new alert</h1>
+          <Divider inverted />
+          <Form className="signin-form">
+            <Form.Field className="form-field">
+              <Input
+                type="text"
+                name="title"
+                placeholder="Alert Title"
+                value={this.state.title}
+                onChange={this.handleInput}
+              />
+            </Form.Field>
+            <Form.Field className="form-field">
+              <Input
+                type="text"
+                name="url"
+                placeholder="Query String Link"
+                value={this.state.url}
+                onChange={this.handleInput}
+              />
+            </Form.Field>
+            <Button color="olive" size="medium" onClick={this.handleSubmit}>Create Alert</Button>
+          </Form>
+        </div>
+      </Container>
     );
   }
 }
