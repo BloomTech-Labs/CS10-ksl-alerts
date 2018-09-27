@@ -25,7 +25,6 @@ const restrictedRoute = (req, res, next) => {
   if (token) {
     jwt.verify(token, secret, (err, decodedToken) => {
       req.jwtPayload = decodedToken;
-      console.log('Decoded Token:', decodedToken);
 
       if (err) {
         res.status(403).json({ errorMessage: 'Please log in.', err });
@@ -98,13 +97,12 @@ const signIn = (req, res) => {
           .then(match => {
             if (match) {
               const token = generateToken({ email });
-              res
-                .status(200)
-                .json({
-                  message: `Welcome back ${email}`,
-                  token,
-                  id: user._id
-                });
+              res.status(200).json({
+                message: `Welcome back ${email}`,
+                token,
+                id: user._id,
+                queries: user.queries
+              });
             } else {
               res
                 .status(404)
@@ -133,6 +131,12 @@ const saveQuery = (req, res) => {
     .then(user => {
       const queries = user.queries;
       const newQuery = { title, url };
+
+      // if a new query would be a duplicate return original queries
+      if (queries.find(query => query.url === newQuery.url)) {
+        return queries;
+      }
+
       const updatedQueries = [...queries, newQuery];
       return updatedQueries;
     })
@@ -154,43 +158,41 @@ const saveQuery = (req, res) => {
     });
 };
 
-// update password. Check the old password first if matched, set new password === user.password
+// update User's password
 const updatePassword = (req, res) => {
-  const { email, password, newPassword, confirmNewPassword } = req.body;
-  User.findOne({ email })
-    .then(user => {
-      user
-      .validatePassword(password)
-      .then(matched => {
-        if(!matched) {
-          res.status(422).res.json({ errorMessage: 'Current Password is incorrect' });
+  const { id, currentPassword, newPassword } = req.body;
+
+  User.findById(id).then(user => {
+    user
+      .validatePassword(currentPassword)
+      .then(match => {
+        if (match) {
+          User.findByIdAndUpdate(id, { password: newPassword }, { new: true })
+            .then(user => res.status(200).json(user))
+            .catch(err => res.status(500).json(err));
         } else {
-          if(newPassword === confirmNewPassword) {
-            user.password = newPassword;
-            user
-              .save()
-              .then(savedNewPassword => {
-                res.status(200).json(savedNewPassword);
-              })
-              .catch(error => {
-                res.status(500).json(error);
-              });
-          } else {
-            res.status(422).json({ errorMessage: 'The password does not match' })
-          }      
+          console.log('Incorrect password!');
+          res.status(403).json({ err: 'Incorrect password!' });
         }
       })
-      .catch(error => {
-        res.status(500).json(error);
-      })
-    });
-}
+      .catch(err => res.status(500).json(err));
+  });
+};
+
+// update User's email
+const updateEmail = (req, res) => {
+  const { newEmail, id } = req.body;
+  User.findByIdAndUpdate(id, { email: newEmail }, { new: true })
+    .then(user => res.status(200).json(user))
+    .catch(error => res.status(500).json(error));
+};
 
 // refactor routes endpoints
 router.route('/').get(restrictedRoute, getAllUsers);
 router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
-router.route('/setting').put(restrictedRoute, updatePassword);
+router.route('/updatePassword').put(restrictedRoute, updatePassword);
+router.route('/updateEmail').put(restrictedRoute, updateEmail);
 
 // route that require ID
 router.route('/getUser').post(restrictedRoute, getUserById);

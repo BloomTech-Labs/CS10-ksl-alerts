@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Button, Segment } from 'semantic-ui-react';
 import './ModalToggle.css';
 
@@ -9,10 +8,10 @@ const ModalToggle = props => {
   return (
     <Segment className={toggle ? 'modal-wrapper' : 'hidden'}>
       <h4 className="modal-header">Hello :)</h4>
-      <Button primary onClick={() => props.history.push('/signIn')}>
+      <Button size="medium" primary onClick={() => props.history.push('/signIn')}>
         Sign In
       </Button>
-      <Button secondary onClick={() => props.history.push('/signUp')}>
+      <Button size="medium" color="olive" onClick={() => props.history.push('/signUp')}>
         Sign Up
       </Button>
     </Segment>

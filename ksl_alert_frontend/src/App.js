@@ -13,28 +13,23 @@ import Settings from './components/Settings/Settings.js';
 import AlertListings from './components/AlertListings/AlertListings';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      userId: null,
-      isLoggedIn: false
-    };
-  }
+  state = {
+    userId: null,
+    isLoggedIn: false,
+    queries: [],
+  };
 
-  handleSignIn = id => {
-    this.setState({ userId: id, isLoggedIn: true });
-    console.log(this.state);
+  handleSignIn = (id, queries) => {
+    this.setState({ userId: id, isLoggedIn: true, queries: queries });
   };
 
   handleSignOut = () => {
     this.setState({ userId: null, isLoggedIn: false });
   }
 
-
   render() {
     return (
       <div className="App">
-        <h1>KSL Alerts</h1>
         {this.state.isLoggedIn ? (
           <div className="Nav">
             <Link to="/feed">Alerts</Link>
@@ -47,10 +42,10 @@ class App extends Component {
           <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
           <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
           <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
-          <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} history={props.history} />} />
+          <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} history={props.history} />} />
           <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} history={props.history}/>} />
           <Route path="/billing" component={Billing} />
-          <Route path="/settings" component={Settings} />
+          <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
           {/* for testing */}
           <Route path='/alertListings' component={AlertListings} />
         </Switch>

@@ -1,42 +1,14 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button, Container, Segment } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
-import './AlertFeed.css'
+import './AlertFeed.css';
 
 // use users for now. It needs to change to be saved urls
 // then scrape the saved url to show alert feed
 export default class AlertFeed extends Component {
   state = {
-    queries: []
+    queries: this.props.queries
   };
-
-  componentDidMount() {
-    const token = localStorage.getItem('jwt');
-    const requestOptions = {
-      headers: {
-        Authorization: token
-      }
-    };
-
-    //
-    axios
-      .post(
-        // get the user's data
-        `${process.env.REACT_APP_BACKEND_URL}/user/getUser`,
-        { id: this.props.id },
-        requestOptions
-      )
-      .then(res => {
-        // set the state with queries from userModel 
-        // in the queries contain the urls
-        console.log(res.data);
-        this.setState({ queries: res.data.queries });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
 
   // remove token from local storage
   signOut = () => {
@@ -49,15 +21,23 @@ export default class AlertFeed extends Component {
 
   render() {
     return (
-      <div className="feed-wrapper">
-        <h2>Alert Feed</h2>
-          {this.state.queries.map(query => (
-            <Segment>
-              <AlertCard query={query}/>
-            </Segment>
-          ))}
-        <Button onClick={this.signOut}>Sign out</Button>
-      </div>
+      <Container className="AlertFeed" fluid>
+        <div className="feed-wrapper">
+          <h2>Alert Feed</h2>
+          {this.state.queries ? (
+            this.state.queries.map(query => (
+              <Segment key={query._id}>
+                <AlertCard query={query} />
+              </Segment>
+            ))
+          ) : (
+            <p>You have no queries.</p>
+          )}
+          <Button color="olive" size="medium" onClick={this.signOut}>
+            Sign out
+          </Button>
+        </div>
+      </Container>
     );
   }
 }
