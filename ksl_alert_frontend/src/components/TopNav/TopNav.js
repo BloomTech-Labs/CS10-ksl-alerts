@@ -3,13 +3,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { 
   Container,
-  Dropdown,
   Header,
   Menu,
 } from "semantic-ui-react";
-import SignInButton from "../ButtonComponents/SignInButton/SignInButton.js";
-import SignUpButton from "../ButtonComponents/SignUpButton/SignUpButton.js";
-import "./TopNav.css"
+import "./TopNav.css";
+import SignOutButton from "../ButtonComponents/SignOutButton/SignOutButton.js";
+
 
 /**
  * 2-3 components (Top-Left: route text, Top-Right: signin/signup/signout)
@@ -24,33 +23,29 @@ const TopNav = props => {
       <div className="navigationmenu">
         <Menu className="TopNav">
           <Container className="TopNavWrapper" fluid>
-            <Menu.Item as="a">
-              <Header>
-                <Link to="/feed">Alerts</Link>
-              </Header>
-            </Menu.Item>
-            <Dropdown.Item>
-              <Header>
-                <Link to="/createAlert">Create Alert</Link>
-              </Header>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Header>
-                <Link to="/createAlert">Create Alert</Link>
-              </Header>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Header>
-                <Link to="/billing">Billing</Link>
-              </Header>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Header>
-                <Link to="/settings">Settings</Link>
-              </Header>
-            </Dropdown.Item>
-            {/* <SignUpButton isSignedIn={props.isSignedIn} />
-            <SignInButton isSignedIn={props.isSignedIn} /> */}
+            <Container className="MenuItems">
+              <Menu.Item as="a">
+                <Header>
+                  <Link to="/feed">Alerts</Link>
+                </Header>
+              </Menu.Item>
+              <Menu.Item>
+                <Header>
+                  <Link to="/createAlert">Create Alert</Link>
+                </Header>
+              </Menu.Item>
+              <Menu.Item>
+                <Header>
+                  <Link to="/billing">Billing</Link>
+                </Header>
+              </Menu.Item>
+              <Menu.Item>
+                <Header>
+                  <Link to="/settings">Settings</Link>
+                </Header>
+              </Menu.Item>
+              {/* <SignOutButton isSignedIn={props.isSignedIn} signOut={props.signOut} /> */}
+            </Container>
           </Container>
         </Menu>
       </div>

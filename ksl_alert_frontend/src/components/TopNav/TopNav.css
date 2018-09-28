@@ -1,3 +1,9 @@
 .TopNavWrapper {
-  border: black solid 4px;
+  display: flex;
+  /* border: black solid 4px; */
+}
+
+.TopNavWrapper .MenuItems {
+  display: flex;
+  /* border: red solid 3px; */
 }
