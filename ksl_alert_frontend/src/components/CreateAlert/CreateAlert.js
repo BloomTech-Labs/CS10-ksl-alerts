@@ -19,7 +19,11 @@ export default class CreateAlert extends Component {
         ...this.state,
         id: this.props.id
       })
-      .then(() => this.props.history.push('/feed'));
+      .then(updatedUser => {
+        const updatedQueries = updatedUser.data.queries;
+        this.props.updateQueries(updatedQueries);
+        this.props.history.push('/feed');
+      });
   };
 
   handleInput = e => {
