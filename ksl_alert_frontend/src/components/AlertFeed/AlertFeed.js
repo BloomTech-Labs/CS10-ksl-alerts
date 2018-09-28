@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Container, Segment } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css';
+import TopNav from "../TopNav/TopNav.js";
 
 // use users for now. It needs to change to be saved urls
 // then scrape the saved url to show alert feed
@@ -22,6 +23,7 @@ export default class AlertFeed extends Component {
   render() {
     return (
       <Container className="AlertFeed" fluid>
+        <TopNav />
         <div className="feed-wrapper">
           <h2>Alert Feed</h2>
           {this.state.queries ? (
