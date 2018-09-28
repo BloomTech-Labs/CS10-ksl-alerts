@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Container, Segment } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css';
-import TopNav from "../TopNav/TopNav.js";
+import TopNav from '../TopNav/TopNav.js';
 
 // use users for now. It needs to change to be saved urls
 // then scrape the saved url to show alert feed
