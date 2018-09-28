@@ -1,30 +1,22 @@
 import React, { Component } from 'react';
-import { Button, Form, Input, Label } from 'semantic-ui-react';
+import Checkout from './Stripe/stripe.js';
 import './Billing.css';
 
 class Billing extends Component {
   render() {
     return (
       <div>
-        <Form className="BillingForm">
-          <Label>Billing Info</Label>
-          <Form.Field>
-            <Input type="text" name="cc" placeholder="CC#" />
-          </Form.Field>
-          <Form.Field>
-            <Input type="text" name="exp" placeholder="EXP" />
-          </Form.Field>
-          <Form.Field>
-            <Input type="text" name="cvv" placeholder="CVV" />
-          </Form.Field>
-          <Form.Field>
-            <Input type="checkbox" name="oneMonthSub" /> 1 Month Subs - $20
-          </Form.Field>
-          <Form.Field>
-            <Input type="checkbox" name="newPassword" /> 1 Client - $1.99
-          </Form.Field>
-          <Button color="olive" size="medium">Submit</Button>
-        </Form>
+        <div className="checkout">
+          <div>
+            <p>Enjoy unlimited alerts for just $9.99 a month!</p>
+            <p>1 month - $9.99</p>
+            <Checkout
+              name={'Subscription Fee'}
+              description={'1 month'}
+              amount={9.99}
+            />
+          </div>
+        </div>
       </div>
     );
   }
