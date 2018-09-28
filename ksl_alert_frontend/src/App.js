@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -55,14 +55,6 @@ class App extends Component {
     return (
       <div className="App">
         <TopNav isSignedIn={this.state.isLoggedIn} signOut={this.handleSignOut} />
-        {/* {this.state.isLoggedIn ? (
-          <div className="Nav">
-            <Link to="/feed">Alerts</Link>
-            <Link to="/createAlert">Create Alert</Link>
-            <Link to="/billing">Billing</Link>
-            <Link to="/settings">Settings</Link>
-          </div>
-        ) : null} */}
         <Switch>
           <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
           <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />

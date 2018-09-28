@@ -1,3 +1,11 @@
 .topNavWrapper {
   display: flex;
 }
+
+.TopNav {
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+  font-size: 20px;
+  padding: 5px;
+}
