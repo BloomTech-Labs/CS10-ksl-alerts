@@ -30,10 +30,10 @@ server.get('/', (req, res) => {
 });
 
 // Web scraping
-server.post('/getListings', (req, res) => {
+server.post('/api/getListings', (req, res) => {
   request(req.body.url, (error, response, body) => {
     if (error) {
-      res.status(500).json({ err: 'There was a problem fetching your query!' });
+      res.status(500).json({ err: 'The URL seems to be invalid!' });
     } else {
       // Check if the request was successfu;
       const $ = cheerio.load(body); // Pass the body to cheerio for scraping

@@ -3,9 +3,6 @@ import AlertListings from '../AlertListings/AlertListings.js';
 
 // receiving query props from AlertFeed
 class AlertCard extends Component {
-  constructor(props) {
-    super(props);
-  };
 
   state = {
     displayListings: false
