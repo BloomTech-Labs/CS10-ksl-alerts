@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
+import axios from 'axios';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -25,6 +26,28 @@ class App extends Component {
 
   handleSignOut = () => {
     this.setState({ userId: null, isLoggedIn: false });
+  }
+
+  componentDidMount() {
+    if(!this.state.isLoggedIn && localStorage.getItem('jwt') && localStorage.getItem('id')) {
+      const id = localStorage.getItem('id');
+      const token = localStorage.getItem('jwt');
+      const requestOptions = {
+        headers: {
+          Authorization: token
+        }
+      };
+      axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/user/getUser`, { id }, requestOptions)
+        .then(res => {
+          const { id: _id, queries } = res.data;
+          
+          this.setState({ userId: id, isLoggedIn: true, queries: queries });
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
   }
 
   render() {

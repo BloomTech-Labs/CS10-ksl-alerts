@@ -17,6 +17,7 @@ class SignIn extends Component {
         const { id, queries, token } = res.data;
 
         localStorage.setItem('jwt', token);
+        localStorage.setItem('id', id);
         this.props.handleSignIn(id, queries);
         this.props.history.push('/feed');
       })
