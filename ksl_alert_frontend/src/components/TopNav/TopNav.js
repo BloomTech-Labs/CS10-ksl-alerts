@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignInButton from '../ButtonComponents/SignInButton/SignInButton.js';
-import SignUpButton from '../ButtonComponents/SignUpButton/SignUpButton.js';
+import { Container, Header, Menu } from 'semantic-ui-react';
 import './TopNav.css';
+// import SignOutButton from '../ButtonComponents/SignOutButton/SignOutButton.js';
 
 /**
  * 2-3 components (Top-Left: route text, Top-Right: signin/signup/signout)
@@ -14,15 +14,34 @@ const TopNav = props => {
   if (!props.isSignedIn) return null;
 
   return (
-    <div className="TopNavWrapper">
-      <div className="TopNav">
-        <Link to="/feed">Alerts</Link>
-        <Link to="/createAlert">Create Alert</Link>
-        <Link to="/billing">Billing</Link>
-        <Link to="/settings">Settings</Link>
-      </div>
-      <SignUpButton isSignedIn={props.isSignedIn} />
-      <SignInButton isSignedIn={props.isSignedIn} />
+    <div className="navigationmenu">
+      <Menu className="TopNav">
+        <Container className="TopNavWrapper" fluid>
+          <Container className="MenuItems">
+            <Menu.Item as="a">
+              <Header>
+                <Link to="/feed">Alerts</Link>
+              </Header>
+            </Menu.Item>
+            <Menu.Item>
+              <Header>
+                <Link to="/createAlert">Create Alert</Link>
+              </Header>
+            </Menu.Item>
+            <Menu.Item>
+              <Header>
+                <Link to="/billing">Billing</Link>
+              </Header>
+            </Menu.Item>
+            <Menu.Item>
+              <Header>
+                <Link to="/settings">Settings</Link>
+              </Header>
+            </Menu.Item>
+            {/* <SignOutButton isSignedIn={props.isSignedIn} signOut={props.signOut} /> */}
+          </Container>
+        </Container>
+      </Menu>
     </div>
   );
 };

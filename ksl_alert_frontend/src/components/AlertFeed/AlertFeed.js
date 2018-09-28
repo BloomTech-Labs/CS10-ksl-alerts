@@ -23,9 +23,7 @@ export default class AlertFeed extends Component {
   render() {
     return (
       <Container className="AlertFeed" fluid>
-        <div>
-          <TopNav />
-        </div>
+        <TopNav />
         <div className="feed-wrapper">
           <h2>Alert Feed</h2>
           {this.state.queries ? (

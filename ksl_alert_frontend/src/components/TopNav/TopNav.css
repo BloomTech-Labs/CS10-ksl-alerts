@@ -1,11 +1,9 @@
-.topNavWrapper {
+.TopNavWrapper {
   display: flex;
+  /* border: black solid 4px; */
 }
 
-.TopNav {
+.TopNavWrapper .MenuItems {
   display: flex;
-  justify-content: space-around;
-  width: 400px;
-  font-size: 20px;
-  padding: 5px;
+  /* border: red solid 3px; */
 }
