@@ -1,4 +1,3 @@
-//user route middleware
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 const User = require('./userModel.js');
@@ -6,9 +5,13 @@ const User = require('./userModel.js');
 //for .env file to save sensitive info
 require('dotenv').config();
 
+// Used to generate a JWT token
 const secret = process.env.SECRET;
 
-// middlewares
+/**
+ * Middlware
+ */
+
 // generate token for the login
 const generateToken = user => {
   const options = {
@@ -38,16 +41,10 @@ const restrictedRoute = (req, res, next) => {
   }
 };
 
-// functions that will pass to each endpoints
-const getAllUsers = (req, res) => {
-  User.find()
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(err => {
-      res.status(500).json({ errorMessage: 'Error fetching users' });
-    });
-};
+
+/**
+ * DB Queries
+ */
 
 // get user by ID
 const getUserById = (req, res) => {
@@ -65,6 +62,7 @@ const getUserById = (req, res) => {
     });
 };
 
+// sign up a new User
 const signUp = (req, res) => {
   const { email, password } = req.body;
   const newUser = new User({ email, password });
@@ -158,7 +156,7 @@ const saveQuery = (req, res) => {
     });
 };
 
-// update User's password
+// update a User's password
 const updatePassword = (req, res) => {
   const { id, currentPassword, newPassword } = req.body;
 
@@ -179,7 +177,7 @@ const updatePassword = (req, res) => {
   });
 };
 
-// update User's email
+// update a User's email
 const updateEmail = (req, res) => {
   const { newEmail, id } = req.body;
   User.findByIdAndUpdate(id, { email: newEmail }, { new: true })
@@ -187,15 +185,32 @@ const updateEmail = (req, res) => {
     .catch(error => res.status(500).json(error));
 };
 
-// refactor routes endpoints
-router.route('/').get(restrictedRoute, getAllUsers);
+// delete a User's query
+const deleteQuery = (req, res) => {
+  const { id, queryId } = req.body;
+  User.findById(id)
+    .then(user => {
+      updatedQueries = user.queries.filter(query => query._id != queryId);
+      User.findByIdAndUpdate(id, { queries: updatedQueries }, { new: true })
+        .then(user => res.status(200).json(user))
+        .catch(err => res.status(500).json(err));
+    })
+    .catch(err => res.status(500).json(err));
+};
+
+/**
+ * Endpoints
+ */
+
+// routes that don't require a token in header
 router.route('/signUp').post(signUp);
 router.route('/signIn').post(signIn);
+
+// routes that require an id sent in request and token in header
+router.route('/getUser').post(restrictedRoute, getUserById);
 router.route('/updatePassword').put(restrictedRoute, updatePassword);
 router.route('/updateEmail').put(restrictedRoute, updateEmail);
-
-// route that require ID
-router.route('/getUser').post(restrictedRoute, getUserById);
-router.route('/saveQuery').put(saveQuery);
+router.route('/saveQuery').put(saveQuery); // TODO: Insert middleware
+router.route('/deleteQuery').put(deleteQuery); // TODO: Insert middleware
 
 module.exports = router;
