@@ -189,11 +189,11 @@ const updateEmail = (req, res) => {
 
 // delete a User's query
 const deleteQuery = (req, res) => {
-  const { userId, queryId } = req.body;
-  User.findById(userId)
+  const { id, queryId } = req.body;
+  User.findById(id)
     .then(user => {
       updatedQueries = user.queries.filter(query => query._id != queryId)
-      User.findByIdAndUpdate(userId, { queries: updatedQueries }, { new: true })
+      User.findByIdAndUpdate(id, { queries: updatedQueries }, { new: true })
         .then(user => res.status(200).json(user))
         .catch(err => res.status(500).json(err))
     })
