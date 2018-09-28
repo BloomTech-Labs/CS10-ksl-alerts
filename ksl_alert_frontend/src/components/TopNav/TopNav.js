@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
-import SignInButton from "../ButtonComponents/SignInButton/SignInButton.js";
-import SignUpButton from "../ButtonComponents/SignUpButton/SignUpButton.js";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import SignInButton from '../ButtonComponents/SignInButton/SignInButton.js';
+import SignUpButton from '../ButtonComponents/SignUpButton/SignUpButton.js';
+import './TopNav.css';
 
 /**
  * 2-3 components (Top-Left: route text, Top-Right: signin/signup/signout)
@@ -10,8 +11,16 @@ import SignUpButton from "../ButtonComponents/SignUpButton/SignUpButton.js";
  */
 
 const TopNav = props => {
+  if (!props.isSignedIn) return null;
+
   return (
-    <div>
+    <div className="TopNavWrapper">
+      <div className="TopNav">
+        <Link to="/feed">Alerts</Link>
+        <Link to="/createAlert">Create Alert</Link>
+        <Link to="/billing">Billing</Link>
+        <Link to="/settings">Settings</Link>
+      </div>
       <SignUpButton isSignedIn={props.isSignedIn} />
       <SignInButton isSignedIn={props.isSignedIn} />
     </div>

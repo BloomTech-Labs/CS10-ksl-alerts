@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Container, Input, Form } from 'semantic-ui-react';
+import { Button, Container, Divider, Input, Form } from 'semantic-ui-react';
 import './CreateAlert.css';
 
 export default class CreateAlert extends Component {
@@ -31,9 +31,10 @@ export default class CreateAlert extends Component {
     return (
       <Container className="create-wrapper" fluid>
         <div className="form-wrapper">
-          <h4>Create a new alert</h4>
-          <Form>
-            <Form.Field>
+          <h1>Create a new alert</h1>
+          <Divider inverted />
+          <Form className="signin-form">
+            <Form.Field className="form-field">
               <Input
                 type="text"
                 name="title"
@@ -42,7 +43,7 @@ export default class CreateAlert extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
               <Input
                 type="text"
                 name="url"
