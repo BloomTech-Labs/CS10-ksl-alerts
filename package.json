@@ -1,7 +1,6 @@
 {
   "name": "ksl_alert_backend",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^3.0.0",
@@ -19,6 +18,8 @@
     "nodemon": "^1.18.4"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "start-dev": "nodemon server.js",
+    "heroku-postbuild": "cd client && yarn install && yarn run build && cd .."
   }
 }
