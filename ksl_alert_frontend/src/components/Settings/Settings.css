@@ -1,19 +1,39 @@
 .PageContainer {
+  width: 100%;
+  height: 100%;
+  min-height: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(../../images/Salt-Lake-City.jpg);
+  background-size: cover;
 }
-.SettingsContainer {
+
+.settings-form {
+  width: 75%;
+}
+
+.form-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  align-items: center;
+  color: #4472CA;
+  min-height: 50vh;
+  height: 600px;
+  width: 400px;
+  border-radius: .28571429rem;
+  border: #4472CA solid 2px;
 }
+
+
 .UpdateEmailForm {
   margin: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 
 .UpdatePasswordForm {
   margin: 20px;
@@ -22,3 +42,14 @@
   align-items: center;
   justify-content: space-around;
 }
+
+
+.UpdateEmailForm .label, .UpdatePasswordForm .label {
+  margin-bottom: 15px;
+}
+
+.form-wrapper .form-field{
+  border: #4472CA solid 2px;
+  border-radius: .28571429rem;
+}
+

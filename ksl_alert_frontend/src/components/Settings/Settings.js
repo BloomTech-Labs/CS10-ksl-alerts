@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input, Form, Label } from 'semantic-ui-react';
+import { Button, Container, Divider, Input, Form, Label } from 'semantic-ui-react';
 import './Settings.css';
 import axios from 'axios';
 
@@ -98,12 +98,13 @@ export default class Settings extends Component {
 
   render() {
     return (
-      <div className="PageContainer">
-        <h2>Settings</h2>
-        <div className="SettingsContainer">
+      <Container className="PageContainer" fluid>
+      <div className="form-wrapper">
+        <h1>Settings</h1>
+        <Form className="settings-form">
           <Form className="UpdateEmailForm">
-            <Label>Update User Info</Label>
-            <Form.Field>
+            <h4 className="label">Update User Info</h4>
+            <Form.Field className="form-field">
               <Input
                 name="newEmail"
                 placeholder="Updated Email Address"
@@ -112,7 +113,7 @@ export default class Settings extends Component {
               />
             </Form.Field>
             <Button
-              color="olive"
+              primary
               size="medium"
               onClick={this.handleSubmitEmail}
             >
@@ -123,8 +124,8 @@ export default class Settings extends Component {
           </Form>
 
           <Form className="UpdatePasswordForm">
-            <Label>Update Password</Label>
-            <Form.Field>
+            <h4 className="label">Update Password</h4>
+            <Form.Field className="form-field">
               <Input
                 type="password"
                 name="currentPassword"
@@ -133,7 +134,7 @@ export default class Settings extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
               <Input
                 type="password"
                 name="newPassword"
@@ -142,7 +143,7 @@ export default class Settings extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="form-field">
               <Input
                 type="password"
                 name="confirmNewPassword"
@@ -152,7 +153,7 @@ export default class Settings extends Component {
               />
             </Form.Field>
             <Button
-              color="olive"
+              primary
               size="medium"
               onClick={this.handleSubmitPassword}
             >
@@ -166,8 +167,9 @@ export default class Settings extends Component {
               <p>There was an error updating your password!</p>
             )}
           </Form>
+          </Form>
         </div>
-      </div>
+      </Container>
     );
   }
 }
