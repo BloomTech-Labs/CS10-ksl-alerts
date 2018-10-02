@@ -17,33 +17,33 @@ const TopNav = props => {
     <div className="navigationmenu">
       <Menu className="TopNav">
         <Container className="TopNavWrapper" fluid>
-          <Container className="MenuItems">
+          {/* <Container className="MenuItems"> */}
             <Menu.Item as="a">
               
                 <Icon name='feed' position='left'/> 
-                <Link to="/feed">Alerts</Link>
+                <Link to="/feed" className='MenuLink'>Alerts</Link>
               
             </Menu.Item>
             <Menu.Item as="a">
               
                 <Icon name='add' position='left'/> 
-                <Link to="/createAlert">Create Alert</Link>
+                <Link to="/createAlert" className='MenuLink'>Create Alert</Link>
               
             </Menu.Item>
             <Menu.Item as="a">
               
                 <Icon name='credit card' position='left'/> 
-                <Link to="/billing">Billing</Link>
+                <Link to="/billing" className='MenuLink'>Billing</Link>
               
             </Menu.Item>
             <Menu.Item as="a">
               
                 <Icon name='settings' position='left'/> 
-                <Link to="/settings">Settings</Link>
+                <Link to="/settings" className='MenuLink'>Settings</Link>
               
             </Menu.Item>
             {/* <SignOutButton isSignedIn={props.isSignedIn} signOut={props.signOut} /> */}
-          </Container>
+          {/* </Container> */}
         </Container>
       </Menu>
     </div>
