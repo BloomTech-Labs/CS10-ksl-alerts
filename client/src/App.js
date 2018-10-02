@@ -12,7 +12,7 @@ import AlertFeed from './components/AlertFeed/AlertFeed.js';
 import CreateAlert from './components/CreateAlert/CreateAlert.js';
 import Billing from './components/Billing/Billing.js';
 import Settings from './components/Settings/Settings.js';
-import PageNotFound from './components/PageNotFound/PageNotFound';
+import PageNotFound from './components/PageNotFound/PageNotFound.js';
 
 class App extends Component {
   state = {
@@ -68,6 +68,11 @@ class App extends Component {
       homeURL = PUBLIC_URL;
     }
 
+    /**
+      * Check if user is signed in (has a token)
+      * Check current page (window.location.href)
+      * If user isn't signed in (no token) and is on a page that needs to be signed in to access, redirect the user
+    **/
     if (!hasToken 
       && currentLocation !== `${homeURL}/`
       && currentLocation !== `${homeURL}/signIn`
