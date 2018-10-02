@@ -12,7 +12,7 @@ import AlertFeed from './components/AlertFeed/AlertFeed.js';
 import CreateAlert from './components/CreateAlert/CreateAlert.js';
 import Billing from './components/Billing/Billing.js';
 import Settings from './components/Settings/Settings.js';
-import AlertListings from './components/AlertListings/AlertListings';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 class App extends Component {
   state = {
@@ -56,23 +56,46 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <TopNav isSignedIn={this.state.isLoggedIn} signOut={this.handleSignOut} />
-        <Switch>
-          <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
-          <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
-          <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
-          <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} history={props.history} />} />
-          <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} updateQueries={this.handleUpdateQueries} history={props.history}/>} />
-          <Route path="/billing" component={Billing} />
-          <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
-          {/* for testing */}
-          <Route path='/alertListings' component={AlertListings} />
-        </Switch>
+    const hasToken = localStorage.getItem('jwt');
+    const currentLocation = window.location.href;
+    const DEV_URL = 'http://localhost:3000'
+    const PUBLIC_URL = 'https://kslalerts.herokuapp.com'
+    let homeURL;
 
-      </div>
-    );
+    if (process.env.NODE_ENV === 'development') {
+      homeURL = DEV_URL;
+    } else {
+      homeURL = PUBLIC_URL;
+    }
+
+    if (!hasToken 
+      && currentLocation !== `${homeURL}/`
+      && currentLocation !== `${homeURL}/signIn`
+      && currentLocation !== `${homeURL}/signUp`
+      && currentLocation !== `${homeURL}/pageNotFound`) {
+      window.location = `${homeURL}/pageNotFound`;
+      return (
+        <Switch>
+          <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
+        </Switch>
+      )
+    } else {
+      return (
+        <div className="App">
+          <TopNav isSignedIn={this.state.isLoggedIn} signOut={this.handleSignOut} />
+          <Switch>
+            <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
+            <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
+            <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
+            <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} history={props.history} />} />
+            <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} updateQueries={this.handleUpdateQueries} history={props.history}/>} />
+            <Route path="/billing" component={Billing} />
+            <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
+            <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
+          </Switch>
+        </div>
+      );
+    }
   }
 }
 
