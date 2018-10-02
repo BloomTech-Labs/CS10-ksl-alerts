@@ -11,7 +11,7 @@ const ModalToggle = props => {
       <Button size="medium" primary onClick={() => props.history.push('/signIn')}>
         Sign In
       </Button>
-      <Button size="medium" color="olive" onClick={() => props.history.push('/signUp')}>
+      <Button size="medium" secondary onClick={() => props.history.push('/signUp')}>
         Sign Up
       </Button>
     </Segment>
