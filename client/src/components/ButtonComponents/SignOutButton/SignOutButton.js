@@ -5,7 +5,7 @@ const SignOutButton = props => {
 
   if (props.isSignedIn) {
     return (
-      <Button onClick={props.signOut(props.history)} color="olive" size="medium">Sign Out</Button>
+      <Button onClick={props.signOut(props.history)} primary size="medium">Sign Out</Button>
     );
   } else {
     return null;

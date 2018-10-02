@@ -25,7 +25,7 @@ class LandingPage extends Component {
           <Header className="SubHeaderText" as="h4">
             All of your <em>Classifieds</em> queries in one place.
           </Header>
-          <Button color="olive" size="massive" onClick={this.showModal} className="GetStartedButton">
+          <Button primary size="massive" onClick={this.showModal} className="GetStartedButton">
             Get Started
           </Button>
           <ModalToggle

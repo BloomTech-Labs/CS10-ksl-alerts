@@ -35,7 +35,7 @@ export default class AlertFeed extends Component {
           ) : (
             <p>You have no queries.</p>
           )}
-          <Button color="olive" size="medium" onClick={this.signOut}>
+          <Button primary size="medium" onClick={this.signOut}>
             Sign out
           </Button>
         </div>
