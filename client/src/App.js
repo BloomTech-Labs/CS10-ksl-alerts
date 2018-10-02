@@ -62,6 +62,9 @@ class App extends Component {
     const PUBLIC_URL = 'https://kslalerts.herokuapp.com'
     let homeURL;
 
+    /**
+      * Get URL for redirecting users to home page depending on app's environment
+    **/
     if (process.env.NODE_ENV === 'development') {
       homeURL = DEV_URL;
     } else {
