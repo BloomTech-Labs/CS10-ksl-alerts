@@ -12,7 +12,7 @@ import AlertFeed from './components/AlertFeed/AlertFeed.js';
 import CreateAlert from './components/CreateAlert/CreateAlert.js';
 import Billing from './components/Billing/Billing.js';
 import Settings from './components/Settings/Settings.js';
-import AlertListings from './components/AlertListings/AlertListings';
+import PageNotFound from './components/PageNotFound/PageNotFound.js';
 
 class App extends Component {
   state = {
@@ -56,23 +56,52 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <TopNav isSignedIn={this.state.isLoggedIn} signOut={this.handleSignOut} />
-        <Switch>
-          <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
-          <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
-          <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
-          <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} history={props.history} />} />
-          <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} updateQueries={this.handleUpdateQueries} history={props.history}/>} />
-          <Route path="/billing" component={Billing} />
-          <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
-          {/* for testing */}
-          <Route path='/alertListings' component={AlertListings} />
-        </Switch>
+    const hasToken = localStorage.getItem('jwt');
+    const currentLocation = window.location.href;
+    let homeURL;
 
-      </div>
-    );
+    /**
+      * Get URL for redirecting users to home page depending on app's environment
+    **/
+    if (process.env.REACT_APP_DEV === 'true') {
+      homeURL = process.env.REACT_APP_DEV_URL;
+    } else {
+      homeURL = process.env.REACT_APP_PUBLIC_URL;
+    }
+
+    /**
+      * Check if user is signed in
+      * Check current page (window.location.href)
+      * If user isn't signed in and is on a page that needs to be signed in to access, redirect the user
+    **/
+    if (!hasToken
+      && currentLocation !== `${homeURL}/`
+      && currentLocation !== `${homeURL}/signIn`
+      && currentLocation !== `${homeURL}/signUp`
+      && currentLocation !== `${homeURL}/pageNotFound`) {
+      window.location = `${homeURL}/pageNotFound`;
+      return (
+        <Switch>
+          <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
+        </Switch>
+      )
+    } else {
+      return (
+        <div className="App">
+          <TopNav isSignedIn={this.state.isLoggedIn} signOut={this.handleSignOut} />
+          <Switch>
+            <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
+            <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
+            <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
+            <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} history={props.history} />} />
+            <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} updateQueries={this.handleUpdateQueries} history={props.history}/>} />
+            <Route path="/billing" component={Billing} />
+            <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
+            <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
+          </Switch>
+        </div>
+      );
+    }
   }
 }
 
