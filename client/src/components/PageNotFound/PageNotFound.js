@@ -11,7 +11,6 @@ const DivStyle = styled.div`
 
 const PageNotFound = (props) => {
   const goToHome = () => {
-    // const homePage = 'http://localhost:3000/'; // for testing on local machine
     props.history.push('/');
   }
 
