@@ -58,25 +58,23 @@ class App extends Component {
   render() {
     const hasToken = localStorage.getItem('jwt');
     const currentLocation = window.location.href;
-    const DEV_URL = 'http://localhost:3000'
-    const PUBLIC_URL = 'https://kslalerts.herokuapp.com'
     let homeURL;
 
     /**
       * Get URL for redirecting users to home page depending on app's environment
     **/
-    if (process.env.NODE_ENV === 'development') {
-      homeURL = DEV_URL;
+    if (process.env.REACT_APP_DEV === 'true') {
+      homeURL = process.env.REACT_APP_DEV_URL;
     } else {
-      homeURL = PUBLIC_URL;
+      homeURL = process.env.REACT_APP_PUBLIC_URL;
     }
 
     /**
-      * Check if user is signed in (has a token)
+      * Check if user is signed in
       * Check current page (window.location.href)
-      * If user isn't signed in (no token) and is on a page that needs to be signed in to access, redirect the user
+      * If user isn't signed in and is on a page that needs to be signed in to access, redirect the user
     **/
-    if (!hasToken 
+    if (!hasToken
       && currentLocation !== `${homeURL}/`
       && currentLocation !== `${homeURL}/signIn`
       && currentLocation !== `${homeURL}/signUp`
