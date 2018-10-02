@@ -5,7 +5,7 @@ const SignUpButton = props => {
   if (props.isSignedIn) {
     return null;
   } else {
-    return <Button color="olive" size="medium">Sign Up</Button>;
+    return <Button primary size="medium">Sign Up</Button>;
   }
 };
 
