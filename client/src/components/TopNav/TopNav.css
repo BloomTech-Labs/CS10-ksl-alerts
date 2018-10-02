@@ -5,5 +5,8 @@
 
 .TopNavWrapper .MenuItems {
   display: flex;
-  /* border: red solid 3px; */
+  justify-content: space-evenly;
+  font-size: 1.2rem;
+  margin: 10px;
+  border: red solid 3px;
 }

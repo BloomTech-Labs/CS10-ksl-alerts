@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Header, Menu } from 'semantic-ui-react';
+import { Container, Header, Menu, Icon } from 'semantic-ui-react';
 import './TopNav.css';
 // import SignOutButton from '../ButtonComponents/SignOutButton/SignOutButton.js';
 
@@ -19,24 +19,28 @@ const TopNav = props => {
         <Container className="TopNavWrapper" fluid>
           <Container className="MenuItems">
             <Menu.Item as="a">
-              <Header>
+              
+                <Icon name='feed' position='left'/> 
                 <Link to="/feed">Alerts</Link>
-              </Header>
+              
             </Menu.Item>
-            <Menu.Item>
-              <Header>
+            <Menu.Item as="a">
+              
+                <Icon name='add' position='left'/> 
                 <Link to="/createAlert">Create Alert</Link>
-              </Header>
+              
             </Menu.Item>
-            <Menu.Item>
-              <Header>
+            <Menu.Item as="a">
+              
+                <Icon name='credit card' position='left'/> 
                 <Link to="/billing">Billing</Link>
-              </Header>
+              
             </Menu.Item>
-            <Menu.Item>
-              <Header>
+            <Menu.Item as="a">
+              
+                <Icon name='settings' position='left'/> 
                 <Link to="/settings">Settings</Link>
-              </Header>
+              
             </Menu.Item>
             {/* <SignOutButton isSignedIn={props.isSignedIn} signOut={props.signOut} /> */}
           </Container>
