@@ -57,29 +57,19 @@ class App extends Component {
 
   render() {
     const hasToken = localStorage.getItem('jwt');
-    const currentLocation = window.location.href;
-    let homeURL;
-
-    /**
-      * Get URL for redirecting users to home page depending on app's environment
-    **/
-    if (process.env.REACT_APP_DEV === 'true') {
-      homeURL = process.env.REACT_APP_DEV_URL;
-    } else {
-      homeURL = process.env.REACT_APP_PUBLIC_URL;
-    }
+    const currentLocation = this.props.history.location.pathname;
 
     /**
       * Check if user is signed in
-      * Check current page (window.location.href)
-      * If user isn't signed in and is on a page that needs to be signed in to access, redirect the user
+      * Check current location (page)
+      * If user isn't signed in and is on an unauthorized page redirect the user
     **/
     if (!hasToken
-      && currentLocation !== `${homeURL}/`
-      && currentLocation !== `${homeURL}/signIn`
-      && currentLocation !== `${homeURL}/signUp`
-      && currentLocation !== `${homeURL}/pageNotFound`) {
-      window.location = `${homeURL}/pageNotFound`;
+      && currentLocation !== `/`
+      && currentLocation !== `/signIn`
+      && currentLocation !== `/signUp`
+      && currentLocation !== `/pageNotFound`) {
+      window.location.pathname = '/pageNotFound';
       return (
         <Switch>
           <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
