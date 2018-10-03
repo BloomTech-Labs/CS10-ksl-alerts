@@ -11,7 +11,11 @@ import './TopNav.css';
  */
 
 const TopNav = props => {
-  if (!props.isSignedIn) return null;
+  const currentLocation = window.location.pathname;
+  if (!props.isSignedIn
+      || currentLocation === '/'
+      || currentLocation === '/signIn'
+      || currentLocation === '/signUp') return null;
 
   return (
     <div className='navigationmenu'>
