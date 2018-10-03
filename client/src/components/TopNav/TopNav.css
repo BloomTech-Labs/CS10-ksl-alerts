@@ -1,9 +1,23 @@
 .TopNavWrapper {
   display: flex;
-  /* border: black solid 4px; */
+  font-size: 1.2rem;
+  /* background: greenyellow; */
+  justify-content: flex-end;
 }
 
-.TopNavWrapper .MenuItems {
+/* .TopNavWrapper .MenuItems {
   display: flex;
-  /* border: red solid 3px; */
+  justify-content: space-evenly;
+  font-size: 1.2rem;
+  margin: 10px;
+  border: red solid 3px;
+  /* background: purple; */
+
+
+.TopNavWrapper .MenuItems .MenuLink {
+  display: flex;
+  align-self: center;
+  margin: auto;
+  border: blue solid 2px;
 }
+

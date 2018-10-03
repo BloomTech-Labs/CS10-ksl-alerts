@@ -2,14 +2,15 @@
 
 * {
   box-sizing: border-box;
-  Font-Family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Karla', sans-serif;
   
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', 'Helvitica Neue', sans-serif;
+  /* font-family: 'Open Sans', 'Helvitica Neue', sans-serif; */
+  font-family: 'Karla', sans-serif;
   color: rgb(35, 66, 214);
 }
 

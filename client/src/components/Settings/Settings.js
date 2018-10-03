@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Divider, Input, Form, Label } from 'semantic-ui-react';
+import { Button, Container, Divider, Input, Form, Label, Header } from 'semantic-ui-react';
 import './Settings.css';
 import axios from 'axios';
 
@@ -103,7 +103,7 @@ export default class Settings extends Component {
         <h1>Settings</h1>
         <Form className="settings-form">
           <Form className="UpdateEmailForm">
-            <h4 className="label">Update User Info</h4>
+            <Header as='h4' className="label">Update User Info</Header>
             <Form.Field className="form-field">
               <Input
                 name="newEmail"

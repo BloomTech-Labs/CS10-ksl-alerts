@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Container, Divider, Input, Form } from 'semantic-ui-react';
+import { Button, Container, Divider, Input, Form, Header } from 'semantic-ui-react';
 import './CreateAlert.css';
 
 export default class CreateAlert extends Component {
@@ -35,7 +35,7 @@ export default class CreateAlert extends Component {
     return (
       <Container className="create-wrapper" fluid>
         <div className="form-wrapper">
-          <h1>Create a new alert</h1>
+          <Header as='h1' color='teal'>Create a new alert</Header>
           <Divider inverted />
           <Form className="signin-form">
             <Form.Field className="form-field">
