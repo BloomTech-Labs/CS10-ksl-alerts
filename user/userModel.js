@@ -25,7 +25,11 @@ const UserSchema = new mongoose.Schema ({
         type: String,
         required: true
     }
-  }]
+  }],
+  customerId: {
+    type: String,
+    required: false
+  },
 	// can work for Stretch - upgrade to premium accout
 	// accout_type: {
 	// 	free: Boolean,
