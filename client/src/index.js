@@ -10,7 +10,6 @@ ReactDOM.render(
     <Switch>
       <Route path='/' render={(props) => <App history={props.history}/>} />
     </Switch>
-    {/* <App component={(props) => <PageNotFound history={props.history}/>} /> */}
   </Router>,
   document.getElementById('root')
 );
