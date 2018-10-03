@@ -26,7 +26,7 @@ server.use(express.static(path.join(__dirname, 'client/build')));
 
 server.use('/api/user', userRoute);
 
-server.use('/payments', stripeRouter);
+server.use('/api/payments', stripeRouter);
 
 server.get('/', (req, res) => {
   res.status(200).json({ api: 'server running' });
