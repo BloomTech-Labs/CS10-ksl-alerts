@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Input, Form } from 'semantic-ui-react';
+import { Button, Input, Form, Message } from 'semantic-ui-react';
 import './SignIn.css';
 
 class SignIn extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    loading: false,
+    error: false
   };
 
   handleSubmit = e => {
+    this.setState({ loading: true, error: false });
     e.preventDefault();
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/user/signIn`, this.state)
@@ -19,9 +22,11 @@ class SignIn extends Component {
         localStorage.setItem('jwt', token);
         localStorage.setItem('id', id);
         this.props.handleSignIn(id, queries);
+        this.setState({ loading: false, error: false });
         this.props.history.push('/feed');
       })
       .catch(err => {
+        this.setState({ loading: false, error: true });
         console.error(err);
       });
   };
@@ -35,7 +40,7 @@ class SignIn extends Component {
     return (
       <div onSubmit={this.submitForm} className="container">
         <div className="form-wrapper">
-          <Form>
+          <Form loading={this.state.loading}>
             <h4 className="header">Please sign in</h4>
             <Form.Field>
               <Input
@@ -57,7 +62,15 @@ class SignIn extends Component {
                 onChange={this.handleInput}
               />
             </Form.Field>
-            <Button primary size="medium" onClick={this.handleSubmit}>Submit</Button>
+            <Message
+              negative
+              error={!this.state.error}
+              header="Error"
+              content="There was an error signing in. Please try again or contact support."
+            />
+            <Button primary size="medium" onClick={this.handleSubmit}>
+              Submit
+            </Button>
           </Form>
         </div>
       </div>
