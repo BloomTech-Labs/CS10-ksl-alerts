@@ -31,14 +31,38 @@ server.use('/payments', stripeRouter);
 server.get('/', (req, res) => {
   res.status(200).json({ api: 'server running' });
 });
-
 // Web scraping
 server.post('/api/getListings', (req, res) => {
-  request(req.body.url, (error, response, body) => {
+  const options = {
+    method: 'GET',
+    url: req.body.url,
+    headers: {
+      'User-Agent':
+        'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+    }
+  };
+  request(options, function(error, response, body) {
+    console.log('REQUEST MADE TO: ', req.body.url);
     if (error) {
+      console.error(error);
       res.status(500).json({ err: 'The URL seems to be invalid!' });
     } else {
-      // Check if the request was successfu;
+      console.log('REQUEST MADE TO: ', req.body.url);
+      console.log(
+        'RESPONSE STATUS: ',
+        response.statusCode,
+        response.statusMessage
+      );
+
+      // Check if the request was successful;
+      if (response.statusCode !== 200)
+        res
+          .status(500)
+          .json({
+            err: 'Request to KSL Classifieds was unsuccessful',
+            response
+          });
+
       const $ = cheerio.load(body); // Pass the body to cheerio for scraping
       const scripts = $('script').toArray(); // select all 'script' tags
 
