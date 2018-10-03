@@ -14,15 +14,15 @@ const TopNav = props => {
   if (!props.isSignedIn) return null;
 
   return (
-    <div className="navigationmenu">
-      <Menu className="TopNav">
+    <div className='navigationmenu'>
+      <Menu borderless className="TopNav" size='large'>
         <Container className="TopNavWrapper" fluid>
           {/* <Container className="MenuItems"> */}
             <Menu.Item as="a">
               
                 <Icon name='feed' position='left'/> 
                 <Link to="/feed" className='MenuLink'>Alerts</Link>
-              
+                
             </Menu.Item>
             <Menu.Item as="a">
               

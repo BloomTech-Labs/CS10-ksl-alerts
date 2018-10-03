@@ -17,7 +17,7 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lora', 'Times New Roman', Times, serif;
+  font-family: 'Karla', sans-serif;
 }
 
 h1 {
@@ -34,5 +34,5 @@ h3 {
 
 
 a, p, input, ul, li, button, label {
-  font-family: 'Roboto', Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Karla', sans-serif;
 }

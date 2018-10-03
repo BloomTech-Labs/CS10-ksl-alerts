@@ -1,9 +1,8 @@
 .TopNavWrapper {
   display: flex;
-  font-size: 2rem;
-  justify-content: space-evenly;
-  background: greenyellow;
-  /* border: black solid 4px; */
+  font-size: 1.2rem;
+  /* background: greenyellow; */
+  justify-content: flex-end;
 }
 
 /* .TopNavWrapper .MenuItems {
