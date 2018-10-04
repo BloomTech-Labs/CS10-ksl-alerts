@@ -35,7 +35,7 @@ export default class CreateAlert extends Component {
     return (
       <Container className="create-wrapper" fluid>
         <div className="form-wrapper">
-          <Header as='h1' color='teal'>Create a new alert</Header>
+          <Header as='h1'>Create a new alert</Header>
           <Divider inverted />
           <Form className="signin-form">
             <Form.Field className="form-field">

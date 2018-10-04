@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Segment } from 'semantic-ui-react';
+import { Button, Container, Header, Segment } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css';
 import TopNav from '../TopNav/TopNav.js';
@@ -16,7 +16,7 @@ export default class AlertFeed extends Component {
       <Container className="AlertFeed" fluid>
         <TopNav />
         <div className="feed-wrapper">
-          <h2>Alert Feed</h2>
+          <Header as='h2'>Alert Feed</Header>
           {this.state.queries ? (
             this.state.queries.map(query => (
               <Segment key={query._id}>
