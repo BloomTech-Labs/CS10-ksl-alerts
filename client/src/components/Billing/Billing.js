@@ -1,24 +1,103 @@
 import React, { Component } from 'react';
+import { Button, Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
+import { Elements, StripeProvider } from 'react-stripe-elements';
 import Checkout from './Stripe/stripe.js';
-import { Header, Container } from 'semantic-ui-react';
 import './Billing.css';
 
 class Billing extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: '',
+      description: '',
+      amount: 0.0,
+      subscription: 0
+    };
+  }
+
+  onPriceClick(name, description, amount) {
+    this.setState({ name, description, amount });
+  }
+
   render() {
     return (
-      <Container className='BillingContainer' fluid>
-        <div className="form-wrapper">
-          <div className="checkout">
-            <div>
-              <Header as='h1'>Enjoy unlimited alerts for just $9.99 a month!</Header>
-              <Header as='h3'>1 month - $9.99</Header>
-              <Checkout
-                name={'Subscription Fee'}
-                description={'1 month'}
-                amount={9.99}
-              />
-            </div>
-          </div>
+      <Container>
+        <div>
+          <h3 className="element"> Billing </h3>
+          <label className="element"> Billing Info</label>
+          <StripeProvider apiKey="pk_test_bS41glL52zljnAT32tZubD7r">
+            <Elements>
+              <Row>
+                <Col md="4">
+                  <Card>
+                    <CardBody>
+                      <CardTitle>1 year unlimited alerts</CardTitle>
+                      <Button
+                        className="button"
+                        color="primary"
+                        onClick={() =>
+                          this.onPriceClick('1 year unlimited alerts', 19.99)
+                        }
+                      >
+                        1 Year Subscription = 19.99
+                      </Button>
+                      <Checkout
+                        name={'KSL Alerts'}
+                        description={'1 year unlimited alerts'}
+                        amount={19.99}
+                      />
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col md="4">
+                  <Card>
+                    <CardBody>
+                      <CardTitle>6 month unlimited alerts</CardTitle>
+                      <Button
+                        className="button"
+                        color="primary"
+                        onClick={() =>
+                          this.onPriceClick('6 month unlimited alerts', 9.99)
+                        }
+                      >
+                        6 month Subscription = 9.99
+                      </Button>
+                      <Checkout
+                        name={`KSL Alerts`}
+                        description={'6 month unlimited alerts'}
+                        amount={9.99}
+                      />
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col md="4">
+                  <Card>
+                    <CardBody>
+                      <CardTitle>
+                        1 month unlimited alerts Trial Level
+                      </CardTitle>
+
+                      <Button
+                        className="button"
+                        color="primary"
+                        onClick={() =>
+                          this.onPriceClick('1 month unlimited alerts', 2.99)
+                        }
+                      >
+                        1 month Subscription = 2.99
+                      </Button>
+                      <Checkout
+                        name={'KSL Alerts'}
+                        description={'1 month unlimited alerts'}
+                        amount={2.99}
+                      />
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </Elements>
+          </StripeProvider>
         </div>
       </Container>
     );
@@ -26,5 +105,3 @@ class Billing extends Component {
 }
 
 export default Billing;
-
-
