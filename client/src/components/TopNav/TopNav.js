@@ -1,14 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Header, Menu, Icon } from 'semantic-ui-react';
+import SignOutButton from '../ButtonComponents/SignOutButton/SignOutButton.js';
 import './TopNav.css';
-// import SignOutButton from '../ButtonComponents/SignOutButton/SignOutButton.js';
-
-/**
- * 2-3 components (Top-Left: route text, Top-Right: signin/signup/signout)
- * Signed in: Top-Left: displays current route, Top-right: displays sign out)
- * Signed Out: Top-Left: display not rendered, Top-right: SignUp/SignIn button)
- */
 
 const TopNav = props => {
   const currentLocation = window.location.pathname;
@@ -46,7 +40,7 @@ const TopNav = props => {
                 <Link to="/settings" className='MenuLink'>Settings</Link>
               
             </Menu.Item>
-            {/* <SignOutButton isSignedIn={props.isSignedIn} signOut={props.signOut} /> */}
+            <SignOutButton isSignedIn={props.isSignedIn} signOut={props.signOut} />
           {/* </Container> */}
         </Container>
       </Menu>

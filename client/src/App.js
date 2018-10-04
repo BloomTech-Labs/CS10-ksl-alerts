@@ -26,7 +26,12 @@ class App extends Component {
   };
 
   handleSignOut = () => {
-    this.setState({ userId: null, isLoggedIn: false });
+    if (localStorage.getItem('jwt')) {
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('id');
+    }
+    this.props.history.push('/');
+    this.setState({ userId: null, isLoggedIn: false, queries: [] });
   }
 
   handleUpdateQueries = (updatedQueries) => {

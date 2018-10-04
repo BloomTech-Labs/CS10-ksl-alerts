@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Segment } from 'semantic-ui-react';
+import { Container, Segment } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css';
 import TopNav from '../TopNav/TopNav.js';
@@ -9,15 +9,6 @@ import TopNav from '../TopNav/TopNav.js';
 export default class AlertFeed extends Component {
   state = {
     queries: this.props.queries
-  };
-
-  // remove token from local storage
-  signOut = () => {
-    if (localStorage.getItem('jwt')) {
-      localStorage.removeItem('jwt');
-      this.props.history.push('/');
-    }
-    this.props.handleSignOut();
   };
 
   render() {
@@ -35,9 +26,6 @@ export default class AlertFeed extends Component {
           ) : (
             <p>You have no queries.</p>
           )}
-          <Button primary size="medium" onClick={this.signOut}>
-            Sign out
-          </Button>
         </div>
       </Container>
     );
