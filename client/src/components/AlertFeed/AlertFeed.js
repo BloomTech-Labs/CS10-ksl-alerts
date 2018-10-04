@@ -11,15 +11,6 @@ export default class AlertFeed extends Component {
     queries: this.props.queries
   };
 
-  // remove token from local storage
-  signOut = () => {
-    if (localStorage.getItem('jwt')) {
-      localStorage.removeItem('jwt');
-      this.props.history.push('/');
-    }
-    this.props.handleSignOut();
-  };
-
   render() {
     return (
       <Container className="AlertFeed" fluid>
@@ -35,9 +26,6 @@ export default class AlertFeed extends Component {
           ) : (
             <p>You have no queries.</p>
           )}
-          <Button primary size="medium" onClick={this.signOut}>
-            Sign out
-          </Button>
         </div>
       </Container>
     );
