@@ -65,10 +65,10 @@ class App extends Component {
       * If user isn't signed in and is on an unauthorized page redirect the user
     **/
     if (!hasToken
-      && currentLocation !== `/`
-      && currentLocation !== `/signIn`
-      && currentLocation !== `/signUp`
-      && currentLocation !== `/pageNotFound`) {
+      && currentLocation !== '/'
+      && currentLocation !== '/signIn'
+      && currentLocation !== '/signUp'
+      && currentLocation !== '/pageNotFound') {
       window.location.pathname = '/pageNotFound';
       return (
         <Switch>
