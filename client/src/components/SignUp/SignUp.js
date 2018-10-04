@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Input, Form, Message } from 'semantic-ui-react';
+import { Button, Header, Input, Form, Message } from 'semantic-ui-react';
 import './SignUp.css';
 
 class SignUp extends Component {
@@ -65,7 +65,7 @@ class SignUp extends Component {
   render() {
     return (
       <div className="form-wrapper">
-        <h3>Sign Up</h3>
+        <Header as='h3'>Sign Up</Header>
         <Form loading={this.state.loading}>
           <Form.Field>
             <Input
