@@ -13,18 +13,19 @@ class AlertListings extends Component {
 
   componentDidMount() {
     axios
-      .post(
-        `${process.env.REACT_APP_BACKEND_URL}/getListings`,
-        {url: this.props.url}
-      )
+      .post(`${process.env.REACT_APP_BACKEND_URL}/getListings`, {
+        url: this.props.url
+      })
       .then(res => {
         if (res.data.listings) {
           this.setState({ listings: res.data.listings });
-        } else if (res.err) {
-          this.setState({ err: res.data.err });
         } else {
-          this.setState({ err: 'There was a problem fetching your query!'});
+          this.setState({ err: 'There was a problem fetching your query!' });
         }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ err: 'Your url seems to be invalid!' });
       });
   }
 

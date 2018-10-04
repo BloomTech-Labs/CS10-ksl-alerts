@@ -26,7 +26,7 @@ export default class AlertFeed extends Component {
         <TopNav />
         <div className="feed-wrapper">
           <h2>Alert Feed</h2>
-          {this.state.queries ? (
+          {this.state.queries.length > 0 ? (
             this.state.queries.map(query => (
               <Segment key={query._id}>
                 <AlertCard query={query} />
