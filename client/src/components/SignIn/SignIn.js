@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Input, Form, Message } from 'semantic-ui-react';
+import { Button, Header, Input, Form, Message } from 'semantic-ui-react';
 import './SignIn.css';
 
 class SignIn extends Component {
@@ -41,7 +41,7 @@ class SignIn extends Component {
       <div onSubmit={this.submitForm} className="container">
         <div className="form-wrapper">
           <Form loading={this.state.loading}>
-            <h4 className="header">Please sign in</h4>
+            <Header as='h4' className="header">Please sign in</Header>
             <Form.Field>
               <Input
                 className="input-box"

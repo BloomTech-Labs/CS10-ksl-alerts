@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Header } from 'semantic-ui-react';
 import ListingCard from '../ListingCard/ListingCard.js'; // eslint-disable-line
 
 // receiving query props from AlertCard which has query title and url
@@ -37,7 +38,7 @@ class AlertListings extends Component {
           {// If there is an err, render the error message
           // Else, iterate of this.state.listings
             this.state.err ? (
-              <p>{this.state.err}</p>
+              <Header as='p'>{this.state.err}</Header>
             ) : (
               this.state.listings.map(listing => {
                 return (
