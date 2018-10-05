@@ -11,8 +11,8 @@
     /* border: 1px solid black; */
     margin: 10px auto;
     padding: 5px;
-    width: 800px;
-    height: 400px;
+    width: 900px;
+    height: 500px;
     text-align: center;
     align-items: center;
     display: flex;
@@ -32,13 +32,13 @@
 
 .GridWrap {
     width: 80%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .how-to {
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .action-field {
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }

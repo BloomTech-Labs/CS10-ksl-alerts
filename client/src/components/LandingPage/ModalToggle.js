@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Segment, Grid, Header, Icon } from 'semantic-ui-react';
 import './ModalToggle.css';
-// import SignUp from '../SignUp/SignUp.js';
+import SignUp from '../SignUp/SignUp.js';
 
 const ModalToggle = props => {
   let toggle = props.toggle;
@@ -24,12 +24,14 @@ const ModalToggle = props => {
 
         <Grid.Column className='action-field' width={8}>
           <Header>Let's go!</Header>
+          <SignUp />
           <Button size="medium" primary onClick={() => props.history.push('/signIn')}>
             Sign In
           </Button>
-          <Button size="medium" secondary onClick={() => props.history.push('/signUp')}>
+          {/* <Button size="medium" secondary onClick={() => props.history.push('/signUp')}>
             Sign Up
-          </Button>
+          </Button> */}
+          
         </Grid.Column>
       </Grid>
     </Segment>

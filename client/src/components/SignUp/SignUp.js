@@ -64,7 +64,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="form-wrapper">
+      <div>
         <Header as='h3'>Sign Up</Header>
         <Form loading={this.state.loading}>
           <Form.Field>
