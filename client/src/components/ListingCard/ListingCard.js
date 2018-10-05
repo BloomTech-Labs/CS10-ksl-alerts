@@ -1,5 +1,6 @@
 import React from 'react';
-// import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
+import './ListingCard.css';
 
 import styled from 'styled-components';
 
@@ -17,17 +18,24 @@ const ListingImgStyled = styled.img`
   width: 100px;
 `;
 
-const ListingCard = (props) => {
+const ListingCard = props => {
   return (
-    <ListingCardStyled>
-        <p>{props.listing.title}</p>
-        <p>Price: ${props.listing.price.toFixed(2)}</p>
-        <p>City: {props.listing.city}</p>
-        <ListingImgStyled src={`https://${props.listing.photo.slice(2)}`} />
-        {/* <p>Description: {props.listing.description}</p> */}
-        <p>Created On: {props.listing.createTime.slice(0,10)}</p>
-    </ListingCardStyled>
+    <Card
+      className="ListingCard"
+      image={`https://${props.listing.photo.slice(2)}`}
+      header={props.listing.title}
+      extra={`Created On: ${props.listing.createTime.slice(0, 10)}`}
+      description={props.listing.description}
+      href={`http://classifieds.ksl.com/listing/${props.listing.id}`}
+      raised={true}
+      meta={
+        <div>
+          <p>${props.listing.price.toFixed(2)}</p>
+          <p>City: {props.listing.city}</p>
+        </div>
+      }
+    />
   );
-}
+};
 
 export default ListingCard;

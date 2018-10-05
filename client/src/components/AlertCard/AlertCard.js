@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Header } from 'semantic-ui-react';
 import AlertListings from '../AlertListings/AlertListings.js';
 
 // receiving query props from AlertFeed
@@ -13,12 +14,19 @@ class AlertCard extends Component {
 
   render() {
     return (
-      <div>
-        <h4 onClick={this.toggleListings} style={{cursor:'pointer'}}>Query: {this.props.query.title}</h4>
-        <AlertListings url={this.props.query.url} displayListings={this.state.displayListings} query={this.props.query}/>
+      <div className="AlertCard">
+        <Header onClick={this.toggleListings} style={{ cursor: 'pointer' }}>
+          {this.props.query.title}
+        </Header>
+        <AlertListings
+          url={this.props.query.url}
+          displayListings={this.state.displayListings}
+          query={this.props.query}
+          style={{ display: 'flex' }}
+        />
       </div>
     );
-  };
-};
+  }
+}
 
 export default AlertCard;
