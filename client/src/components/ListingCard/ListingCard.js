@@ -25,7 +25,6 @@ const ListingCard = props => {
       image={`https://${props.listing.photo.slice(2)}`}
       header={props.listing.title}
       extra={`Created On: ${props.listing.createTime.slice(0, 10)}`}
-      description={props.listing.description}
       href={`http://classifieds.ksl.com/listing/${props.listing.id}`}
       raised={true}
       meta={

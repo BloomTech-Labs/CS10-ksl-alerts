@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from 'semantic-ui-react';
 import AlertListings from '../AlertListings/AlertListings.js';
+import './AlertCard.css';
 
 // receiving query props from AlertFeed
 class AlertCard extends Component {
