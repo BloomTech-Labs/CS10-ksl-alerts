@@ -15,7 +15,7 @@ class AlertCard extends Component {
     return (
       <div>
         <h4 onClick={this.toggleListings} style={{cursor:'pointer'}}>Query: {this.props.query.title}</h4>
-        <AlertListings url={this.props.query.url} displayListings={this.state.displayListings}/>
+        <AlertListings url={this.props.query.url} displayListings={this.state.displayListings} query={this.props.query}/>
       </div>
     );
   };

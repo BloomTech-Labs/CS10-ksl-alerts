@@ -9,6 +9,8 @@ const ListingCardStyled = styled.div`
   text-align: center;
   margin: 16px;
   border: 1px solid black;
+  height: 400px;
+  width: 400px;
 `;
 
 const ListingImgStyled = styled.img`
@@ -18,10 +20,12 @@ const ListingImgStyled = styled.img`
 const ListingCard = (props) => {
   return (
     <ListingCardStyled>
-        <p>Price: {props.price}</p>
-        <p>City: {props.city}</p>
-        <p>Created On: {props.createdOn}</p>
-        <ListingImgStyled src={`https://${props.photo.slice(2)}`} />
+        <p>{props.listing.title}</p>
+        <p>Price: ${props.listing.price.toFixed(2)}</p>
+        <p>City: {props.listing.city}</p>
+        <ListingImgStyled src={`https://${props.listing.photo.slice(2)}`} />
+        {/* <p>Description: {props.listing.description}</p> */}
+        <p>Created On: {props.listing.createTime.slice(0,10)}</p>
     </ListingCardStyled>
   );
 }
