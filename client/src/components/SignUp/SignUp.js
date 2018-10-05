@@ -122,3 +122,4 @@ class SignUp extends Component {
 }
 
 export default SignUp;
+

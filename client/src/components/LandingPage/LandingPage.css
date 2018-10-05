@@ -27,3 +27,7 @@
     margin: 60px;
     color: #CFDEE7
 }
+
+.ModalContainer {
+    border: 1px solid red;
+}

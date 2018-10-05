@@ -11,13 +11,14 @@
     /* border: 1px solid black; */
     margin: 10px auto;
     padding: 5px;
-    width: 300px;
-    height: 250px;
+    width: 800px;
+    height: 400px;
     text-align: center;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    opacity: 0.8;
 }
 
 .modal-header {
@@ -27,4 +28,17 @@
 
 .hidden {
     display: none;
+}
+
+.GridWrap {
+    width: 80%;
+    border: 1px solid blue;
+}
+
+.how-to {
+    border: 1px solid black;
+}
+
+.action-field {
+    border: 1px solid red;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ModalToggle from './ModalToggle';
-import { Button, Container, Header } from 'semantic-ui-react';
+import { Button, Container, Header, Modal } from 'semantic-ui-react';
 import './LandingPage.css';
 
 class LandingPage extends Component {
@@ -23,7 +23,7 @@ class LandingPage extends Component {
             Welcome to KSL Alerts
           </Header>
           <Header className="SubHeaderText" as="h4">
-            All of your <em>Classifieds</em> queries in one place.
+            All of your <em>Classifieds</em> search in one place.
           </Header>
           <Button primary size="massive" onClick={this.showModal} className="GetStartedButton">
             Get Started
