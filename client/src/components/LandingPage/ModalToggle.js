@@ -7,7 +7,7 @@ const ModalToggle = props => {
   let toggle = props.toggle;
 
   return (
-    <Segment className={toggle ? 'modal-wrapper' : 'hidden'}>
+    <div className={toggle ? 'modal-wrapper' : 'hidden'}>
       {/* <h4 className="modal-header">Welcome to KSL Alert</h4> */}
       <Grid className='GridWrap'>
         <Grid.Column className='how-to' width={8}>
@@ -23,8 +23,8 @@ const ModalToggle = props => {
         </Grid.Column>
 
         <Grid.Column className='action-field' width={8}>
-          <Header>Let's go!</Header>
           <SignUp />
+          <p>Already have an account?</p>
           <Button size="medium" primary onClick={() => props.history.push('/signIn')}>
             Sign In
           </Button>
@@ -34,7 +34,7 @@ const ModalToggle = props => {
           
         </Grid.Column>
       </Grid>
-    </Segment>
+    </div>
   );
 };
 

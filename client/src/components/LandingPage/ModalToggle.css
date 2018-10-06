@@ -1,4 +1,4 @@
-.modal-wrapper {
+/* .modal-wrapper {
     /* z-index: 1000;
     position: fixed;
     margin: auto 0;
@@ -9,17 +9,18 @@
     text-align: center;
     background-color: white; */
     /* border: 1px solid black; */
-    margin: 10px auto;
-    padding: 5px;
-    width: 900px;
+    /* margin: 10px auto; */
+    /* padding: 5px; */
+    /* width: 800px;
     height: 500px;
     text-align: center;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    opacity: 0.8;
-}
+    opacity: 0.7;
+    border: 1px solid blue;
+} */ 
 
 .modal-header {
     margin: 10px auto;
@@ -31,14 +32,18 @@
 }
 
 .GridWrap {
-    width: 80%;
-    /* border: 1px solid blue; */
+    width: 700px;
+    height: 400px;
+    opacity: 0.8;
+    border: 1px solid black;
 }
 
 .how-to {
+    background-color: white;
     /* border: 1px solid black; */
 }
 
 .action-field {
+    background-color: aliceblue;
     /* border: 1px solid red; */
 }
