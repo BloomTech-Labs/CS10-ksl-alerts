@@ -44,7 +44,7 @@ class AlertListings extends Component {
           ) : (
             this.state.listings.map(listing => {
               return (
-                <ListingCard listing={listing} style={{ padding: '20px', height: '400px', width: '400px' }} className="Card"/>
+                <ListingCard listing={listing} style={{ padding: '20px', height: '400px'}} className="Card"/>
               );
             })
           )}

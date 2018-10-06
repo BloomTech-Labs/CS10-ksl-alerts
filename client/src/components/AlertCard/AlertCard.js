@@ -23,7 +23,7 @@ class AlertCard extends Component {
           url={this.props.query.url}
           displayListings={this.state.displayListings}
           query={this.props.query}
-          style={{ display: 'flex' }}
+          style={{ display: 'flex'}}
         />
       </div>
     );

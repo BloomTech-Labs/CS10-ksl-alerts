@@ -3,20 +3,21 @@ import { Card, Header } from 'semantic-ui-react';
 import './ListingCard.css';
 
 import styled from 'styled-components';
+import { inherits } from 'util';
 
-const ListingCardStyled = styled.div`
-  display: inline-block;
-  padding: 16px;
-  text-align: center;
-  margin: 16px;
-  border: 1px solid black;
-  height: 400px;
-  width: 400px;
-`;
+// const ListingCardStyled = styled.div`
+//   display: inline-block;
+//   padding: 16px;
+//   text-align: center;
+//   margin: 16px;
+//   border: 1px solid black;
+//   height: 400px;
+//   width: 400px;
+// `;
 
-const ListingImgStyled = styled.img`
-  width: 100px;
-`;
+// const ListingImgStyled = styled.img`
+//   width: 100px;
+// `;
 
 const ListingCard = props => {
   return (
@@ -29,10 +30,11 @@ const ListingCard = props => {
       raised={true}
       meta={
         <div>
-          <Header as='p'>${props.listing.price.toFixed(2)}</Header>
-          <Header as='p'>City: {props.listing.city}</Header>
+          <Header as='p' basic>${props.listing.price.toFixed(2)}</Header>
+          <Header as='p' basic>City: {props.listing.city}</Header>
         </div>
       }
+      textAlign={'center'}
     />
   );
 };
