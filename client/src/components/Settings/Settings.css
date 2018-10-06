@@ -23,7 +23,7 @@
   height: 600px;
   width: 400px;
   border-radius: .28571429rem;
-  border: #4472CA solid 2px;
+  /* border: #4472CA solid 2px; */
 }
 
 
@@ -49,7 +49,7 @@
 }
 
 .form-wrapper .form-field{
-  border: #4472CA solid 2px;
+  /* border: #4472CA solid 2px; */
   border-radius: .28571429rem;
 }
 
