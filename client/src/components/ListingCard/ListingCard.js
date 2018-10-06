@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Header } from 'semantic-ui-react';
 import './ListingCard.css';
 
 import styled from 'styled-components';
@@ -29,8 +29,8 @@ const ListingCard = props => {
       raised={true}
       meta={
         <div>
-          <p>${props.listing.price.toFixed(2)}</p>
-          <p>City: {props.listing.city}</p>
+          <Header as='p'>${props.listing.price.toFixed(2)}</Header>
+          <Header as='p'>City: {props.listing.city}</Header>
         </div>
       }
     />

@@ -19,8 +19,10 @@
 .AlertListings {
     display: flex;
     flex-flow: row wrap;
-    padding: 10px;
+    padding: 20px;
     justify-content: space-around;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 

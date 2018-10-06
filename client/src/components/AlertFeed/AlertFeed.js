@@ -16,12 +16,12 @@ export default class AlertFeed extends Component {
       <Container className="AlertFeed" fluid>
         <TopNav />
         <div className="feed-wrapper">
-          <Header as='h2'>Alert Feed</Header>
+          <Header as='h1' block>Alert Feed</Header>
           {this.state.queries ? (
             this.state.queries.map(query => (
-              <Segment key={query._id}>
+              <Container key={query._id}>
                 <AlertCard query={query} />
-              </Segment>
+              </Container>
             ))
           ) : (
             <p>You have no queries.</p>

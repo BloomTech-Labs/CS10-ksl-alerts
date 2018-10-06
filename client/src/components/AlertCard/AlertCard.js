@@ -11,12 +11,12 @@ class AlertCard extends Component {
 
   toggleListings = () => {
     this.setState({ displayListings: !this.state.displayListings });
-  };
+  }
 
   render() {
     return (
       <div className="AlertCard">
-        <Header onClick={this.toggleListings} style={{ cursor: 'pointer' }}>
+        <Header  as='h3' block onClick={this.toggleListings} style={{ cursor: 'pointer' }}>
           {this.props.query.title}
         </Header>
         <AlertListings
