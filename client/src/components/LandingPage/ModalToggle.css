@@ -35,15 +35,25 @@
     width: 700px;
     height: 400px;
     opacity: 0.8;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .how-to {
     background-color: white;
-    /* border: 1px solid black; */
+    display: flex;
 }
 
 .action-field {
     background-color: aliceblue;
-    /* border: 1px solid red; */
+}
+
+.how-to-row {
+    margin: 30px;
+    height: 30px;
+    color: black;
+}
+
+.sign-in-link{
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
 }

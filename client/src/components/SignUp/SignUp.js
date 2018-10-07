@@ -65,7 +65,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <Header as='h3'>Sign Up</Header>
+        {/* <Header as='h3'>Sign Up</Header> */}
         <Form loading={this.state.loading}>
           <Form.Field>
             <Input
@@ -122,4 +122,3 @@ class SignUp extends Component {
 }
 
 export default SignUp;
-
