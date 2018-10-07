@@ -12,30 +12,40 @@ const ModalToggle = props => {
       {/* <h4 className="modal-header">Welcome to KSL Alert</h4> */}
       <Grid className='GridWrap'>
         <Grid.Column className='how-to' width={8}>
-        <Header style={{ marginTop: '2rem' }}>Just Simple Steps</Header>
+        <Header style={{ marginTop: '2rem' }}>
+          Just Simple Steps
+        </Header>
           <Grid.Row className='how-to-row'>
             <Grid.Column>
               <Icon name='add user' size='big' color='blue'/>
             </Grid.Column>
-            <Grid.Column>Join us</Grid.Column>
+            <Grid.Column style={{ marginLeft: '1rem' }}>
+              Join us
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row className='how-to-row'>
             <Grid.Column>
               <Icon name='share' size='big' color='blue'/>
             </Grid.Column>
-            <Grid.Column>Go to "Create Alert" page</Grid.Column>
+            <Grid.Column style={{ marginLeft: '1rem' }}>
+              Go to "Create Alert" page
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row className='how-to-row'>
             <Grid.Column>
               <Icon name='write' size='big' color='blue'/>
             </Grid.Column>
-            <Grid.Column>Create your search title</Grid.Column>
+            <Grid.Column style={{ marginLeft: '1rem' }}>
+              Create your search title
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row className='how-to-row'>
             <Grid.Column>
               <Icon name='copy' size='big' color='blue'/>
             </Grid.Column>
-            <Grid.Column>Add URL link of your KSL search</Grid.Column>
+            <Grid.Column style={{ marginLeft: '1rem' }}>
+              Add URL link of your KSL search
+            </Grid.Column>
           </Grid.Row>          
         </Grid.Column>
 
