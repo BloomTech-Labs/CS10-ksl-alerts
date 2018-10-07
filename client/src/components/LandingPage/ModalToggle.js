@@ -12,7 +12,7 @@ const ModalToggle = props => {
       {/* <h4 className="modal-header">Welcome to KSL Alert</h4> */}
       <Grid className='GridWrap'>
         <Grid.Column className='how-to' width={8}>
-        <Header>Just Simple Steps</Header>
+        <Header style={{ marginTop: '2rem' }}>Just Simple Steps</Header>
           <Grid.Row className='how-to-row'>
             <Grid.Column>
               <Icon name='add user' size='big' color='blue'/>
@@ -40,9 +40,9 @@ const ModalToggle = props => {
         </Grid.Column>
 
         <Grid.Column className='action-field' width={8}>
-          <Header>Join Us</Header>
-          <p style={{ color: 'black' }}>Already have an account?<span className='sign-in-link'><Link to='/signIn'>Sign In</Link></span></p>
+          <Header style={{ marginTop: '2rem' }}>Join Us</Header>
           <SignUp handleSignIn={props.handleSignIn} history={props.history} />
+          <p style={{ color: 'black', marginTop: '2rem' }}>Already have an account?<span className='sign-in-link'><Link to='/signIn'>Sign In</Link></span></p>
           
           {/* <Button size="medium" primary onClick={() => props.history.push('/signIn')}>
             Sign In

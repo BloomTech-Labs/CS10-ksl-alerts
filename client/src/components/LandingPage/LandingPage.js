@@ -26,7 +26,7 @@ class LandingPage extends Component {
             All of your <em>Classifieds</em> search in one place.
           </Header>
           <Button primary size="massive" onClick={this.showModal} className="GetStartedButton">
-            Get Started
+            GET STARTED
           </Button>
           <ModalToggle
             toggle={this.state.displayModal}
