@@ -2,22 +2,6 @@ import React from 'react';
 import { Card, Header } from 'semantic-ui-react';
 import './ListingCard.css';
 
-import styled from 'styled-components';
-import { inherits } from 'util';
-
-// const ListingCardStyled = styled.div`
-//   display: inline-block;
-//   padding: 16px;
-//   text-align: center;
-//   margin: 16px;
-//   border: 1px solid black;
-//   height: 400px;
-//   width: 400px;
-// `;
-
-// const ListingImgStyled = styled.img`
-//   width: 100px;
-// `;
 
 const ListingCard = props => {
   return (
