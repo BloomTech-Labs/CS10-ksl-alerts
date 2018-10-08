@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Header } from 'semantic-ui-react';
 import ListingCard from '../ListingCard/ListingCard.js'; // eslint-disable-line
+import './AlertListings.css';
 
 // receiving query props from AlertCard which has query title and url
 class AlertListings extends Component {
@@ -31,28 +32,22 @@ class AlertListings extends Component {
   }
 
   render() {
+    // If there is an err, render the error message
     if (!this.props.displayListings) {
       return null;
     } else {
+      // Else, iterate of this.state.listings
       return (
-        <div>
-          {// If there is an err, render the error message
-          // Else, iterate of this.state.listings
-            this.state.err ? (
-              <Header as='p'>{this.state.err}</Header>
-            ) : (
-              this.state.listings.map(listing => {
-                return (
-                  <ListingCard
-                    key={listing.createTime}
-                    price={listing.price}
-                    city={listing.city}
-                    createdOn={listing.createTime}
-                    photo={listing.photo}
-                  />
-                );
-              })
-            )}
+        <div className="AlertListings">
+          {this.state.err ? (
+            <Header as="p">{this.state.err}</Header>
+          ) : (
+            this.state.listings.map(listing => {
+              return (
+                <ListingCard listing={listing} style={{ padding: '20px', height: '400px'}} className="Card"/>
+              );
+            })
+          )}
         </div>
       );
     }

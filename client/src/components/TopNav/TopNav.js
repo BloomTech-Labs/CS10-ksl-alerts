@@ -1,47 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Header, Menu, Icon } from 'semantic-ui-react';
-import SignOutButton from '../ButtonComponents/SignOutButton/SignOutButton.js';
+import { Container, Menu, Icon } from 'semantic-ui-react'; // eslint-disable-line
+import SignOutButton from '../ButtonComponents/SignOutButton/SignOutButton.js'; //eslint-disable-line
 import './TopNav.css';
 
 const TopNav = props => {
   const currentLocation = window.location.pathname;
-  if (!props.isSignedIn
-      || currentLocation === '/'
-      || currentLocation === '/signIn'
-      || currentLocation === '/signUp') return null;
+  if (
+    !props.isSignedIn ||
+    currentLocation === '/' ||
+    currentLocation === '/signIn' ||
+    currentLocation === '/signUp'
+  )
+    return null;
 
   return (
-    <div className='navigationmenu'>
-      <Menu borderless className="TopNav" size='large'>
+    <div className="navigationmenu">
+      <Menu borderless className="TopNav" size="large">
         <Container className="TopNavWrapper" fluid>
-          {/* <Container className="MenuItems"> */}
-            <Menu.Item as="a">
-              
-                <Icon name='feed' position='left'/> 
-                <Link to="/feed" className='MenuLink'>Alerts</Link>
-                
-            </Menu.Item>
-            <Menu.Item as="a">
-              
-                <Icon name='add' position='left'/> 
-                <Link to="/createAlert" className='MenuLink'>Create Alert</Link>
-              
-            </Menu.Item>
-            <Menu.Item as="a">
-              
-                <Icon name='credit card' position='left'/> 
-                <Link to="/billing" className='MenuLink'>Billing</Link>
-              
-            </Menu.Item>
-            <Menu.Item as="a">
-              
-                <Icon name='settings' position='left'/> 
-                <Link to="/settings" className='MenuLink'>Settings</Link>
-              
-            </Menu.Item>
-            <SignOutButton isSignedIn={props.isSignedIn} signOut={props.signOut} />
-          {/* </Container> */}
+          <Menu.Item
+            as={Link}
+            to="/feed"
+            className="MenuLink"
+            active={currentLocation === '/feed'}
+          >
+            <Icon name="feed" position="left" />
+            Alerts
+          </Menu.Item>
+          <Menu.Item
+            as={Link}
+            to="/createAlert"
+            className="MenuLink"
+            active={currentLocation === '/createAlert'}
+          >
+            <Icon name="add" position="left" />
+            Create Alert
+          </Menu.Item>
+          <Menu.Item
+            as={Link}
+            to="/billing"
+            className="MenuLink"
+            active={currentLocation === '/billing'}
+          >
+            <Icon name="credit card" position="left" />
+            Billing
+          </Menu.Item>
+          <Menu.Item
+            as={Link}
+            to="/settings"
+            className="MenuLink"
+            active={currentLocation === '/settings'}
+          >
+            <Icon name="settings" position="left" />
+            Settings
+          </Menu.Item>
+          <Menu.Item>
+            <SignOutButton
+              isSignedIn={props.isSignedIn}
+              signOut={props.signOut}
+            />
+          </Menu.Item>
         </Container>
       </Menu>
     </div>
