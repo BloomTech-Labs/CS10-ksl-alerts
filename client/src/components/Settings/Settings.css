@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(../../images/settingspage_background.jpg);
+  background-image: url(../../images/settingpage1.jpg);
   background-size: cover;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .form-wrapper .form-field{
-  border: #4472CA solid 1px;
+  border: #A51F02 solid 1px;
   border-radius: .28571429rem;
 }
 
