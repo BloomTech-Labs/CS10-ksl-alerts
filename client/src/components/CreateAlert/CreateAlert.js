@@ -63,6 +63,7 @@ export default class CreateAlert extends Component {
                 style={{
                   border: "solid 2px #E06F5A",
                   borderRadius: ".28571429rem",
+                  width: "400px"
                 }}
               />
             </Form.Field>
@@ -75,7 +76,8 @@ export default class CreateAlert extends Component {
                 onChange={this.handleInput}
                 style={{
                   border: "solid 2px #E06F5A",
-                  borderRadius: ".28571429rem"
+                  borderRadius: ".28571429rem",
+                  width: "400px"
                 }}
               />
             </Form.Field>
