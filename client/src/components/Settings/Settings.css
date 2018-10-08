@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(../../images/Salt-Lake-City.jpg);
+  background-image: url(../../images/settingspage_background.jpg);
   background-size: cover;
 }
 
@@ -23,7 +23,8 @@
   height: 600px;
   width: 400px;
   border-radius: .28571429rem;
-  border: #4472CA solid 2px;
+  /* border: #4472CA solid 2px; */
+  background: rgba(255,255,255,.02)
 }
 
 
@@ -32,6 +33,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 60px;
 }
 
 
@@ -49,7 +51,7 @@
 }
 
 .form-wrapper .form-field{
-  border: #4472CA solid 2px;
+  border: #4472CA solid 1px;
   border-radius: .28571429rem;
 }
 
