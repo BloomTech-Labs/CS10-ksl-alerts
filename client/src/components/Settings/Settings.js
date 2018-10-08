@@ -100,16 +100,17 @@ export default class Settings extends Component {
     return (
       <Container className="PageContainer" fluid>
       <div className="form-wrapper">
-        <Header as='h1'>Settings</Header>
-        <Form className="settings-form">
+        <Header as='h1' block style={{color: '#436386'}}>Settings</Header>
+        <Form className="settings-form" size='big'>
           <Form className="UpdateEmailForm">
-            <Header as='h4' className="label">Update User Info</Header>
+            <Header as='h4' className="label" style={{background: '#B4C5E4'}}>Update User Info</Header>
             <Form.Field className="form-field">
               <Input
                 name="newEmail"
                 placeholder="Updated Email Address"
                 value={this.state.newEmail}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Button
@@ -124,7 +125,7 @@ export default class Settings extends Component {
           </Form>
 
           <Form className="UpdatePasswordForm">
-            <Header as='h4' className="label">Update Password</Header>
+            <Header as='h4' className="label" style={{background: '#B4C5E4'}}>Update Password</Header>
             <Form.Field className="form-field">
               <Input
                 type="password"
@@ -132,6 +133,7 @@ export default class Settings extends Component {
                 placeholder="Current Password"
                 value={this.state.currentPassword}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Form.Field className="form-field">
@@ -141,6 +143,7 @@ export default class Settings extends Component {
                 placeholder="New Password"
                 value={this.state.newPassword}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Form.Field className="form-field">
@@ -150,6 +153,7 @@ export default class Settings extends Component {
                 placeholder="Confirm New Password"
                 value={this.state.confirmNewPassword}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Button
