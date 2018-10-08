@@ -13,14 +13,14 @@ const ModalToggle = props => {
       <Grid className='GridWrap'>
         <Grid.Column className='how-to' width={8}>
         <Header style={{ marginTop: '2rem' }}>
-          Just Simple Steps
+          How it works
         </Header>
           <Grid.Row className='how-to-row'>
             <Grid.Column>
               <Icon name='add user' size='big' color='blue'/>
             </Grid.Column>
             <Grid.Column style={{ marginLeft: '1rem' }}>
-              Join us
+              Create an account
             </Grid.Column>
           </Grid.Row>
           <Grid.Row className='how-to-row'>
@@ -44,22 +44,17 @@ const ModalToggle = props => {
               <Icon name='copy' size='big' color='blue'/>
             </Grid.Column>
             <Grid.Column style={{ marginLeft: '1rem' }}>
-              Add URL link of your KSL search
+              Add URL link from your KSL search
             </Grid.Column>
           </Grid.Row>          
         </Grid.Column>
 
         <Grid.Column className='action-field' width={8}>
           <Header style={{ marginTop: '2rem' }}>Join Us</Header>
-          <SignUp handleSignIn={props.handleSignIn} history={props.history} />
-          <p style={{ color: 'black', marginTop: '2rem' }}>Already have an account?<span className='sign-in-link'><Link to='/signIn'>Sign In</Link></span></p>
-          
-          {/* <Button size="medium" primary onClick={() => props.history.push('/signIn')}>
-            Sign In
-          </Button> */}
-          {/* <Button size="medium" secondary onClick={() => props.history.push('/signUp')}>
+          <Button size="medium" primary onClick={() => props.history.push('/signUp')}>
             Sign Up
-          </Button> */}          
+          </Button>  
+          <p style={{ color: 'black', marginTop: '2rem' }}>Already have an account?<span className='sign-in-link'><Link to='/signIn'>Sign In</Link></span></p>                  
         </Grid.Column>
       </Grid>
     </div>
