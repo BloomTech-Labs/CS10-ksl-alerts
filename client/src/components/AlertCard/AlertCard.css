@@ -1,8 +1,16 @@
 .AlertCard {
   padding: 15px;
-  /* border: 1px solid red; */
 }
 
 .Listings {
   padding: 15px;
+}
+
+button.ui.button.DeleteButton {
+  float: right;
+  background-color: whitesmoke;
+}
+
+h3.ui.block.header {
+  height: 60px;;
 }

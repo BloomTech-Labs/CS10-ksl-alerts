@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Button, Icon } from 'semantic-ui-react';
 import AlertListings from '../AlertListings/AlertListings.js';
 import './AlertCard.css';
+import axios from 'axios';
 
 // receiving query props from AlertFeed
 class AlertCard extends Component {
@@ -11,13 +12,29 @@ class AlertCard extends Component {
 
   toggleListings = () => {
     this.setState({ displayListings: !this.state.displayListings });
-  }
+  };
+
+  deleteQuery = e => {
+    console.log('event:', e);
+    axios
+      .put(`${process.env.REACT_APP_BACKEND_URL}/user/deleteQuery`, {
+        id: this.props.id,
+        queryId: this.props.query._id
+      })
+      .then(updatedUser => {
+        const updatedQueries = updatedUser.data.queries;
+        this.props.updateQueries(updatedQueries);
+      });
+  };
 
   render() {
     return (
       <div className="AlertCard">        
         <Header  as='h3' block onClick={this.toggleListings} style={{ cursor: 'pointer' }}>
           {this.props.query.title}
+          <Button className='DeleteButton' onClick={this.deleteQuery}>
+            <Icon name='trash' size='large' title='delete?'/>
+          </Button>
         </Header>
         <AlertListings
           url={this.props.query.url}
