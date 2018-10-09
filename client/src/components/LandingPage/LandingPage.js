@@ -19,13 +19,34 @@ class LandingPage extends Component {
     return (
       <Container className="LandingPageWrapper" fluid>
         <div className="LandingPage">
-          <Header className="HeaderText" as="h1" style={{fontFamily: 'Noto Sans', fontWeight: "700", color: "#646B8C"}}>
+          <Header
+            className="HeaderText"
+            as="h1"
+            style={{
+              fontFamily: 'Noto Sans',
+              fontWeight: '700',
+              color: '#646B8C'
+            }}
+          >
             Welcome to KSL Alerts
           </Header>
-          <Header className="SubHeaderText" as="h3" style={{fontFamily: 'Noto Sans', color: "#646B8C"}}>
+          <Header
+            className="SubHeaderText"
+            as="h3"
+            style={{ fontFamily: 'Noto Sans', color: '#646B8C' }}
+          >
             All of your <em>Classifieds</em> searches in one place.
           </Header>
-          <Button size="massive" style={{backgroundColor: '#4EA3CE', color: 'white', fontFamily: 'Noto Sans'}} onClick={this.showModal} className="GetStartedButton" style={{backgroundColor: '#4EA3CE', color: 'white'}}>
+          <Button
+            size="massive"
+            style={{
+              backgroundColor: '#4EA3CE',
+              color: 'white',
+              fontFamily: 'Noto Sans'
+            }}
+            onClick={this.showModal}
+            className="GetStartedButton"
+          >
             Get Started
           </Button>
           <ModalToggle
