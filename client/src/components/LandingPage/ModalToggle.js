@@ -44,7 +44,7 @@ const ModalToggle = props => {
               <Icon name='copy' size='big' color='blue'/>
             </Grid.Column>
             <Grid.Column style={{ marginLeft: '1rem' }}>
-              Add URL link from your KSL search
+              Add URL link from your <a target='_blank' rel=''noopener noreferrer href='https://classifieds.ksl.com/'>KSL</a> search
             </Grid.Column>
           </Grid.Row>          
         </Grid.Column>
