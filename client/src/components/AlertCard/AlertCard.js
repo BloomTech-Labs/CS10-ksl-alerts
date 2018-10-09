@@ -6,7 +6,7 @@ import './AlertCard.css';
 // receiving query props from AlertFeed
 class AlertCard extends Component {
   state = {
-    displayListings: false
+    displayListings: false    
   };
 
   toggleListings = () => {
@@ -15,7 +15,7 @@ class AlertCard extends Component {
 
   render() {
     return (
-      <div className="AlertCard">
+      <div className="AlertCard">        
         <Header  as='h3' block onClick={this.toggleListings} style={{ cursor: 'pointer' }}>
           {this.props.query.title}
         </Header>
@@ -23,7 +23,7 @@ class AlertCard extends Component {
           url={this.props.query.url}
           displayListings={this.state.displayListings}
           query={this.props.query}
-          style={{ display: 'flex'}}
+          style={{ display: 'flex'}}          
         />
       </div>
     );

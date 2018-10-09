@@ -10,11 +10,11 @@ const UserSchema = new mongoose.Schema ({
     unique: true,
     lowercase: true
 	},
-  password: {
+	password: {
     type: String,
     required: true,
     minlength: 6
-  },
+	},
 	// one to many relationship - one user can save many urls.
   queries: [{
     title: {
@@ -26,11 +26,6 @@ const UserSchema = new mongoose.Schema ({
         required: true
     }
   }]
-	// can work for Stretch - upgrade to premium accout
-	// accout_type: {
-	// 	free: Boolean,
-	// 	premium: Boolean
-	// }
 });
 
 // hashing middleware 

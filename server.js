@@ -31,6 +31,7 @@ server.use('/payments', stripeRouter);
 server.get('/', (req, res) => {
   res.status(200).json({ api: 'server running' });
 });
+
 // Web scraping
 server.post('/api/getListings', (req, res) => {
   const options = {

@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
-import { Button, Container, Header, Segment } from 'semantic-ui-react';
+import { Container, Header, Label, Icon } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css';
+import axios from "axios";
 import TopNav from '../TopNav/TopNav.js';
 
-// use users for now. It needs to change to be saved urls
-// then scrape the saved url to show alert feed
 export default class AlertFeed extends Component {
   state = {
+    id: this.props.id,
     queries: this.props.queries
   };
+
+
+  deleteQuery = e => {
+    axios
+      .put(`${process.env.REACT_APP_BACKEND_URL}/user/deleteQuery`, {
+        id: this.props.id
+      })
+      .then(updatedUser => {
+        const updatedQueries = updatedUser.data.queries;
+        this.props.updateQueries(updatedQueries);
+      });
+  }
 
   render() {
     return (
@@ -19,9 +31,14 @@ export default class AlertFeed extends Component {
           <Header as='h1' block>Alert Feed</Header>
           {this.state.queries ? (
             this.state.queries.map(query => (
-              <Container key={query._id}>
-                <AlertCard query={query} />
-              </Container>
+              <div>
+                <Label style={{ float: 'right' }}>
+                  <Icon name='delete' size='large' />
+                </Label>
+                <Container key={query._id}>
+                  <AlertCard query={query} />
+                </Container>
+              </div>
             ))
           ) : (
             <p>You have no queries.</p>
