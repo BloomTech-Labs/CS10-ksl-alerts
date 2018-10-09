@@ -23,6 +23,7 @@ const TopNav = props => {
             to="/feed"
             className="MenuLink"
             active={currentLocation === '/feed'}
+            style={{ fontFamily: 'Karla' }}
           >
             <Icon name="feed" position="left" />
             Alerts
@@ -40,6 +41,7 @@ const TopNav = props => {
             as={Link}
             to="/billing"
             className="MenuLink"
+            style={{ fontFamily: 'Karla' }}
             active={currentLocation === '/billing'}
           >
             <Icon name="credit card" position="left" />
@@ -49,6 +51,7 @@ const TopNav = props => {
             as={Link}
             to="/settings"
             className="MenuLink"
+            style={{ fontFamily: 'Karla' }}
             active={currentLocation === '/settings'}
           >
             <Icon name="settings" position="left" />
