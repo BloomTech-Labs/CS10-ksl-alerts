@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Segment, Grid, Header, Icon } from 'semantic-ui-react';
+import { Button, Grid, Header, Icon } from 'semantic-ui-react';
 import './ModalToggle.css';
-import SignUp from '../SignUp/SignUp.js';
+
 
 const ModalToggle = props => {
   let toggle = props.toggle;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ModalToggle from './ModalToggle';
-import { Button, Container, Header, Modal } from 'semantic-ui-react';
+import { Button, Container, Header } from 'semantic-ui-react';
 import './LandingPage.css';
 
 class LandingPage extends Component {
