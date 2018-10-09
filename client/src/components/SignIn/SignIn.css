@@ -1,3 +1,13 @@
+.signinContainer {
+  width: 100%;
+  height: 100%;
+  /* box-sizing: border-box; */
+  /* min-height: 1000px; */
+  background-image: url(../../images/signinpagebackground.jpg);
+  background-size: cover;
+  align-items: center;
+}
+
 .form-wrapper {
   display:flex;
   flex-direction: column;
