@@ -14,8 +14,10 @@ class AlertCard extends Component {
     this.setState({ displayListings: !this.state.displayListings });
   };
 
+  // connect to deleteQuery endpoint
+  // require userId and queryId that passing as props from AlertFeed
+  // then update the user query
   deleteQuery = e => {
-    console.log('event:', e);
     axios
       .put(`${process.env.REACT_APP_BACKEND_URL}/user/deleteQuery`, {
         id: this.props.id,
