@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Header, Input, Form, Message } from 'semantic-ui-react';
+import { Button, Header, Input, Form, Message, Icon } from 'semantic-ui-react';
 import './SignUp.css';
 
 class SignUp extends Component {
@@ -62,61 +62,71 @@ class SignUp extends Component {
     this.setState({ [name]: value });
   };
 
+  goToHome = () => {
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <div onSubmit={this.submitForm} className="container">
-        <div className="form-wrapper">       
-          <Form loading={this.state.loading}>
-          <Header as='h3'>Sign Up</Header>
-            <Form.Field>
-              <Input
-                type="text"
-                name="email"
-                placeholder="Email"
-                value={this.state.email}
-                onChange={this.handleInput}
-              />
-            </Form.Field>
-            <Form.Field>
-              <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleInput}
-              />
-            </Form.Field>
-            <Form.Field>
-              <Input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={this.state.confirmPassword}
-                onChange={this.handleInput}
-              />
-            </Form.Field>
-            <Message
-              negative
-              error={!this.state.error}
-              header="Error"
-              content="There was an error signing up. Please try again or contact support."
-            />
-            <Message
-              negative
-              error={this.state.password === this.state.confirmPassword}
-              content="Your passwords do not match!"
-            />
-            {this.state.password.length > 0 ? (
+        <div className='home-container'>
+          <Icon className='home-icon' name='home' size='big' color='blue' link onClick={this.goToHome} />
+        </div>
+        <div className='form-container'>
+          <div className="form-wrapper">       
+            <Form loading={this.state.loading}>
+            <Header as='h3'>Sign Up</Header>
+              <Form.Field>
+                <Input
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleInput}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleInput}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  value={this.state.confirmPassword}
+                  onChange={this.handleInput}
+                />
+              </Form.Field>
               <Message
                 negative
-                error={this.state.password.length >= 6}
-                content="Your password is too short!"
+                error={!this.state.error}
+                header="Error"
+                content="There was an error signing up. Please try again or contact support."
               />
-            ) : null}
-            <Button primary size="medium" onClick={this.handleSubmit}>
-              Submit
-            </Button>
-          </Form>
+              <Message
+                negative
+                error={this.state.password === this.state.confirmPassword}
+                content="Your passwords do not match!"
+              />
+              {this.state.password.length > 0 ? (
+                <Message
+                  negative
+                  error={this.state.password.length >= 6}
+                  content="Your password is too short!"
+                />
+              ) : null}
+              <Button primary size="medium" onClick={this.handleSubmit}>
+                Submit
+              </Button>
+              
+            </Form>
+          </div>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Header, Input, Form, Message } from 'semantic-ui-react';
+import { Button, Header, Input, Form, Message, Icon } from 'semantic-ui-react';
 import './SignIn.css';
 
 class SignIn extends Component {
@@ -36,42 +36,51 @@ class SignIn extends Component {
     this.setState({ [name]: value });
   };
 
+  goToHome = () => {
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <div onSubmit={this.submitForm} className="container">
-        <div className="form-wrapper">
-          <Form loading={this.state.loading}>
-            <Header as='h4' className="header">Please sign in</Header>
-            <Form.Field>
-              <Input
-                className="input-box"
-                type="text"
-                name="email"
-                placeholder="Email"
-                value={this.state.email}
-                onChange={this.handleInput}
+        <div className='home-container'>
+          <Icon className='home-icon' name='home' size='big' color='blue' link onClick={this.goToHome} />
+        </div>
+        <div className='form-container'>
+          <div className="form-wrapper">
+            <Form loading={this.state.loading}>
+              <Header as='h4' className="header">Please sign in</Header>
+              <Form.Field>
+                <Input
+                  className="input-box"
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleInput}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Input
+                  className="input-box"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleInput}
+                />
+              </Form.Field>
+              <Message
+                negative
+                error={!this.state.error}
+                header="Error"
+                content="There was an error signing in. Please try again or contact support."
               />
-            </Form.Field>
-            <Form.Field>
-              <Input
-                className="input-box"
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleInput}
-              />
-            </Form.Field>
-            <Message
-              negative
-              error={!this.state.error}
-              header="Error"
-              content="There was an error signing in. Please try again or contact support."
-            />
-            <Button primary size="medium" onClick={this.handleSubmit}>
-              Submit
-            </Button>
-          </Form>
+              <Button primary size="medium" onClick={this.handleSubmit}>
+                Submit
+              </Button>
+            </Form>
+          </div>
         </div>
       </div>
     );
