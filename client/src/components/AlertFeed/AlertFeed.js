@@ -16,7 +16,7 @@ export default class AlertFeed extends Component {
       <Container className="AlertFeed" fluid>
         <TopNav />
         <div className="feed-wrapper">
-          <Header as='h1' block>Alert Feed</Header>
+          <Header as='h1' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >Alert Feed</Header>
           {this.state.queries ? (
             this.state.queries.map(query => (
               <Container key={query._id}>

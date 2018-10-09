@@ -7,7 +7,7 @@ class Billing extends Component {
   render() {
     return (
       <Container className='BillingContainer' fluid>
-        <div className="form-wrapper" style={{border: '#f18e57 solid 2px', background: 'rgba(255,255,255,.8)'}}>
+        <div className="form-wrapper" style={{border: '#f18e57 solid 2px', background: 'rgba(255,255,255,.6)', marginBottom: '100px'}}>
           <div className="checkout">
             <div>
               <Header as='h1' style={{color: '#436386', fontFamily: "Karla"}}>Enjoy unlimited alerts for just $9.99 a month!</Header>

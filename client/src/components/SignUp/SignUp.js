@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Header, Input, Form, Message } from 'semantic-ui-react';
+import { Button, Container, Divider, Header, Input, Form, Message } from 'semantic-ui-react';
 import './SignUp.css';
 
 class SignUp extends Component {
@@ -64,10 +64,11 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div onSubmit={this.submitForm} className="container">
-        <div className="form-wrapper">       
+      <Container onSubmit={this.submitForm} className="signUpContainer" fluid>
+        <div className="form-wrapper" style={{marginBottom: '90px'}}>       
           <Form loading={this.state.loading}>
-          <Header as='h3'>Sign Up</Header>
+          <Header  style={{ fontFamily: 'Karla', fontSize: '4rem', color: '#080808', fontWeight: 'bolder', marginTop: '50px'}}>Sign Up</Header>
+            <Divider />
             <Form.Field>
               <Input
                 type="text"
@@ -75,6 +76,7 @@ class SignUp extends Component {
                 placeholder="Email"
                 value={this.state.email}
                 onChange={this.handleInput}
+                style={{ width: '400px', border: 'solid 1px #080808', borderRadius: '.2857142' }}
               />
             </Form.Field>
             <Form.Field>
@@ -84,6 +86,7 @@ class SignUp extends Component {
                 placeholder="Password"
                 value={this.state.password}
                 onChange={this.handleInput}
+                style={{ width: '400px', border: 'solid 1px #080808', borderRadius: '.2857142' }}
               />
             </Form.Field>
             <Form.Field>
@@ -93,6 +96,7 @@ class SignUp extends Component {
                 placeholder="Confirm Password"
                 value={this.state.confirmPassword}
                 onChange={this.handleInput}
+                style={{ width: '400px', border: 'solid 1px #080808', borderRadius: '.2857142' }}
               />
             </Form.Field>
             <Message
@@ -113,12 +117,12 @@ class SignUp extends Component {
                 content="Your password is too short!"
               />
             ) : null}
-            <Button primary size="medium" onClick={this.handleSubmit}>
+            <Button  size="large" onClick={this.handleSubmit} style={{backgroundColor: '#2EC0F9', color: 'white', fontFamily: 'Karla'}}>
               Submit
             </Button>
           </Form>
         </div>
-      </div>
+      </Container>
     );
   }
 }

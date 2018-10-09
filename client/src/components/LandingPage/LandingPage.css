@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 12rem;
 }
 
 .LandingPageWrapper{
@@ -18,16 +18,11 @@
     padding: 0;
 }
 
-.LandingPage .HeaderText{
-    display: flex;
-    align-self: center;
-}
-
 .LandingPage .GetStartedButton {
     margin: 60px;
     color: #CFDEE7
 }
 
-.ModalContainer {
-    border: 1px solid red;
+em {
+    margin: 0 0.5rem;
 }

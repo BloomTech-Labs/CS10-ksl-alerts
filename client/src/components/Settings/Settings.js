@@ -100,10 +100,9 @@ export default class Settings extends Component {
     return (
       <Container className="PageContainer" fluid>
       <div className="form-wrapper">
-        <Header as='h1' block style={{color: '#436386'}}>Settings</Header>
         <Form className="settings-form" size='big'>
           <Form className="UpdateEmailForm">
-            <Header as='h4' className="label" style={{background: '#B4C5E4'}}>Update User Info</Header>
+            <Header as='h2' className="label" style={{background: '#F8F4E3', fontFamily: 'Karla', color: '#080808'}}>Update User Info</Header>
             <Form.Field className="form-field">
               <Input
                 name="newEmail"
@@ -114,9 +113,9 @@ export default class Settings extends Component {
               />
             </Form.Field>
             <Button
-              primary
               size="medium"
               onClick={this.handleSubmitEmail}
+              style={{backgroundColor: '#114575', color: 'white', fontFamily: 'Karla'}}
             >
               Submit
             </Button>
@@ -125,7 +124,7 @@ export default class Settings extends Component {
           </Form>
 
           <Form className="UpdatePasswordForm">
-            <Header as='h4' className="label" style={{background: '#B4C5E4'}}>Update Password</Header>
+            <Header as='h2' className="label" style={{background: '#F8F4E3', fontFamily: 'Karla', color: '#080808'}}>Update Password</Header>
             <Form.Field className="form-field">
               <Input
                 type="password"
@@ -157,9 +156,9 @@ export default class Settings extends Component {
               />
             </Form.Field>
             <Button
-              primary
               size="medium"
               onClick={this.handleSubmitPassword}
+              style={{backgroundColor: '#114575', color: 'white', fontFamily: 'Karla'}}
             >
               Submit
             </Button>

@@ -44,14 +44,14 @@ const ModalToggle = props => {
               <Icon name='copy' size='big' color='blue'/>
             </Grid.Column>
             <Grid.Column style={{ marginLeft: '1rem' }}>
-              Add URL link from your KSL search
+              Add URL link from your <a target='_blank' rel=''noopener noreferrer href='https://classifieds.ksl.com/'>KSL</a> search
             </Grid.Column>
           </Grid.Row>          
         </Grid.Column>
 
         <Grid.Column className='action-field' width={8}>
           <Header style={{ marginTop: '2rem' }}>Join Us</Header>
-          <Button size="medium" primary onClick={() => props.history.push('/signUp')}>
+          <Button size="medium" style={{backgroundColor: '#4EA3CE', color: 'white'}} onClick={() => props.history.push('/signUp')}>
             Sign Up
           </Button>  
           <p style={{ color: 'black', marginTop: '2rem' }}>Already have an account?<span className='sign-in-link'><Link to='/signIn'>Sign In</Link></span></p>                  
