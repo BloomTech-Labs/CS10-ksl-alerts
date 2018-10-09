@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Header, Segment } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css';
 import TopNav from '../TopNav/TopNav.js';
