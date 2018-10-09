@@ -186,6 +186,9 @@ const updateEmail = (req, res) => {
 };
 
 // delete a User's query
+// call user's id and query's id that wants to delete to req.body
+// find the user by id then update the query
+// return the query that not include the one we just deleted
 const deleteQuery = (req, res) => {
   const { id, queryId } = req.body;
   User.findById(id)
@@ -210,7 +213,7 @@ router.route('/signIn').post(signIn);
 router.route('/getUser').post(restrictedRoute, getUserById);
 router.route('/updatePassword').put(restrictedRoute, updatePassword);
 router.route('/updateEmail').put(restrictedRoute, updateEmail);
-router.route('/saveQuery').put(saveQuery); // TODO: Insert middleware
-router.route('/deleteQuery').put(deleteQuery); // TODO: Insert middleware
+router.route('/saveQuery').put(saveQuery);
+router.route('/deleteQuery').put(deleteQuery);
 
 module.exports = router;

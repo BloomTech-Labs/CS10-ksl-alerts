@@ -31,6 +31,7 @@ class AlertListings extends Component {
       });
   }
 
+
   render() {
     // If there is an err, render the error message
     if (!this.props.displayListings) {

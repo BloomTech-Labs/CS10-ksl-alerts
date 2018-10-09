@@ -4,10 +4,9 @@ import AlertCard from '../AlertCard/AlertCard';
 import './AlertFeed.css';
 import TopNav from '../TopNav/TopNav.js';
 
-// use users for now. It needs to change to be saved urls
-// then scrape the saved url to show alert feed
 export default class AlertFeed extends Component {
   state = {
+    id: this.props.id,
     queries: this.props.queries
   };
 
@@ -19,9 +18,15 @@ export default class AlertFeed extends Component {
           <Header as='h1' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >Alert Feed</Header>
           {this.state.queries ? (
             this.state.queries.map(query => (
-              <Container key={query._id}>
-                <AlertCard query={query} />
-              </Container>
+              <div key={query._id}>
+                <Container >
+                  <AlertCard 
+                    query={query}
+                    id={this.props.id}
+                    updateQueries={this.props.updateQueries}
+                    />
+                </Container>
+              </div>
             ))
           ) : (
             <p>You have no queries.</p>
