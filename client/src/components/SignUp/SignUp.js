@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Header, Input, Form, Message, Icon } from 'semantic-ui-react';
+import { Button, Container, Divider, Header, Input, Form, Message, Icon } from 'semantic-ui-react';
 import './SignUp.css';
 
 class SignUp extends Component {
@@ -68,46 +68,42 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div onSubmit={this.submitForm} className="container">
+      <Container onSubmit={this.submitForm} className="signUpContainer" fluid>
         <div className='home-container'>
           <Icon className='home-icon' name='home' size='big' color='blue' link onClick={this.goToHome} />
         </div>
-        <div className='form-container'>
-          <div className="form-wrapper">       
-            <Form loading={this.state.loading}>
-            <Header as='h3'>Sign Up</Header>
-              <Form.Field>
-                <Input
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  value={this.state.email}
-                  onChange={this.handleInput}
-                />
-              </Form.Field>
-              <Form.Field>
-                <Input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={this.handleInput}
-                />
-              </Form.Field>
-              <Form.Field>
-                <Input
-                  type="password"
-                  name="confirmPassword"
-                  placeholder="Confirm Password"
-                  value={this.state.confirmPassword}
-                  onChange={this.handleInput}
-                />
-              </Form.Field>
-              <Message
-                negative
-                error={!this.state.error}
-                header="Error"
-                content="There was an error signing up. Please try again or contact support."
+        <div className="form-wrapper" style={{marginBottom: '90px'}}>       
+          <Form loading={this.state.loading}>
+          <Header  style={{ fontFamily: 'Karla', fontSize: '4rem', color: '#080808', fontWeight: 'bolder', marginTop: '50px'}}>Sign Up</Header>
+            <Divider />
+            <Form.Field>
+              <Input
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.handleInput}
+                style={{ width: '400px', border: 'solid 1px #080808', borderRadius: '.2857142' }}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.handleInput}
+                style={{ width: '400px', border: 'solid 1px #080808', borderRadius: '.2857142' }}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={this.state.confirmPassword}
+                onChange={this.handleInput}
+                style={{ width: '400px', border: 'solid 1px #080808', borderRadius: '.2857142' }}
               />
               <Message
                 negative
@@ -121,14 +117,14 @@ class SignUp extends Component {
                   content="Your password is too short!"
                 />
               ) : null}
-              <Button primary size="medium" onClick={this.handleSubmit}>
+            </Form.Field>
+            <Button  size="large" onClick={this.handleSubmit} style={{backgroundColor: '#2EC0F9', color: 'white', fontFamily: 'Karla'}}>
                 Submit
               </Button>
               
             </Form>
-          </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }

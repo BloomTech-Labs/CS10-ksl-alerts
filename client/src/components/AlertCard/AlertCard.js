@@ -16,7 +16,7 @@ class AlertCard extends Component {
   render() {
     return (
       <div className="AlertCard">
-        <Header  as='h3' block onClick={this.toggleListings} style={{ cursor: 'pointer' }}>
+        <Header  as='h3' block onClick={this.toggleListings} style={{ cursor: 'pointer', fontFamily: 'Karla' }}>
           {this.props.query.title}
         </Header>
         <AlertListings
