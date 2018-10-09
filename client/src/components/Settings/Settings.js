@@ -100,7 +100,6 @@ export default class Settings extends Component {
     return (
       <Container className="PageContainer" fluid>
       <div className="form-wrapper">
-        {/* <Header as='h1' block style={{backgroundColor: '#C1C9CB', color: 'black'}}>Settings</Header> */}
         <Form className="settings-form" size='big'>
           <Form className="UpdateEmailForm">
             <Header as='h2' className="label" style={{background: '#F8F4E3'}}>Update User Info</Header>
@@ -116,7 +115,7 @@ export default class Settings extends Component {
             <Button
               size="medium"
               onClick={this.handleSubmitEmail}
-              style={{backgroundColor: '#175F75', color: 'white', fontFamily: 'Karla'}}
+              style={{backgroundColor: '#114575', color: 'white', fontFamily: 'Karla'}}
             >
               Submit
             </Button>
@@ -159,7 +158,7 @@ export default class Settings extends Component {
             <Button
               size="medium"
               onClick={this.handleSubmitPassword}
-              style={{backgroundColor: '#175F75', color: 'white', fontFamily: 'Karla'}}
+              style={{backgroundColor: '#114575', color: 'white', fontFamily: 'Karla'}}
             >
               Submit
             </Button>
