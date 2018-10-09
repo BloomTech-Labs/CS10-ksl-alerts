@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Header } from 'semantic-ui-react';
 import AlertListings from '../AlertListings/AlertListings.js';
+import './AlertCard.css';
 
 // receiving query props from AlertFeed
 class AlertCard extends Component {
@@ -9,16 +11,23 @@ class AlertCard extends Component {
 
   toggleListings = () => {
     this.setState({ displayListings: !this.state.displayListings });
-  };
+  }
 
   render() {
     return (
-      <div>
-        <h4 onClick={this.toggleListings} style={{cursor:'pointer'}}>Query: {this.props.query.title}</h4>
-        <AlertListings url={this.props.query.url} displayListings={this.state.displayListings}/>
+      <div className="AlertCard">
+        <Header  as='h3' block onClick={this.toggleListings} style={{ cursor: 'pointer', fontFamily: 'Karla' }}>
+          {this.props.query.title}
+        </Header>
+        <AlertListings
+          url={this.props.query.url}
+          displayListings={this.state.displayListings}
+          query={this.props.query}
+          style={{ display: 'flex'}}
+        />
       </div>
     );
-  };
-};
+  }
+}
 
 export default AlertCard;

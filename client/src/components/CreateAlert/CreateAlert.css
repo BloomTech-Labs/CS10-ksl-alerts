@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   min-height: 1000px;
-  background-image: url(../../images/mountain-biking-at-sunset-mccoy-flats_800.jpg);
+  background-image: url(../../images/createalert-background.jpg);
   background-size: cover;
   align-items: center;
 }
@@ -14,17 +14,16 @@
   color: #4472CA;
   min-height: 50vh;
   justify-content: center;
-  margin-top: 20px;
-  /* border-radius: .28571429rem; */
+  border-radius: .28571429rem;
   /* border: #4472CA solid 2px; */
   background: white;  
-  margin-top: 200px;
+  margin-top: 125px;
   width: 400px;
   font-family: 'Karla', sans-serif;
 }
 
 .form-wrapper .form-field{
-  border: #4472CA solid 2px;
-  border-radius: .28571429rem;
+  /* border: #4472CA solid 2px; */
+  /* border-radius: .28571429rem; */
 }
 

@@ -1,17 +1,37 @@
-.AlertFeed {
-    width: 100%;
-    height: 100%;
-    min-height: 1000px;
-    background-image: repeating-linear-gradient(45deg, rgba(60,165,92,.3), rgba(255,255,0,.3) 1px, transparent 1px, transparent 2px, rgba(181,172,73) 1px);
-    background-size: cover;
+/* .AlertFeed { */
+/*     width: 100%; */
+/*     height: 100%; */
+/*     min-height: 1000px; */
+/*     background-image: repeating-linear-gradient(45deg, rgba(60,165,92,.3), rgba(255,255,0,.3) 1px, transparent 1px, transparent 2px, rgba(181,172,73) 1px); */
+/*     background-size: cover; */
+/* } */
+
+/* .feed-wrapper { */
+/*     display: flex; */
+/*     flex-direction: column; */
+/*     align-items: center; */
+/*     min-height: 100%; */
+/*     justify-content: center; */
+/*     margin-top: 20px; */
+   
+/* } */
+
+.AlertListings {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 20px;
+    justify-content: space-around;
+    box-sizing: border-box;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-.feed-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100%;
-    justify-content: center;
-    margin-top: 20px;
-   
-}
+
+/* .ListingCard { */
+/*   display: flex; */
+/*   flex-direction: row; */
+/*   flex-wrap: wrap; */
+  /* height: 300px; */
+  /* width: 200px; */
+/* } */
+
