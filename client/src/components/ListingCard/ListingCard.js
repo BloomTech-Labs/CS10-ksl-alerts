@@ -18,7 +18,7 @@ const ListingCard = props => {
           <Header as='p' basic>City: {props.listing.city}</Header>
         </div>
       }
-      textAlign={'center'}
+      style={{ fontFamily: 'Karla', textAlign: 'center'}}
     />
   );
 };

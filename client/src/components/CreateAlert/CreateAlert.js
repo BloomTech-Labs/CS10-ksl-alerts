@@ -48,7 +48,7 @@ export default class CreateAlert extends Component {
             background: "rgba(255,255,255,.02)"
           }}
         >
-          <Header as="h1" style={{ color: "#436386", fontSize: "2.5rem" }}>
+          <Header style={{ color: '#436386', fontSize: '2.5rem', fontFamily: 'Karla' }}>
             Create a new alert
           </Header>
           <Divider inverted />
@@ -61,9 +61,9 @@ export default class CreateAlert extends Component {
                 value={this.state.title}
                 onChange={this.handleInput}
                 style={{
-                  border: "solid 2px #E06F5A",
-                  borderRadius: ".28571429rem",
-                  width: "400px"
+                  border: 'solid 2px #E06F5A',
+                  borderRadius: '.28571429rem',
+                  width: '400px'
                 }}
               />
             </Form.Field>
@@ -75,16 +75,16 @@ export default class CreateAlert extends Component {
                 value={this.state.url}
                 onChange={this.handleInput}
                 style={{
-                  border: "solid 2px #E06F5A",
-                  borderRadius: ".28571429rem",
-                  width: "400px"
+                  border: 'solid 2px #E06F5A',
+                  borderRadius: '.28571429rem',
+                  width: '400px'
                 }}
               />
             </Form.Field>
             <Button
               primary
               size="large"
-              style={{ backgroundColor: "#E06F5A" }}
+              style={{ backgroundColor: '#E06F5A', color: 'white' }}
               onClick={this.handleSubmit}
             >
               Create Alert

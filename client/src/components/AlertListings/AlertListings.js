@@ -41,11 +41,11 @@ class AlertListings extends Component {
       return (
         <div className="AlertListings">
           {this.state.err ? (
-            <Header as="p">{this.state.err}</Header>
+            <Header as="p" style={{fontFamily: 'Karla'}}>{this.state.err}</Header>
           ) : (
             this.state.listings.map(listing => {
               return (
-                <ListingCard listing={listing} style={{ padding: '20px', height: '400px'}} className="Card"/>
+                <ListingCard listing={listing} style={{ padding: '20px', height: '400px', border: 'solid 1px #F1F0EA'}} className="Card"/>
               );
             })
           )}
