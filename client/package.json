@@ -13,6 +13,7 @@
     "react-scripts": "1.1.5",
     "react-stripe-checkout": "^2.6.3",
     "react-stripe-elements": "^2.0.1",
+    "reactstrap": "^6.5.0",
     "redux": "^4.0.0",
     "request": "^2.88.0",
     "router-redux": "^0.10.0",

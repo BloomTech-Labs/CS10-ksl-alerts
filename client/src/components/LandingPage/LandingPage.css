@@ -2,15 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 12rem;
 }
 
 .LandingPageWrapper{
     width: 100%;
     height: 100%;
-    background: url("../../images/SunriseWide.jpg");
+    background: url("../../images/landing-page-background.jpg");
     background-size: cover;
     min-height: 1000px;
     min-width: 320;
@@ -18,12 +18,11 @@
     padding: 0;
 }
 
-.LandingPage .HeaderText{
-    display: flex;
-    align-self: center;
-}
-
 .LandingPage .GetStartedButton {
     margin: 60px;
     color: #CFDEE7
+}
+
+em {
+    margin: 0 0.5rem;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Input, Form, Message } from 'semantic-ui-react';
+import { Container, Button, Header, Input, Form, Message } from 'semantic-ui-react';
 import './SignIn.css';
 
 class SignIn extends Component {
@@ -38,10 +38,10 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div onSubmit={this.submitForm} className="container">
-        <div className="form-wrapper">
+      <Container onSubmit={this.submitForm} className="signinContainer" fluid>
+        <div className="form-wrapper" style={{marginBottom: 'auto', backgroundColor: 'rgba(255,255,255,.065'}}>
           <Form loading={this.state.loading}>
-            <h4 className="header">Please sign in</h4>
+            <Header className="header" style={{fontFamily: 'Karla', color: '#311E10', fontSize: '2.7rem', fontWeight: 'bolder'}}>Please Sign In</Header>
             <Form.Field>
               <Input
                 className="input-box"
@@ -50,6 +50,7 @@ class SignIn extends Component {
                 placeholder="Email"
                 value={this.state.email}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Form.Field>
@@ -60,6 +61,7 @@ class SignIn extends Component {
                 placeholder="Password"
                 value={this.state.password}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Message
@@ -68,12 +70,12 @@ class SignIn extends Component {
               header="Error"
               content="There was an error signing in. Please try again or contact support."
             />
-            <Button primary size="medium" onClick={this.handleSubmit}>
+            <Button size="medium" style={{backgroundColor: '#311E10', color: 'white', fontFamily: 'Karla'}}onClick={this.handleSubmit}>
               Submit
             </Button>
           </Form>
         </div>
-      </div>
+      </Container>
     );
   }
 }

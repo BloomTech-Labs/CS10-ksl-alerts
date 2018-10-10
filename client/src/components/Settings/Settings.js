@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Divider, Input, Form, Label, Header } from 'semantic-ui-react';
+import { Button, Container, Input, Form, Header } from 'semantic-ui-react';
 import './Settings.css';
 import axios from 'axios';
 
@@ -100,22 +100,22 @@ export default class Settings extends Component {
     return (
       <Container className="PageContainer" fluid>
       <div className="form-wrapper">
-        <h1>Settings</h1>
-        <Form className="settings-form">
+        <Form className="settings-form" size='big'>
           <Form className="UpdateEmailForm">
-            <Header as='h4' className="label">Update User Info</Header>
+            <Header as='h2' className="label" style={{background: '#F8F4E3', fontFamily: 'Karla', color: '#080808'}}>Update User Info</Header>
             <Form.Field className="form-field">
               <Input
                 name="newEmail"
                 placeholder="Updated Email Address"
                 value={this.state.newEmail}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Button
-              primary
               size="medium"
               onClick={this.handleSubmitEmail}
+              style={{backgroundColor: '#114575', color: 'white', fontFamily: 'Karla'}}
             >
               Submit
             </Button>
@@ -124,7 +124,7 @@ export default class Settings extends Component {
           </Form>
 
           <Form className="UpdatePasswordForm">
-            <h4 className="label">Update Password</h4>
+            <Header as='h2' className="label" style={{background: '#F8F4E3', fontFamily: 'Karla', color: '#080808'}}>Update Password</Header>
             <Form.Field className="form-field">
               <Input
                 type="password"
@@ -132,6 +132,7 @@ export default class Settings extends Component {
                 placeholder="Current Password"
                 value={this.state.currentPassword}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Form.Field className="form-field">
@@ -141,6 +142,7 @@ export default class Settings extends Component {
                 placeholder="New Password"
                 value={this.state.newPassword}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Form.Field className="form-field">
@@ -150,12 +152,13 @@ export default class Settings extends Component {
                 placeholder="Confirm New Password"
                 value={this.state.confirmNewPassword}
                 onChange={this.handleInput}
+                style={{width: '400px'}}
               />
             </Form.Field>
             <Button
-              primary
               size="medium"
               onClick={this.handleSubmitPassword}
+              style={{backgroundColor: '#114575', color: 'white', fontFamily: 'Karla'}}
             >
               Submit
             </Button>

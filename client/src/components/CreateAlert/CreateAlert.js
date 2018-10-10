@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Button, Container, Divider, Input, Form, Header } from 'semantic-ui-react';
-import './CreateAlert.css';
+import React, { Component } from "react";
+import axios from "axios";
+import {
+  Button,
+  Container,
+  Divider,
+  Input,
+  Form,
+  Header
+} from "semantic-ui-react";
+import "./CreateAlert.css";
 
 export default class CreateAlert extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      url: ''
+      title: "",
+      url: ""
     };
   }
 
@@ -22,7 +29,7 @@ export default class CreateAlert extends Component {
       .then(updatedUser => {
         const updatedQueries = updatedUser.data.queries;
         this.props.updateQueries(updatedQueries);
-        this.props.history.push('/feed');
+        this.props.history.push("/feed");
       });
   };
 
@@ -34,8 +41,16 @@ export default class CreateAlert extends Component {
   render() {
     return (
       <Container className="create-wrapper" fluid>
-        <div className="form-wrapper">
-          <Header as='h1' color='teal'>Create a new alert</Header>
+        <div
+          className="form-wrapper"
+          style={{
+            /* border: "solid 2px #E06F5A" */
+            background: "rgba(255,255,255,.02)"
+          }}
+        >
+          <Header style={{ color: '#436386', fontSize: '2.5rem', fontFamily: 'Karla' }}>
+            Create a new alert
+          </Header>
           <Divider inverted />
           <Form className="signin-form">
             <Form.Field className="form-field">
@@ -45,6 +60,11 @@ export default class CreateAlert extends Component {
                 placeholder="Alert Title"
                 value={this.state.title}
                 onChange={this.handleInput}
+                style={{
+                  border: 'solid 2px #E06F5A',
+                  borderRadius: '.28571429rem',
+                  width: '400px'
+                }}
               />
             </Form.Field>
             <Form.Field className="form-field">
@@ -54,13 +74,24 @@ export default class CreateAlert extends Component {
                 placeholder="Query String Link"
                 value={this.state.url}
                 onChange={this.handleInput}
+                style={{
+                  border: 'solid 2px #E06F5A',
+                  borderRadius: '.28571429rem',
+                  width: '400px'
+                }}
               />
             </Form.Field>
-            <Button primary size="medium" onClick={this.handleSubmit}>Create Alert</Button>
+            <Button
+              primary
+              size="large"
+              style={{ backgroundColor: '#E06F5A', color: 'white' }}
+              onClick={this.handleSubmit}
+            >
+              Create Alert
+            </Button>
           </Form>
         </div>
       </Container>
     );
   }
 }
-

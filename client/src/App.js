@@ -26,7 +26,12 @@ class App extends Component {
   };
 
   handleSignOut = () => {
-    this.setState({ userId: null, isLoggedIn: false });
+    if (localStorage.getItem('jwt')) {
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('id');
+    }
+    this.props.history.push('/');
+    this.setState({ userId: null, isLoggedIn: false, queries: [] });
   }
 
   handleUpdateQueries = (updatedQueries) => {
@@ -57,29 +62,19 @@ class App extends Component {
 
   render() {
     const hasToken = localStorage.getItem('jwt');
-    const currentLocation = window.location.href;
-    let homeURL;
-
-    /**
-      * Get URL for redirecting users to home page depending on app's environment
-    **/
-    if (process.env.REACT_APP_DEV === 'true') {
-      homeURL = process.env.REACT_APP_DEV_URL;
-    } else {
-      homeURL = process.env.REACT_APP_PUBLIC_URL;
-    }
+    const currentLocation = this.props.history.location.pathname;
 
     /**
       * Check if user is signed in
-      * Check current page (window.location.href)
-      * If user isn't signed in and is on a page that needs to be signed in to access, redirect the user
+      * Check current location (page)
+      * If user isn't signed in and is on an unauthorized page redirect the user
     **/
     if (!hasToken
-      && currentLocation !== `${homeURL}/`
-      && currentLocation !== `${homeURL}/signIn`
-      && currentLocation !== `${homeURL}/signUp`
-      && currentLocation !== `${homeURL}/pageNotFound`) {
-      window.location = `${homeURL}/pageNotFound`;
+      && currentLocation !== '/'
+      && currentLocation !== '/signIn'
+      && currentLocation !== '/signUp'
+      && currentLocation !== '/pageNotFound') {
+      window.location.pathname = '/pageNotFound';
       return (
         <Switch>
           <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
@@ -93,7 +88,7 @@ class App extends Component {
             <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
             <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
             <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
-            <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} history={props.history} />} />
+            <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} updateQueries={this.handleUpdateQueries} history={props.history} />} />
             <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} updateQueries={this.handleUpdateQueries} history={props.history}/>} />
             <Route path="/billing" component={Billing} />
             <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />

@@ -1,8 +1,19 @@
+.signUpContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../../images/signupbackground.jpg);
+  background-size: cover;
+}
+
 .form-wrapper {
   display:flex;
   flex-direction: column;
   width: 300px;
   margin: 20px auto;
   align-items: center;
+  justify-items: center;
 }
 
