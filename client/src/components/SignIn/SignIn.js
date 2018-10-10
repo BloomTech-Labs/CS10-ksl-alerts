@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container, Button, Header, Input, Form, Message } from 'semantic-ui-react';
+import {
+  Container,
+  Button,
+  Header,
+  Input,
+  Form,
+  Message,
+  Icon
+} from 'semantic-ui-react';
 import './SignIn.css';
 
 class SignIn extends Component {
@@ -36,12 +44,42 @@ class SignIn extends Component {
     this.setState({ [name]: value });
   };
 
+  goToHome = () => {
+    this.props.history.push('/');
+  };
+
   render() {
     return (
       <Container onSubmit={this.submitForm} className="signinContainer" fluid>
-        <div className="form-wrapper" style={{marginBottom: 'auto', backgroundColor: 'rgba(255,255,255,.065'}}>
+        <div className="home-container">
+          <Icon
+            className="home-icon"
+            name="home"
+            size="big"
+            color="blue"
+            link
+            onClick={this.goToHome}
+          />
+        </div>
+        <div
+          className="form-wrapper"
+          style={{
+            marginBottom: 'auto',
+            backgroundColor: 'rgba(255,255,255,.065'
+          }}
+        >
           <Form loading={this.state.loading}>
-            <Header className="header" style={{fontFamily: 'Karla', color: '#311E10', fontSize: '2.7rem', fontWeight: 'bolder'}}>Please Sign In</Header>
+            <Header
+              className="header"
+              style={{
+                fontFamily: 'Karla',
+                color: '#311E10',
+                fontSize: '2.7rem',
+                fontWeight: 'bolder'
+              }}
+            >
+              Please Sign In
+            </Header>
             <Form.Field>
               <Input
                 className="input-box"
@@ -50,7 +88,7 @@ class SignIn extends Component {
                 placeholder="Email"
                 value={this.state.email}
                 onChange={this.handleInput}
-                style={{width: '400px'}}
+                style={{ width: '400px' }}
               />
             </Form.Field>
             <Form.Field>
@@ -61,7 +99,7 @@ class SignIn extends Component {
                 placeholder="Password"
                 value={this.state.password}
                 onChange={this.handleInput}
-                style={{width: '400px'}}
+                style={{ width: '400px' }}
               />
             </Form.Field>
             <Message
@@ -70,7 +108,15 @@ class SignIn extends Component {
               header="Error"
               content="There was an error signing in. Please try again or contact support."
             />
-            <Button size="medium" style={{backgroundColor: '#311E10', color: 'white', fontFamily: 'Karla'}}onClick={this.handleSubmit}>
+            <Button
+              size="medium"
+              style={{
+                backgroundColor: '#311E10',
+                color: 'white',
+                fontFamily: 'Karla'
+              }}
+              onClick={this.handleSubmit}
+            >
               Submit
             </Button>
           </Form>

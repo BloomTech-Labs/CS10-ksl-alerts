@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Button, Header } from 'semantic-ui-react';
 
 const DivStyle = styled.div`
-  margin: auto;
+  margin: 100px auto;
   width: 50%;
   padding: 10px;
   text-align: center;
@@ -16,8 +16,9 @@ const PageNotFound = (props) => {
 
   return (
     <DivStyle>
-      <Header as='h1'>Oh no! Page not found, or you're not signed in.</Header>
-      <Button  primary size="massive" onClick={goToHome}>Home</Button>
+      <Header as='h1'>Oh no!</Header>
+      <Header>Sorry, an error occured. Requested page not found.<br/> Please sign in and try again.</Header>
+      <Button name='home'  color='blue' size='big' onClick={goToHome}>Take Me Home</Button>
     </DivStyle>
   );
 };
