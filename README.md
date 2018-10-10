@@ -11,8 +11,9 @@ KSL Alerts is a tool designed to facilitate the use of the Classifeds section. I
 TODO
 
 ## Technology
-This application uses the MERN stack.
+This application uses the MERN (MongoDB, Express, React, Node) stack.
 Web scraping is done with the Cheerio.js library.
+Payments are done through the Stripe API.
 
 ## Contributers
 This project was developed by a group of Lambda School students for their capstone project.
