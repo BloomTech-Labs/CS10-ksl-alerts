@@ -15,7 +15,12 @@ export default class AlertFeed extends Component {
       <Container className="AlertFeed" fluid>
         <TopNav />
         <div className="feed-wrapper">
-          <Header as='h1' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >Alert Feed</Header>
+          <Header as='h1' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >
+            Alert Feed
+          </Header>
+          <Header as='h3' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >
+            You are in the FREE Plan with {3 - this.state.queries.length} free alerts remaining.  
+          </Header>
           {this.state.queries ? (
             this.state.queries.map(query => (
               <div key={query._id}>
