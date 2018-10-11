@@ -20,6 +20,10 @@ export default class CreateAlert extends Component {
   }
 
   handleSubmit = e => {
+    if (this.props.numQueries === 3) {
+      return window.alert('You reach the max amount of saved queries!')
+    }
+  
     e.preventDefault();
     axios
       .put(`${process.env.REACT_APP_BACKEND_URL}/user/saveQuery`, {
