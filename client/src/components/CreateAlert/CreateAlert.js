@@ -15,13 +15,18 @@ export default class CreateAlert extends Component {
     super(props);
     this.state = {
       title: "",
-      url: ""
+      url: "",
+      showUpgradeModal: false,
     };
   }
 
+  limitToggle = () => {
+    alert('You reach the max amount of saved queries!');
+  }
+
   handleSubmit = e => {
-    if (this.props.numQueries === 3) {
-      return window.alert('You reach the max amount of saved queries!')
+    if (this.props.numQueries === 3 && this.props.subscription === 'free') {
+      return this.limitToggle();
     }
   
     e.preventDefault();
