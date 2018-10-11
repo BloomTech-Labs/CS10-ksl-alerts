@@ -30,12 +30,11 @@ const onToken = (amount, description) => token =>
       },
     )
     .then(response => {
-      successPayment()
-      console.log(response)
+      successPayment();
     })
     .catch(error =>{
       errorPayment()
-      console.log(error)
+      console.error(error);
     });
 
 const Checkout = ({ name, description, amount }) => (
