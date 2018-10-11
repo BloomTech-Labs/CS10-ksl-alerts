@@ -12,12 +12,17 @@ class Billing extends Component {
       name: '',
       description: '',
       amount: 0.0,
-      subscription: 0
+      subscriptionPeriod: 0 // subscription value in months
     };
   }
 
-  onPriceClick(name, description, amount) {
-    this.setState({ name, description, amount });
+  onPriceClick(name, description, amount, subscriptionPeriod) {
+    this.setState({ 
+      name: name, 
+      description: description, 
+      amount: amount, 
+      subscriptionPeriod: subscriptionPeriod 
+    });
   }
 
   render() {
@@ -32,20 +37,28 @@ class Billing extends Component {
                 <Col md="4">
                   <Card>
                     <CardBody>
-                      <CardTitle>1 year unlimited alerts</CardTitle>
+                      <CardTitle>
+                        1 month unlimited alerts Trial Level
+                      </CardTitle>
+
                       <Button
                         className="button"
                         color="primary"
                         onClick={() =>
-                          this.onPriceClick('1 year unlimited alerts', 19.99)
+                          this.onPriceClick(
+                            'KSL Alerts', 
+                            '1 month unlimited alerts', 
+                            2.99, 
+                            1
+                          )
                         }
                       >
-                        1 Year Subscription = 19.99
+                        1 month Subscription = 2.99
                       </Button>
                       <Checkout
                         name={'KSL Alerts'}
-                        description={'1 year unlimited alerts'}
-                        amount={19.99}
+                        description={'1 month unlimited alerts'}
+                        amount={2.99}
                       />
                     </CardBody>
                   </Card>
@@ -58,7 +71,12 @@ class Billing extends Component {
                         className="button"
                         color="primary"
                         onClick={() =>
-                          this.onPriceClick('6 month unlimited alerts', 9.99)
+                          this.onPriceClick(
+                            'KSL Alerts', 
+                            '6 month unlimited alerts', 
+                            9.99, 
+                            6
+                          )
                         }
                       >
                         6 month Subscription = 9.99
@@ -74,23 +92,25 @@ class Billing extends Component {
                 <Col md="4">
                   <Card>
                     <CardBody>
-                      <CardTitle>
-                        1 month unlimited alerts Trial Level
-                      </CardTitle>
-
+                      <CardTitle>1 year unlimited alerts</CardTitle>
                       <Button
                         className="button"
                         color="primary"
                         onClick={() =>
-                          this.onPriceClick('1 month unlimited alerts', 2.99)
+                          this.onPriceClick(
+                            'KSL Alerts', 
+                            '1 year unlimited alerts', 
+                            19.99, 
+                            12
+                          )
                         }
                       >
-                        1 month Subscription = 2.99
+                        1 Year Subscription = 19.99
                       </Button>
                       <Checkout
                         name={'KSL Alerts'}
-                        description={'1 month unlimited alerts'}
-                        amount={2.99}
+                        description={'1 year unlimited alerts'}
+                        amount={19.99}
                       />
                     </CardBody>
                   </Card>

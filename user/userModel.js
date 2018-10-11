@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // user model
 const UserSchema = new mongoose.Schema ({
@@ -25,17 +24,18 @@ const UserSchema = new mongoose.Schema ({
         type: String,
         required: true
     }
-  }],
+	}],
   customerId: {
     type: String,
     required: false
 	},
 
-	paid: {
-		type: Boolean,
+	subscription: {
+		type: String,
 		required: true,
-		default: false
-	}
+		description: String,
+		subscriptionPeriod: Number
+	},
 });
 
 // hashing middleware 

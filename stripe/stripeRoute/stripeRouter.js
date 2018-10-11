@@ -13,12 +13,12 @@ router.post('/', (req, res) => {
   const description = req.body.description;
   let chosenplan = '';
 
-  if (description === '1 year unlimited alerts') {
-    chosenplan = 'plan_DihSJVusL6mbrj';
+  if (description === '1 month unlimited alerts') {
+    chosenplan = 'plan_DihQ6Mc5iftbNP';
   } else if (description === '6 month unlimited alerts') {
     chosenplan = 'plan_DihRXqZm8riQ0Q';
-  } else if (description === '1 month unlimited alerts') {
-    chosenplan = 'plan_DihQ6Mc5iftbNP';
+  } else if (description === '1 year unlimited alerts') {
+    chosenplan = 'plan_DihSJVusL6mbrj';    
   } else {
     console.log('An error occured no plan was chosen', description);
   }
