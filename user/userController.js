@@ -99,7 +99,9 @@ const signIn = (req, res) => {
                 message: `Welcome back ${email}`,
                 token,
                 id: user._id,
-                queries: user.queries
+                queries: user.queries,
+                stripeId: user.stripeId,
+                subscription: user.subscription
               });
             } else {
               res
