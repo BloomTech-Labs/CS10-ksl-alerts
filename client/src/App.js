@@ -19,6 +19,8 @@ class App extends Component {
     userId: null,
     isLoggedIn: false,
     queries: [],
+    stripeId: '',
+    subscription: ''
   };
 
   handleSignIn = (id, queries) => {
@@ -50,9 +52,15 @@ class App extends Component {
       axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/user/getUser`, { id }, requestOptions)
         .then(res => {
-          const { id: _id, queries } = res.data;
+          const { id: _id, queries, subscription, stripeId } = res.data;
           
-          this.setState({ userId: id, isLoggedIn: true, queries: queries });
+          this.setState({ 
+            userId: id, 
+            isLoggedIn: true, 
+            queries: queries, 
+            subscription: subscription, 
+            stripeId: stripeId
+          });
         })
         .catch(err => {
           console.error(err);
