@@ -97,7 +97,15 @@ class App extends Component {
             <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
             <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
             <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} updateQueries={this.handleUpdateQueries} history={props.history} />} />
-            <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} updateQueries={this.handleUpdateQueries} history={props.history} numQueries={this.state.queries.length} />} />
+            <Route path="/createAlert" component={(props) => 
+              <CreateAlert 
+                id={this.state.userId} 
+                updateQueries={this.handleUpdateQueries} 
+                history={props.history} 
+                numQueries={this.state.queries.length} 
+                subscription={this.state.subscription}
+              />} 
+            />
             <Route path="/billing" component={Billing} />
             <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
             <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
