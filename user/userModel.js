@@ -32,8 +32,8 @@ const UserSchema = new mongoose.Schema({
     required: false,
   },
   subscription: {
-    type: String,
-    required: true,
+    type: Boolean,
+    default: false,
     // description: String,
     // subscriptionPeriod: Number,
   },

@@ -44,6 +44,9 @@ router.post('/', (req, res) => {
                 function(err, subscription) {}
               )
               .then(response => {
+                UserModel.findByIdAndUpdate({ email: email }, { subscription: true }, { new: true })
+              })
+              .then(response => {
                 res.json(response);
               })
               .catch(err => res.status(500).json({ error: err.message }));

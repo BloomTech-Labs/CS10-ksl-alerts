@@ -17,6 +17,7 @@ export default class CreateAlert extends Component {
       title: "",
       url: "",
       showUpgradeModal: false,
+      userPlan: 'free'
     };
   }
 
@@ -28,6 +29,9 @@ export default class CreateAlert extends Component {
     if (this.props.numQueries === 3 && this.props.subscription === 'free') {
       return this.limitToggle();
     }
+    // if (this.props.numQueries === 3 && this.state.userPlan === 'free') {
+    //   return this.limitToggle();
+    // }
   
     e.preventDefault();
     axios
