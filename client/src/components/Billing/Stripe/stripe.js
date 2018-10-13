@@ -28,11 +28,6 @@ const onToken = (amount, description) => token =>
         currency: CURRENCY,
         amount: fromDollarToCent(amount)
       },
-      {
-        headers: {
-          JWT: localStorage.getItem('jwt')
-        }
-      }
     )
     .then(response => {
       successPayment();
