@@ -39,7 +39,6 @@ class Billing extends Component {
         >
           <div className='checkout'>
             <StripeProvider apiKey='pk_test_bS41glL52zljnAT32tZubD7r'>
-              {/* <Elements> */}
               <div>
                 <Header
                   as='h1'
@@ -47,27 +46,12 @@ class Billing extends Component {
                 >
                   Enjoy unlimited alerts for <br/>just $2.99 a month!
                 </Header>
-                {/* <Button
-                  className='button'
-                  color='primary'
-                  onClick={() =>
-                    this.onPriceClick(
-                      'KSL Alerts',
-                      '6 month unlimited alerts',
-                      5.99,
-                      6
-                    )}
-                >
-                  1 month Subscription = 5.99
-                </Button> */}
                 <Checkout
                   name={`KSL Alerts`}
                   description={'1 month unlimited alerts'}
                   amount={2.99}
                 />
-
               </div>
-              {/* </Elements> */}
             </StripeProvider>
           </div>
         </div>
