@@ -22,7 +22,7 @@ export default class CreateAlert extends Component {
   }
 
   limitToggle = () => {
-    alert('You reach the max amount of saved queries!');
+    this.setState({ showUpgradeModal: true });
   }
 
   handleSubmit = e => {
@@ -52,6 +52,10 @@ export default class CreateAlert extends Component {
   };
 
   render() {
+    if (this.state.showUpgradeModal) {
+      return alert('ShowUpgradeComponent should appear here');
+    }
+
     return (
       <Container className="create-wrapper" fluid>
         <div
