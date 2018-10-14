@@ -17,11 +17,11 @@ class SignIn extends Component {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/user/signIn`, this.state)
       .then(res => {
-        const { id, queries, token } = res.data;
+        const { id, queries, token, subscription } = res.data;
 
         localStorage.setItem('jwt', token);
         localStorage.setItem('id', id);
-        this.props.handleSignIn(id, queries);
+        this.props.handleSignIn(id, queries, subscription);
         this.setState({ loading: false, error: false });
         this.props.history.push('/feed');
       })
