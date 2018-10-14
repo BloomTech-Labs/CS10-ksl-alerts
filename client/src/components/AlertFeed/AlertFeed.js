@@ -11,6 +11,14 @@ export default class AlertFeed extends Component {
   };
 
   render() {
+    let header = '';
+
+    if (this.props.subscription === 'premium') {
+      header = null;
+    } else {
+      header = `You are in the FREE Plan with ${3 - this.state.queries.length} free alerts remaining.`
+    }
+
     return (
       <Container className="AlertFeed" fluid>
         <TopNav />
@@ -19,7 +27,7 @@ export default class AlertFeed extends Component {
             Alert Feed
           </Header>
           <Header as='h3' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >
-            You are in the FREE Plan with {3 - this.state.queries.length} free alerts remaining.  
+            {header} 
           </Header>
           {this.state.queries ? (
             this.state.queries.map(query => (
