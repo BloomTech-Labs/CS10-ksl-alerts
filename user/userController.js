@@ -187,6 +187,13 @@ const updateEmail = (req, res) => {
     .catch(error => res.status(500).json(error));
 };
 
+const updateSubscription = (req, res) => {
+  const { id, subscription } = req.body;
+  User.findByIdAndUpdate(id, { subscription }, { new: true })
+    .then(user => res.status(200).json(user))
+    .catch(error => res.status(500).json(error));
+};
+
 // delete a User's query
 // call user's id and query's id that wants to delete to req.body
 // find the user by id then update the query
@@ -215,6 +222,7 @@ router.route('/signIn').post(signIn);
 router.route('/getUser').post(restrictedRoute, getUserById);
 router.route('/updatePassword').put(restrictedRoute, updatePassword);
 router.route('/updateEmail').put(restrictedRoute, updateEmail);
+router.route('/updateSubscription').put(restrictedRoute, updateSubscription);
 router.route('/saveQuery').put(saveQuery);
 router.route('/deleteQuery').put(deleteQuery);
 
