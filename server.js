@@ -43,12 +43,10 @@ server.post('/api/getListings', (req, res) => {
     }
   };
   request(options, function(error, response, body) {
-    console.log('REQUEST MADE TO: ', req.body.url);
     if (error) {
       console.error(error);
       res.status(500).json({ err: 'The URL seems to be invalid!' });
     } else {
-      console.log('REQUEST MADE TO: ', req.body.url);
       console.log(
         'RESPONSE STATUS: ',
         response.statusCode,
