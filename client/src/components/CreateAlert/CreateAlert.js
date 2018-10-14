@@ -25,7 +25,7 @@ export default class CreateAlert extends Component {
   }
 
   handleSubmit = e => {
-    if (this.props.numQueries === 3 && this.props.subscription === 'free') {
+    if (this.props.numQueries >= 3 && this.props.subscription === 'free') {
       return this.limitToggle();
     }
   
@@ -49,7 +49,8 @@ export default class CreateAlert extends Component {
 
   render() {
     if (this.state.showUpgradeModal) {
-      return alert('ShowUpgradeComponent should appear here');
+      alert('You have reached your max limit of alerts! Please sign up for a premium plan.'); // TODO: ShowUpgradeComponent should appear here
+      this.props.history.push('/billing');
     }
 
     return (
