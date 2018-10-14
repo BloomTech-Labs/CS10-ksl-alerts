@@ -23,8 +23,8 @@ class App extends Component {
     subscription: ''
   };
 
-  handleSignIn = (id, queries) => {
-    this.setState({ userId: id, isLoggedIn: true, queries: queries });
+  handleSignIn = (id, queries, subscription) => {
+    this.setState({ userId: id, isLoggedIn: true, queries: queries, subscription: subscription });
   };
 
   handleSignOut = () => {
@@ -38,6 +38,11 @@ class App extends Component {
 
   handleUpdateQueries = (updatedQueries) => {
     this.setState({ queries: updatedQueries });
+  }
+
+  updateSubscriptionState = (subscription) => {
+    this.props.history.push('/createAlert');
+    this.setState({ subscription: subscription });
   }
 
   componentDidMount() {
@@ -96,7 +101,7 @@ class App extends Component {
             <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
             <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
             <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
-            <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} updateQueries={this.handleUpdateQueries} history={props.history} />} />
+            <Route path='/feed' component={(props) => <AlertFeed id={this.state.userId} queries={this.state.queries} updateQueries={this.handleUpdateQueries} subscription={this.state.subscription}/>} />
             <Route path="/createAlert" component={(props) => 
               <CreateAlert 
                 id={this.state.userId} 
@@ -106,7 +111,7 @@ class App extends Component {
                 subscription={this.state.subscription}
               />} 
             />
-            <Route path="/billing" component={Billing} />
+            <Route path="/billing" component={() => <Billing id={this.state.userId} updateSubscriptionState={this.updateSubscriptionState}/>} />
             <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
             <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
           </Switch>
