@@ -9,13 +9,13 @@ const CURRENCY = 'USD';
 const fromDollarToCent = amount => amount * 100;
 
 const updateSubscription = (subscription, updateSubscriptionState) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('jwt');
   const id = localStorage.getItem('id');
-    const requestOptions = {
-      headers: {
-        Authorization: token
-      }
-    };
+  const requestOptions = {
+    headers: {
+      Authorization: token
+    }
+  };
 
     axios
       .put(
