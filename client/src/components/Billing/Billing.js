@@ -1,31 +1,11 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
 import { Header } from 'semantic-ui-react'
-import { Elements, StripeProvider } from 'react-stripe-elements'
+import { StripeProvider } from 'react-stripe-elements'
 import Checkout from './Stripe/stripe.js'
 import './Billing.css'
 
 class Billing extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      name: '',
-      description: '',
-      amount: 0.0,
-      subscriptionPeriod: 0 // subscription value in months
-    }
-  }
-
-  onPriceClick (name, description, amount, subscriptionPeriod) {
-    this.setState({
-      name: name,
-      description: description,
-      amount: amount,
-      subscriptionPeriod: subscriptionPeriod
-    })
-  }
-
   render () {
     return (
       <Container className='BillingContainer' fluid>
@@ -50,6 +30,7 @@ class Billing extends Component {
                   name={`KSL Alerts`}
                   description={'1 month unlimited alerts'}
                   amount={2.99}
+                  updateSubscriptionState={this.props.updateSubscriptionState}
                 />
               </div>
             </StripeProvider>
@@ -60,4 +41,4 @@ class Billing extends Component {
   }
 }
 
-export default Billing
+export default Billing;
