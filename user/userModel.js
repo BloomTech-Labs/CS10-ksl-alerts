@@ -33,7 +33,7 @@ const UserSchema = new mongoose.Schema({
   },
   subscription: {
     type: String,
-    default: false,
+    default: 'free',
   },
 });
 
