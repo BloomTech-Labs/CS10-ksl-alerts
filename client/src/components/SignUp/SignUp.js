@@ -32,15 +32,9 @@ class SignUp extends Component {
           .post(`${process.env.REACT_APP_BACKEND_URL}/user/signIn`, this.state)
           .then(res => {
             localStorage.setItem('jwt', res.data.token);
+            localStorage.setItem('id', res.data.id);
 
-            this.setState({
-              email: '',
-              password: '',
-              error: false,
-              loading: false
-            });
-
-            this.props.handleSignIn(res.data.id);
+            this.props.handleSignIn(res.data.id, [], 'free');
             this.props.history.push('/feed');
           })
           // Error logging in
