@@ -19,10 +19,12 @@ class App extends Component {
     userId: null,
     isLoggedIn: false,
     queries: [],
+    stripeId: '',
+    subscription: ''
   };
 
-  handleSignIn = (id, queries) => {
-    this.setState({ userId: id, isLoggedIn: true, queries: queries });
+  handleSignIn = (id, queries, subscription) => {
+    this.setState({ userId: id, isLoggedIn: true, queries: queries, subscription: subscription });
   };
 
   handleSignOut = () => {
@@ -38,6 +40,11 @@ class App extends Component {
     this.setState({ queries: updatedQueries });
   }
 
+  updateSubscriptionState = (subscription) => {
+    this.props.history.push('/createAlert');
+    this.setState({ subscription: subscription });
+  }
+
   componentDidMount() {
     if(!this.state.isLoggedIn && localStorage.getItem('jwt') && localStorage.getItem('id')) {
       const id = localStorage.getItem('id');
@@ -50,9 +57,15 @@ class App extends Component {
       axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/user/getUser`, { id }, requestOptions)
         .then(res => {
-          const { id: _id, queries } = res.data;
+          const { id: _id, queries, subscription, stripeId } = res.data;
           
-          this.setState({ userId: id, isLoggedIn: true, queries: queries });
+          this.setState({ 
+            userId: id, 
+            isLoggedIn: true, 
+            queries: queries, 
+            subscription: subscription, 
+            stripeId: stripeId
+          });
         })
         .catch(err => {
           console.error(err);
@@ -88,9 +101,17 @@ class App extends Component {
             <Route exact path='/' component={(props) => <LandingPage history={props.history}/>} />
             <Route path='/signIn' component={(props) => <SignIn handleSignIn={this.handleSignIn} history={props.history}/>} />
             <Route path='/signUp' component={(props) => <SignUp handleSignIn={this.handleSignIn} history={props.history}/>} />
-            <Route path='/feed' component={(props) => <AlertFeed handleSignOut={this.handleSignOut} id={this.state.userId} queries={this.state.queries} updateQueries={this.handleUpdateQueries} history={props.history} />} />
-            <Route path="/createAlert" component={(props) => <CreateAlert id={this.state.userId} updateQueries={this.handleUpdateQueries} history={props.history}/>} />
-            <Route path="/billing" component={Billing} />
+            <Route path='/feed' component={(props) => <AlertFeed id={this.state.userId} queries={this.state.queries} updateQueries={this.handleUpdateQueries} subscription={this.state.subscription}/>} />
+            <Route path="/createAlert" component={(props) => 
+              <CreateAlert 
+                id={this.state.userId} 
+                updateQueries={this.handleUpdateQueries} 
+                history={props.history} 
+                numQueries={this.state.queries.length} 
+                subscription={this.state.subscription}
+              />} 
+            />
+            <Route path="/billing" component={() => <Billing id={this.state.userId} updateSubscriptionState={this.updateSubscriptionState}/>} />
             <Route path="/settings" component={(props) => <Settings id={this.state.userId} history={props.history}/>} />
             <Route path='/pageNotFound' component={(props) => <PageNotFound history={props.history}/>} />
           </Switch>

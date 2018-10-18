@@ -1,16 +1,64 @@
-
 const express = require('express');
-const stripe = require('../stripe/stripe.js');
-const { postStripeCharge } = require('../stripe/utils');
+const keyPublishable = process.env.PUBLISHABLE_KEY;
+const keySecret = process.env.SECRET_KEY;
+const stripe = require('stripe')(keySecret);
+const UserModel = require('../../user/userModel');
 
+// intializing the router
 const router = express.Router();
 
-router.get('/', (req, res) => res.send({ Message: 'Stripe endpoint', timestamp: new Date().toISOString() }));
+router.post('/', (req, res) => {
+  const email = req.email;
+  const source = req.body.source;
+  const description = req.body.description;
+  let chosenplan = '';
 
-/**
- * The endpoint in charge to process Frontend payment through the Stripe API
- */
-
-router.post('/', (req, res) => stripe.charges.create(req.body, postStripeCharge(res)));
+  if (description === '1 month unlimited alerts') {
+    chosenplan = 'plan_DihQ6Mc5iftbNP';
+  } else if (description === '6 month unlimited alerts') {
+    chosenplan = 'plan_DihRXqZm8riQ0Q';
+  } else if (description === '1 year unlimited alerts') {
+    chosenplan = 'plan_DihSJVusL6mbrj';    
+  } else {
+    console.log('An error occured no plan was chosen', description);
+  }
+  if (description !== null) {
+    stripe.customers.create(
+      {
+        email: email,
+        source: source
+      },
+      function(err, customer) {
+        if (customer !== null) {
+          stripe.plans.retrieve(chosenplan, function(err, plans) {
+            stripe.subscriptions
+              .create(
+                {
+                  customer: customer.id,
+                  items: [
+                    {
+                      plan: plans.id
+                    }
+                  ]
+                },
+                function(err, subscription) {}
+              )
+              .then(response => {
+                res.json(response);
+              })
+              .then(response => {
+                res.json(response);
+              })
+              .catch(err => res.status(500).json({ error: err.message }));
+          });
+        } else {
+          console.log('The token has expired please try again', err);
+        }
+      }
+    );
+  } else {
+    console.log('no description was present', description);
+  }
+});
 
 module.exports = router;

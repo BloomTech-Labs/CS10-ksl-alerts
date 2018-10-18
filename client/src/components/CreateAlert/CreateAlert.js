@@ -15,11 +15,20 @@ export default class CreateAlert extends Component {
     super(props);
     this.state = {
       title: "",
-      url: ""
+      url: "",
+      showUpgradeModal: false,
     };
   }
 
+  limitToggle = () => {
+    this.setState({ showUpgradeModal: true });
+  }
+
   handleSubmit = e => {
+    if (this.props.numQueries >= 3 && this.props.subscription === 'free') {
+      return this.limitToggle();
+    }
+  
     e.preventDefault();
     axios
       .put(`${process.env.REACT_APP_BACKEND_URL}/user/saveQuery`, {
@@ -39,6 +48,11 @@ export default class CreateAlert extends Component {
   };
 
   render() {
+    if (this.state.showUpgradeModal) {
+      alert('You have reached your max limit of alerts! Please sign up for a premium plan.'); // TODO: ShowUpgradeComponent should appear here
+      this.props.history.push('/billing');
+    }
+
     return (
       <Container className="create-wrapper" fluid>
         <div

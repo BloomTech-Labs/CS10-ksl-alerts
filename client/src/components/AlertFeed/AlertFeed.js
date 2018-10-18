@@ -5,19 +5,27 @@ import './AlertFeed.css';
 import TopNav from '../TopNav/TopNav.js';
 
 export default class AlertFeed extends Component {
-  state = {
-    id: this.props.id,
-    queries: this.props.queries
-  };
-
   render() {
+    let header = '';
+
+    if (this.props.subscription === 'premium') {
+      header = null;
+    } else {
+      header = `You are in the FREE Plan with ${3 - this.props.queries.length} free alerts remaining.`
+    }
+
     return (
       <Container className="AlertFeed" fluid>
         <TopNav />
         <div className="feed-wrapper">
-          <Header as='h1' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >Alert Feed</Header>
-          {this.state.queries ? (
-            this.state.queries.map(query => (
+          <Header as='h1' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >
+            Alert Feed
+          </Header>
+          <Header as='h3' style={{color: '#F1F0EA', fontFamily: 'Karla'}} >
+            {header} 
+          </Header>
+          {this.props.queries ? (
+            this.props.queries.map(query => (
               <div key={query._id}>
                 <Container >
                   <AlertCard 
