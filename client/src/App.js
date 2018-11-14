@@ -28,12 +28,9 @@ class App extends Component {
   };
 
   handleSignOut = () => {
-    if (localStorage.getItem('jwt')) {
-      localStorage.removeItem('jwt');
-      localStorage.removeItem('id');
-    }
+    localStorage.clear();
     this.props.history.push('/');
-    this.setState({ userId: null, isLoggedIn: false, queries: [] });
+    this.setState({ userId: null, isLoggedIn: false, queries: [], stripeId: '', subscription: '' });
   }
 
   handleUpdateQueries = (updatedQueries) => {
